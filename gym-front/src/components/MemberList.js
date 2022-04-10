@@ -122,7 +122,7 @@ const MemberList = () => {
             
             
             <Link
-              to={"/member/" + currentMember.id}
+              to={"/member/" + currentMember.Mem_ID}
               className="badge badge-warning"
             >
               Edit

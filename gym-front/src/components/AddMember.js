@@ -3,7 +3,7 @@ import MemberDataService from "../services/MemberService";
 
 const AddMember = () => {
   const initialMemberState = {
-    id: null,
+    Mem_ID: null,
     Mem_Name: "",
     Mem_Weight: 0,
     Mem_Height: 0,
@@ -25,7 +25,6 @@ const AddMember = () => {
 
   const saveMember = () => {
     var data = {
-      //Mem_Id: member.id,
       Mem_Name: member.Mem_Name,
       Mem_Weight: member.Mem_Weight,
       Mem_Height: member.Mem_Height,
@@ -41,6 +40,7 @@ const AddMember = () => {
     MemberDataService.create(data)
       .then(response => {
         setMember({
+          Mem_ID: response.data.Mem_ID,
           Mem_Name: response.data.Mem_Name,
           Mem_Weight: response.data.Mem_Weight,
           Mem_Height: response.data.Mem_Height,

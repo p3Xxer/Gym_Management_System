@@ -4,7 +4,7 @@ const Member = db.member;
 const { Op } = require("sequelize");
 //Create and Save a new Member
 exports.create = (req, res) => {
-    //Validate request
+    //ValMem_IDate request
     if (!req.body.Mem_Name) {
         res.status(400).send({
             message: "Content can not be empty!"
@@ -13,7 +13,6 @@ exports.create = (req, res) => {
     }
     // Create a Member
     const member = {
-        //Mem_ID: req.body.Mem_ID,
         Mem_Name: req.body.Mem_Name,
         Mem_Weight: req.body.Mem_Weight,
         Mem_Height: req.body.Mem_Height,
@@ -53,30 +52,30 @@ exports.findAll = (req, res) => {
             });
         });
 };
-// Find a single Member with an id
+// Find a single Member with an Mem_ID
 exports.findOne = (req, res) => {
-    const id = req.params.id;
-    Member.findByPk(id)
+    const Mem_ID = req.params.Mem_ID;
+    Member.findByPk(Mem_ID)
         .then(data => {
             if (data) {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find Member with id=${id}.`
+                    message: `Cannot find Member with Mem_ID=${Mem_ID}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Member with id=" + id
+                message: "Error retrieving Member with Mem_ID=" + Mem_ID
             });
         });
 };
-// Update a Member by the id in the request
+// Update a Member by the Mem_ID in the request
 exports.update = (req, res) => {
-    const id = req.params.id;
+    const Mem_ID = req.params.Mem_ID;
     Member.update(req.body, {
-        where: { id: id }
+        where: { Mem_ID: Mem_ID }
     })
         .then(num => {
             if (num == 1) {
@@ -85,21 +84,21 @@ exports.update = (req, res) => {
                 });
             } else {
                 res.send({
-                    message: `Cannot update Member with id=${id}. Maybe Member was not found or req.body is empty!`
+                    message: `Cannot update Member with Mem_ID=${Mem_ID}. Maybe Member was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Member with id=" + id
+                message: "Error updating Member with Mem_ID=" + Mem_ID
             });
         });
 };
-// Delete a Member with the specified id in the request
+// Delete a Member with the specified Mem_ID in the request
 exports.delete = (req, res) => {
-    const id = req.params.id;
+    const Mem_ID = req.params.Mem_ID;
     Member.destroy({
-        where: { id: id }
+        where: { Mem_ID: Mem_ID }
     })
         .then(num => {
             if (num == 1) {
@@ -108,13 +107,13 @@ exports.delete = (req, res) => {
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Member with id=${id}. Maybe Member was not found!`
+                    message: `Cannot delete Member with Mem_ID=${Mem_ID}. Maybe Member was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete Member with id=" + id
+                message: "Could not delete Member with Mem_ID=" + Mem_ID
             });
         });
 };

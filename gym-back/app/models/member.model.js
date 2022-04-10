@@ -4,9 +4,9 @@ module.exports = (sequelize, Sequelize) => {
     const Member = sequelize.define('member', {
 
         Mem_ID: {
-            type: Sequelize.STRING,
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
             primaryKey: true,
-            autoincreement: true
             //defaultValue: Sequelize.UUIDV4,
         },
         Mem_Name: {

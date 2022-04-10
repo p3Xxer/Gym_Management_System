@@ -4,8 +4,9 @@ module.exports = (sequelize, Sequelize) => {
     const Branch_Manager = sequelize.define('branch_manager', {
         Branch_ID: {
             type: Sequelize.INTEGER,
+            autoIncrement: true,
             primaryKey: true,
-            autoincreement: true
+
         },
         Branch_Location: {
             type: Sequelize.STRING
