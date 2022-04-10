@@ -1,8 +1,9 @@
 const req = require("express/lib/request");
 const db = require("./app/models");
 //const Manager = db.manager;
-const Manager = db.Manager;
+const Branch_Manager = db.Branch_Manager;
 const Op = db.Sequelize.Op;
+
 //Create and Save a new Manager
 exports.create = (req, res) => {
     //Validate request
@@ -12,17 +13,27 @@ exports.create = (req, res) => {
         });
         return;
     }
+    if (!req.body.Branch_Name) {
+        res.status(400).send({
+            message: "Content can not be empty!"
+        });
+        return;
+    }
     // Create a Manager
-    const branch = {
+    const branch_manager = {
         //Manger_ID: req.body.Manger_ID,
+        Branch_Name: req.body.Branch_Name,
+        Branch_Location: req.body.Branch_Location,
+        Branch_Email: req.body.Branch_Email,
+        Branch_Phone_Number: req.body.Branch_Phone_Number,
         Manager_Name: req.body.Manager_Name,
         Gender: req.body.Gender,
         Mobile_Number: req.body.Mobile_Number,
         Address: req.body.Address,
         Manager_Email: req.body.Manager_Email,
-        Password: req.body.Password
+        Password: req.body.Password,
     }
-    Manger.create(manager)
+    Branch_Manager.create(branch_manager)
         .then(data => {
             res.send(data);
         })
@@ -35,11 +46,11 @@ exports.create = (req, res) => {
 };
 
 
-// Retrieve all Manger from the database.
+// Retrieve all Manager from the database.
 exports.findAll = (req, res) => {
     const Manager_Name = req.query.Manager_Name;
     var condition = Manager_Name ? { Manager_Name: { [Op.like]: `%${Manager_Name}%` } } : null;
-    Manager.findAll({ where: condition })
+    Branch_Manager.findAll({ where: condition })
         .then(data => {
             res.send(data);
         })
@@ -50,10 +61,10 @@ exports.findAll = (req, res) => {
             });
         });
 };
-// Find a single Manger with an id
+// Find a single Manager with an id
 exports.findOne = (req, res) => {
     const id = req.params.id;
-    Manager.findByPk(id)
+    Branch_Manager.findByPk(id)
         .then(data => {
             if (data) {
                 res.send(data);
@@ -72,7 +83,7 @@ exports.findOne = (req, res) => {
 // Update a Manager by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
-    Manager.update(req.body, {
+    Branch_Manager.update(req.body, {
         where: { id: id }
     })
         .then(num => {
@@ -95,7 +106,7 @@ exports.update = (req, res) => {
 // Delete a Manager with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
-    Manager.destroy({
+    Branch_Manager.destroy({
         where: { id: id }
     })
         .then(num => {
@@ -116,32 +127,18 @@ exports.delete = (req, res) => {
         });
 };
 // Delete all Manager from the database.
-exports.deleteAll = (req, res) => {
-    Manager.destroy({
-        where: {},
-        truncate: false
-    })
-        .then(nums => {
-            res.send({ message: `${nums} Manager were deleted successfully!` });
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while removing all Manager."
-            });
-        });
-};
-// Find all published Users
-// Not meaningfull for our project
-// exports.findAllPublished = (req, res) => {
-    // User.findAll({ where: { published: true } })
-    // .then(data => {
-    //   res.send(data);
-    // })
-    // .catch(err => {
-    //   res.status(500).send({
-    //     message:
-    //       err.message || "Some error occurred while retrieving member."
-    //   });
-    // });
+// exports.deleteAll = (req, res) => {
+//     Branch_Manager.destroy({
+//         where: {},
+//         truncate: false
+//     })
+//         .then(nums => {
+//             res.send({ message: `${nums} Manager were deleted successfully!` });
+//         })
+//         .catch(err => {
+//             res.status(500).send({
+//                 message:
+//                     err.message || "Some error occurred while removing all Manager."
+//             });
+//         });
 // };

@@ -6,14 +6,14 @@ const AddMember = () => {
     id: null,
     Mem_Name: "",
     Mem_Weight: 0,
-    Mem_Height:0,
-    Age:0,
-    Gender:"",
-    Blood_Type:"",
-    Mobile_Number:0,
-    Address:"",
-    Emer_Name:"",
-    Emer_Mobile:0
+    Mem_Height: 0,
+    Age: 0,
+    Gender: "",
+    Blood_Type: "",
+    Mobile_Number: 0,
+    Address: "",
+    Emer_Name: "",
+    Emer_Mobile: 0
   };
   const [member, setMember] = useState(initialMemberState);
   const [submitted, setSubmitted] = useState(false);
@@ -25,33 +25,32 @@ const AddMember = () => {
 
   const saveMember = () => {
     var data = {
+      //Mem_Id: member.id,
       Mem_Name: member.Mem_Name,
       Mem_Weight: member.Mem_Weight,
-      Mem_Height:member.Mem_Height,
-      Age:member.Age,
-      Gender:member.Gender,
-      Blood_Type:member.Blood_Type,
-      Mobile_Number:member.Mobile_Number,
-      Address:member.Address,
-      Emer_Name:member.Emer_Name,
-      Emer_Mobile:member.Emer_Mobile
+      Mem_Height: member.Mem_Height,
+      Age: member.Age,
+      Gender: member.Gender,
+      Blood_Type: member.Blood_Type,
+      Mobile_Number: member.Mobile_Number,
+      Address: member.Address,
+      Emer_Name: member.Emer_Name,
+      Emer_Mobile: member.Emer_Mobile
     };
 
     MemberDataService.create(data)
       .then(response => {
         setMember({
-          id: response.data.id,
           Mem_Name: response.data.Mem_Name,
           Mem_Weight: response.data.Mem_Weight,
-          Mem_Height:response.data.Mem_Height,
-          Age:response.data.Age,
-          Gender:response.data.Gender,
-          Blood_Type:response.data.Blood_Type,
-          Mobile_Number:response.data.Mobile_Number,
-          Address:response.data.Address,
-          Emer_Name:response.data.Emer_Name,
-          Emer_Mobile:response.data.Emer_Mobile
-
+          Mem_Height: response.data.Mem_Height,
+          Age: response.data.Age,
+          Gender: response.data.Gender,
+          Blood_Type: response.data.Blood_Type,
+          Mobile_Number: response.data.Mobile_Number,
+          Address: response.data.Address,
+          Emer_Name: response.data.Emer_Name,
+          Emer_Mobile: response.data.Emer_Mobile
         });
         setSubmitted(true);
         console.log(response.data);

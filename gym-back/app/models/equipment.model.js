@@ -2,9 +2,10 @@ const { sequelize, Sequelize } = require(".");
 
 module.exports = (sequelize, Sequelize) => {
     const Equipment = sequelize.define('equipment', {
-        // Branch_ID: {
-        //     type: Sequelize.INTEGER
-        // },
+        Equipment_ID: {
+            type: Sequelize.INTEGER,
+            primaryKey: true
+        },
         Equipment_Name: {
             type: Sequelize.STRING
         },
@@ -14,6 +15,11 @@ module.exports = (sequelize, Sequelize) => {
         Working_Status: {
             type: Sequelize.STRING
         },
+    },
+    {
+        timestamp: false,
+        createdAt: false,
+        updatedAt: false,
     });
     return Equipment;
 };

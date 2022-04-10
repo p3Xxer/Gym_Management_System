@@ -1,30 +1,29 @@
 const { sequelize, Sequelize } = require(".");
 
 module.exports = (sequelize, Sequelize) => {
-    const Member = sequelize.define('member', {
-
-        Mem_ID: {
-            type: Sequelize.STRING,
+    const Branch_Manager = sequelize.define('branch_manager', {
+        Branch_ID: {
+            type: Sequelize.INTEGER,
             primaryKey: true,
             autoincreement: true
-            //defaultValue: Sequelize.UUIDV4,
         },
-        Mem_Name: {
+        Branch_Location: {
             type: Sequelize.STRING
         },
-        Mem_Weight: {
-            type: Sequelize.FLOAT
+        Branch_Email: {
+            type: Sequelize.STRING
         },
-        Mem_Height: {
-            type: Sequelize.FLOAT
-        },
-        Age: {
+        Branch_Phone_Number: {
             type: Sequelize.INTEGER
         },
-        Gender: {
+        Manager_ID: {
+            type: Sequelize.INTEGER,
+            candidateKey: true,
+        },
+        Manager_Name: {
             type: Sequelize.STRING
         },
-        Blood_Type: {
+        Gender: {
             type: Sequelize.STRING
         },
         Mobile_Number: {
@@ -33,11 +32,11 @@ module.exports = (sequelize, Sequelize) => {
         Address: {
             type: Sequelize.STRING
         },
-        Emer_Name: {
+        Manager_Email: {
             type: Sequelize.STRING
         },
-        Emer_Mobile: {
-            type: Sequelize.INTEGER
+        Password: {
+            type: Sequelize.STRING
         },
     },
         {
@@ -45,7 +44,6 @@ module.exports = (sequelize, Sequelize) => {
             createdAt: false,
             updatedAt: false,
         });
-    return Member;
-
+    return Branch_Manager;
 };
 

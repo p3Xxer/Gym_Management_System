@@ -2,9 +2,10 @@ const { sequelize, Sequelize } = require(".");
 
 module.exports = (sequelize, Sequelize) => {
     const Payment = sequelize.define('payment', {
-        // Branch_ID: {
-        //     type: Sequelize.INTEGER
-        // },
+        Payment_ID: {
+            type: Sequelize.INTEGER,
+            primaryKey: true
+        },
         Payment_Desc: {
             type: Sequelize.STRING
         },
@@ -17,6 +18,11 @@ module.exports = (sequelize, Sequelize) => {
         Payment_Amt: {
             type: Sequelize.FLOAT
         },
+    },
+    {
+        timestamp: false,
+        createdAt: false,
+        updatedAt: false,
     });
     return Payment;
 };
