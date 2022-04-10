@@ -8,11 +8,11 @@ module.exports = app => {
     // Retrieve all published Member
     //router.get("/published", member.findAllPublished);
     // Retrieve a single Member with id
-    router.get("/:id", member.findOne);
-    // Update a Member with id
-    router.put("/:id", member.update);
-    // Delete a Member with id
-    router.delete("/:id", member.delete);
+    router.get("/:Mem_ID", member.findOne);
+    // Update a Member with Mem_ID
+    router.put("/:Mem_ID", member.update);
+    // Delete a Member with Mem_ID
+    router.delete("/:Mem_ID", member.delete);
     // Delete all Member
     router.delete("/", member.deleteAll);
     app.use('/api/member', router);

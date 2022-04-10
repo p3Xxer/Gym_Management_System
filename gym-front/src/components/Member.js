@@ -4,8 +4,12 @@ import MemberDataService from "../services/MemberService";
 
 const Member = props => {
   const { Mem_ID } = useParams();
+  const {id} = useParams();
+// console.log(useParams());
+// console.log(id);
+console.log(Mem_ID);
   let navigate = useNavigate();
-
+  // console.log(Mem_ID);
   const initialMemberState = {
     Mem_ID: null,
     Mem_Name: "",

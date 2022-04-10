@@ -94,7 +94,9 @@ const MemberList = () => {
                 className={
                   "list-group-item " + (index === currentIndex ? "active" : "")
                 }
-                onClick={() => setActiveMember(member, index)}
+                onClick={() => {setActiveMember(member, index)
+                console.log(member.Mem_ID)}
+                }
                 key={index}
               >
                 {member.Mem_Name}
@@ -118,11 +120,10 @@ const MemberList = () => {
                 <strong>Mem_Name:</strong>
               </label>{" "}
               {currentMember.Mem_Name}
+              {currentMember.Mem_ID}
             </div>
-            
-            
             <Link
-              to={"/member/" + currentMember.Mem_ID}
+              to={"/member/"+currentMember.Mem_ID}
               className="badge badge-warning"
             >
               Edit
