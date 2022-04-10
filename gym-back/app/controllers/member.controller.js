@@ -1,5 +1,5 @@
 const req = require("express/lib/request");
-const db = require("D:/lite/Gym-Management-System/Gym/app/models");
+const db = require("/Users/khushil/Project/DBMS_Project/gym-back/app/models");
 const Member = db.member;
 const { Op } = require("sequelize");
 //Create and Save a new Member
