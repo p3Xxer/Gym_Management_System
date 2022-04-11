@@ -5,7 +5,9 @@ module.exports = (sequelize, Sequelize) => {
         Equipment_ID: {
             type: Sequelize.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            allowNull: false,
+            unique: true
         },
         Equipment_Name: {
             type: Sequelize.STRING

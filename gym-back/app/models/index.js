@@ -35,10 +35,29 @@ db.payment = require('./payment.model.js')(sequelize, Sequelize);
 db.workout = require('./workout.model.js')(sequelize, Sequelize);
 
 
-// Associations
-db.branch_manager.hasMany(db.equipment);
-db.equipment.belongsTo(db.branch_manager);
 
+// Associations
+db.branch_manager.hasMany(db.equipment, {
+    sourceKey: 'Manager_ID',
+    //require testing
+    //foreignKey: 'Manager_ID'
+});
+db.equipment.belongsTo(db.branch_manager, {
+    //require testing
+    targetKey: 'Manager_ID',
+    //foreignKey: 'Manager_ID',
+});
+
+db.workout.hasMany(db.member, {
+    foreignKey: 'Workout_ID'
+});
+db.member.belongsTo(db.workout, {
+    foreignKey: 'Workout_ID',
+});
+
+
+db.branch_manager.belongsToMany(db.member, { through: 'Has' });
+db.member.belongsToMany(db.branch_manager, { through: 'Has' });
 
 module.exports = db;
 
