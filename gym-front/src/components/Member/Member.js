@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
-import MemberDataService from "D:/dbms_proj/DBMS_Project/gym-front/src/services/MemberService";
+import MemberDataService from "/Users/khushil/Project/DBMS_Project/gym-front/src/services/MemberService.js";
 
 const Member = props => {
   const { Mem_ID } = useParams();
-  const {id} = useParams();
-// console.log(useParams());
-// console.log(id);
-console.log(Mem_ID);
+  const { id } = useParams();
+  // console.log(useParams());
+  // console.log(id);
+  console.log(Mem_ID);
   let navigate = useNavigate();
   // console.log(Mem_ID);
   const initialMemberState = {

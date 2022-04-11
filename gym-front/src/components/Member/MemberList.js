@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MemberDataService from "D:/dbms_proj/DBMS_Project/gym-front/src/services/MemberService";
+import MemberDataService from "/Users/khushil/Project/DBMS_Project/gym-front/src/services/MemberService.js";
 import { Link } from "react-router-dom";
 
 
@@ -14,7 +14,7 @@ const MemberList = () => {
   }, []);
 
   const onChangeSearchMem_Name = e => {
-    const searchMem_Name= e.target.value;
+    const searchMem_Name = e.target.value;
     setSearchMem_Name(searchMem_Name);
   };
 
@@ -94,8 +94,10 @@ const MemberList = () => {
                 className={
                   "list-group-item " + (index === currentIndex ? "active" : "")
                 }
-                onClick={() => {setActiveMember(member, index)
-                console.log(member.Mem_ID)}
+                onClick={() => {
+                  setActiveMember(member, index)
+                  console.log(member.Mem_ID)
+                }
                 }
                 key={index}
               >
@@ -123,7 +125,7 @@ const MemberList = () => {
               {currentMember.Mem_ID}
             </div>
             <Link
-              to={"/member/"+currentMember.Mem_ID}
+              to={"/member/" + currentMember.Mem_ID}
               className="badge badge-warning"
             >
               Edit

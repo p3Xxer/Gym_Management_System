@@ -1,9 +1,8 @@
 const req = require("express/lib/request");
 const db = require("../models");
-//const Manager = db.manager;
-const Branch_Manager = db.Branch_Manager;
+const Branch_Manager = db.branch_manager;
 const Op = db.Sequelize.Op;
-console.log(db);
+//console.log(db);
 //Create and Save a new Manager
 exports.create = (req, res) => {
     //Validate request
@@ -13,10 +12,15 @@ exports.create = (req, res) => {
         });
         return;
     }
-    
+    if (!req.body.Branch_Name) {
+        res.status(400).send({
+            message: "Content can not be empty!"
+        });
+        return;
+    }
     // Create a Manager
     const branch_manager = {
-        //Manger_ID: req.body.Manger_ID,
+        //Manger_Branch_ID: req.body.Manger_Branch_ID,
         Branch_Name: req.body.Branch_Name,
         Branch_Location: req.body.Branch_Location,
         Branch_Email: req.body.Branch_Email,
@@ -56,7 +60,7 @@ exports.findAll = (req, res) => {
             });
         });
 };
-// Find a single Manager with an id
+// Find a single Manager with an Branch_ID
 exports.findOne = (req, res) => {
     const Branch_ID = req.params.Branch_ID;
     Branch_Manager.findByPk(Branch_ID)
@@ -65,17 +69,17 @@ exports.findOne = (req, res) => {
                 res.send(data);
             } else {
                 res.status(404).send({
-                    message: `Cannot find Manager with id=${id}.`
+                    message: `Cannot find Manager with Branch_ID=${Branch_ID}.`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving Manger with id=" + id
+                message: "Error retrieving Manger with Branch_ID=" + Branch_ID
             });
         });
 };
-// Update a Manager by the id in the request
+// Update a Manager by the Branch_ID in the request
 exports.update = (req, res) => {
     const Branch_ID = req.params.Branch_ID;
     Branch_Manager.update(req.body, {
@@ -88,17 +92,17 @@ exports.update = (req, res) => {
                 });
             } else {
                 res.send({
-                    message: `Cannot update Manager with id=${id}. Maybe Manager was not found or req.body is empty!`
+                    message: `Cannot update Manager with Branch_ID=${Branch_ID}. Maybe Manager was not found or req.body is empty!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error updating Manager with id=" + id
+                message: "Error updating Manager with Branch_ID=" + Branch_ID
             });
         });
 };
-// Delete a Manager with the specified id in the request
+// Delete a Manager with the specified Branch_ID in the request
 exports.delete = (req, res) => {
     const Branch_ID = req.params.Branch_ID;
     Branch_Manager.destroy({
@@ -111,29 +115,14 @@ exports.delete = (req, res) => {
                 });
             } else {
                 res.send({
-                    message: `Cannot delete Manager with id=${id}. Maybe Manger was not found!`
+                    message: `Cannot delete Manager with Branch_ID=${Branch_ID}. Maybe Manger was not found!`
                 });
             }
         })
         .catch(err => {
             res.status(500).send({
-                message: "Could not delete Manager with id=" + id
+                message: "Could not delete Manager with Branch_ID=" + Branch_ID
             });
         });
 };
-// Delete all Manager from the database.
-// exports.deleteAll = (req, res) => {
-//     Branch_Manager.destroy({
-//         where: {},
-//         truncate: false
-//     })
-//         .then(nums => {
-//             res.send({ message: `${nums} Manager were deleted successfully!` });
-//         })
-//         .catch(err => {
-//             res.status(500).send({
-//                 message:
-//                     err.message || "Some error occurred while removing all Manager."
-//             });
-//         });
-// };
+
