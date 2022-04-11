@@ -4,6 +4,7 @@ const Member = db.member;
 const { Op } = require("sequelize");
 //Create and Save a new Member
 exports.create = (req, res) => {
+    console.log(req);
     //ValMem_IDate request
     if (!req.body.Mem_Name) {
         res.status(400).send({

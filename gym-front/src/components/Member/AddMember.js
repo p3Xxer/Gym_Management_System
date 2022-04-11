@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MemberDataService from "/Users/khushil/Project/DBMS_Project/gym-front/src/services/MemberService.js";
+import MemberDataService from "../../services/MemberService";
 
 const AddMember = () => {
   const initialMemberState = {

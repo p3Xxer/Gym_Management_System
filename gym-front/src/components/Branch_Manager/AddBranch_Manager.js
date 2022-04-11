@@ -13,7 +13,7 @@ const Addbranch_manager = () => {
     Mobile_Number: 0,
     Address: "",
     Manager_Email: "",
-    Password: "",
+    Password: ""
 
   };
   const [branch_manager, setbranch_manager] = useState(initialbranch_managerState);
@@ -55,7 +55,7 @@ const Addbranch_manager = () => {
           Manager_Email: response.data.Manager_Email,
           Password: response.data.Password,
         });
-        console.log(branch_manager);
+        console.log(response);
         setSubmitted(true);
         console.log(response.data);
       })

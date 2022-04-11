@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from "react";
-import MemberDataService from "../services/MemberService";
+import Branch_ManagerDataService from "../../services/Branch_ManagerService";
 import { Link } from "react-router-dom";
 
 
-const MemberList = () => {
-  const [member, setMember] = useState([]);
-  const [currentMember, setCurrentMember] = useState(null);
+const Branch_ManagerList = () => {
+  const [branch_manager, setBranch_Manager] = useState([]);
+  const [currentBranch_Manager, setCurrentBranch_Manager] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
-  const [searchMem_Name, setSearchMem_Name] = useState("");
+  const [searchBranch_Name, setSearchBranch_Name] = useState("");
 
   useEffect(() => {
-    retrieveMembers();
+    retrieveBranch_Managers();
   }, []);
 
-  const onChangeSearchMem_Name = e => {
-    const searchMem_Name= e.target.value;
-    setSearchMem_Name(searchMem_Name);
+  const onChangeSearchBranch_Name = e => {
+    const searchBranch_Name= e.target.value;
+    setSearchBranch_Name(searchBranch_Name);
   };
 
-  const retrieveMembers = () => {
-    MemberDataService.getAll()
+  const retrieveBranch_Managers = () => {
+    Branch_ManagerDataService.getAll()
       .then(response => {
-        setMember(response.data);
+        setBranch_Manager(response.data);
         console.log(response.data);
       })
       .catch(e => {
@@ -30,18 +30,18 @@ const MemberList = () => {
   };
 
   const refreshList = () => {
-    retrieveMembers();
-    setCurrentMember(null);
+    retrieveBranch_Managers();
+    setCurrentBranch_Manager(null);
     setCurrentIndex(-1);
   };
 
-  const setActiveMember = (member, index) => {
-    setCurrentMember(member);
+  const setActiveBranch_Manager = (branch_manager, index) => {
+    setCurrentBranch_Manager(branch_manager);
     setCurrentIndex(index);
   };
 
-  const removeAllMembers = () => {
-    MemberDataService.removeAll()
+  const removeAllBranch_Managers = () => {
+    Branch_ManagerDataService.removeAll()
       .then(response => {
         console.log(response.data);
         refreshList();
@@ -51,10 +51,10 @@ const MemberList = () => {
       });
   };
 
-  const findByMem_Name = () => {
-    MemberDataService.findByMem_Name(searchMem_Name)
+  const findByBranch_Name = () => {
+    Branch_ManagerDataService.findByBranch_Name(searchBranch_Name)
       .then(response => {
-        setMember(response.data);
+        setBranch_Manager(response.data);
         console.log(response.data);
       })
       .catch(e => {
@@ -69,15 +69,15 @@ const MemberList = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Mem_Name"
-            value={searchMem_Name}
-            onChange={onChangeSearchMem_Name}
+            placeholder="Search by Branch_Name"
+            value={searchBranch_Name}
+            onChange={onChangeSearchBranch_Name}
           />
           <div className="input-group-append">
             <button
               className="btn btn-outline-secondary"
               type="button"
-              onClick={findByMem_Name}
+              onClick={findByBranch_Name}
             >
               Search
             </button>
@@ -85,45 +85,45 @@ const MemberList = () => {
         </div>
       </div>
       <div className="col-md-6">
-        <h4>Members List</h4>
+        <h4>Branch_Managers List</h4>
 
         <ul className="list-group">
-          {member &&
-            member.map((member, index) => (
+          {branch_manager &&
+            branch_manager.map((branch_manager, index) => (
               <li
                 className={
                   "list-group-item " + (index === currentIndex ? "active" : "")
                 }
-                onClick={() => {setActiveMember(member, index)
-                console.log(member.Mem_ID)}
+                onClick={() => {setActiveBranch_Manager(branch_manager, index)
+                console.log(branch_manager)}
                 }
                 key={index}
               >
-                {member.Mem_Name}
+                {branch_manager.Branch_Name}
               </li>
             ))}
         </ul>
 
         <button
           className="m-3 btn btn-sm btn-danger"
-          onClick={removeAllMembers}
+          onClick={removeAllBranch_Managers}
         >
           Remove All
         </button>
       </div>
       <div className="col-md-6">
-        {currentMember ? (
+        {currentBranch_Manager ? (
           <div>
-            <h4>Members</h4>
+            <h4>Branch_Managers</h4>
             <div>
               <label>
-                <strong>Mem_Name:</strong>
+                <strong>Branch_Name:</strong>
               </label>{" "}
-              {currentMember.Mem_Name}
-              {currentMember.Mem_ID}
+              {currentBranch_Manager.Branch_Name}
+              {currentBranch_Manager.Branch_ID}
             </div>
             <Link
-              to={"/member/"+currentMember.Mem_ID}
+              to={"/branch_manager/"+currentBranch_Manager.Branch_ID}
               className="badge badge-warning"
             >
               Edit
@@ -132,7 +132,7 @@ const MemberList = () => {
         ) : (
           <div>
             <br />
-            <p>Please click on a Member...</p>
+            <p>Please click on a Branch_Manager...</p>
           </div>
         )}
       </div>
@@ -140,4 +140,4 @@ const MemberList = () => {
   );
 };
 
-export default MemberList;
+export default Branch_ManagerList;

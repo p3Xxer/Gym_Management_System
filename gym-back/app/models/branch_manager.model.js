@@ -8,6 +8,9 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
 
         },
+        Branch_Name:{
+            type:Sequelize.STRING
+        },
         Branch_Location: {
             type: Sequelize.STRING
         },
