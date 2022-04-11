@@ -1,7 +1,7 @@
 const dbConfig = require('../config/db.config.js');
 const { Sequelize } = require('sequelize');
 console.log(dbConfig);
-const sequelize = new Sequelize('gym', 'root', 'Madved0616', {
+const sequelize = new Sequelize('gym', 'root', 'root@123', {
     host: 'localhost',
     dialect: 'mysql',
 });
@@ -27,6 +27,7 @@ db.equipment = require('./equipment.model.js')(sequelize, Sequelize);
 db.payment = require('./payment.model.js')(sequelize, Sequelize);
 db.workout = require('./workout.model.js')(sequelize, Sequelize);
 db.has = require('./has.model.js')(sequelize, Sequelize);
+db.uses = require('./uses.model.js')(sequelize, Sequelize);
 
 
 
@@ -53,5 +54,24 @@ db.member.belongsTo(db.workout, {
 db.branch_manager.belongsToMany(db.member, { through: db.has });
 db.member.belongsToMany(db.branch_manager, { through: db.has });
 
+db.member.hasMany(db.payment, {
+    foreignKey: 'Member_ID'
+});
+db.payment.belongsTo(db.member, {
+    foreignKey: 'Member_ID',
+});
+
+db.workout.hasMany(db.payment, {
+    foreignKey: 'Workout_ID'
+});
+db.payment.belongsTo(db.workout, {
+    foreignKey: 'Workout_ID',
+});
+
+db.equipment.belongsToMany(db.workout, { through: db.uses });
+db.workout.belongsToMany(db.equipment, { through: db.uses });
+
+
 module.exports = db;
+
 
