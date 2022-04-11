@@ -1,6 +1,5 @@
 const req = require("express/lib/request");
 const db = require("./app/models");
-//const Eqiupment = db.equipment;
 const Workout = db.Workout;
 const Op = db.Sequelize.Op;
 //Create and Save a new Workout

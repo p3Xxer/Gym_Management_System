@@ -4,7 +4,8 @@ module.exports = (sequelize, Sequelize) => {
     const Equipment = sequelize.define('equipment', {
         Equipment_ID: {
             type: Sequelize.INTEGER,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
         },
         Equipment_Name: {
             type: Sequelize.STRING
@@ -16,11 +17,11 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
     },
-    {
-        timestamp: false,
-        createdAt: false,
-        updatedAt: false,
-    });
+        {
+            timestamp: false,
+            createdAt: false,
+            updatedAt: false,
+        });
     return Equipment;
 };
 
