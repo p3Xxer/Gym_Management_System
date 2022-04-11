@@ -5,6 +5,8 @@ module.exports = app => {
     router.post("/", branch_manager.create);
     // Retrieve all Manager
     router.get("/", branch_manager.findAll);
+    //Retrieve all members
+    router.get("/:Branch_ID", branch_manager.findAllMembers);
     // Retrieve a single Manager with id
     router.get("/:Branch_ID", branch_manager.findOne);
     // Update a Manager with Branch_ID

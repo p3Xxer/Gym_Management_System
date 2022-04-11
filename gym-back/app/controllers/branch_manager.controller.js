@@ -1,4 +1,5 @@
 const req = require("express/lib/request");
+const { branch_manager } = require("../models");
 const db = require("../models");
 const Branch_Manager = db.branch_manager;
 const Op = db.Sequelize.Op;
@@ -60,6 +61,25 @@ exports.findAll = (req, res) => {
             });
         });
 };
+
+//Find all members from the database.
+//check DHAIRYA
+exports.findAllMembers = (req, res) => {
+    const Branch_ID = req.query.Branch_ID;
+    db.branch_manager.findAll({ where: { Branch_ID: Branch_ID }, include: [{ model: db.member, required: true }] });
+    var condition = Branch_ID ? { Branch_ID: { [Op.like]: `%${Branch_ID}%` } } : null;
+    Branch_ID.findAllMembers({ where: condition })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving Manager."
+            });
+        });
+};
+
 // Find a single Manager with an Branch_ID
 exports.findOne = (req, res) => {
     const Branch_ID = req.params.Branch_ID;
@@ -79,6 +99,7 @@ exports.findOne = (req, res) => {
             });
         });
 };
+
 // Update a Manager by the Branch_ID in the request
 exports.update = (req, res) => {
     const Branch_ID = req.params.Branch_ID;
