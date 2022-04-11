@@ -4,12 +4,6 @@ console.log(dbConfig);
 const sequelize = new Sequelize('gym', 'root', 'root@123', {
     host: 'localhost',
     dialect: 'mysql',
-    // pool: {
-    //     max: dbConfig.pool.max,
-    //     min: dbConfig.pool.min,
-    //     acquire: dbConfig.pool.acquire,
-    //     idle: dbConfig.pool.idle
-    // }
 });
 
 try {
@@ -27,12 +21,12 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 // // we have used users instead of tutorials
-//db.tutorials = require('./tutorial.model.js')(sequelize, Sequelize);
 db.member = require('./member.model.js')(sequelize, Sequelize);
 db.branch_manager = require('./branch_manager.model.js')(sequelize, Sequelize);
 db.equipment = require('./equipment.model.js')(sequelize, Sequelize);
 db.payment = require('./payment.model.js')(sequelize, Sequelize);
 db.workout = require('./workout.model.js')(sequelize, Sequelize);
+db.has = require('./has.model.js')(sequelize, Sequelize);
 
 
 
@@ -56,8 +50,8 @@ db.member.belongsTo(db.workout, {
 });
 
 
-db.branch_manager.belongsToMany(db.member, { through: 'Has' });
-db.member.belongsToMany(db.branch_manager, { through: 'Has' });
+db.branch_manager.belongsToMany(db.member, { through: db.has });
+db.member.belongsToMany(db.branch_manager, { through: db.has });
 
 module.exports = db;
 

@@ -4,7 +4,10 @@ module.exports = (sequelize, Sequelize) => {
     const Payment = sequelize.define('payment', {
         Payment_ID: {
             type: Sequelize.INTEGER,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false,
+            unique: true
         },
         Payment_Desc: {
             type: Sequelize.STRING
