@@ -6,11 +6,11 @@ module.exports = app => {
     // Retrieve all Manager
     router.get("/", branch_manager.findAll);
     // Retrieve a single Manager with id
-    router.get("/:id", branch_manager.findOne);
-    // Update a Manager with id
-    router.put("/:id", branch_manager.update);
-    // Delete a Manager with id
-    router.delete("/:id", branch_manager.delete);
+    router.get("/:Branch_ID", branch_manager.findOne);
+    // Update a Manager with Branch_ID
+    router.put("/:Branch_ID", branch_manager.update);
+    // Delete a Manager with Branch_ID
+    router.delete("/:Branch_ID", branch_manager.delete);
     // Delete all Manager
     router.delete("/", branch_manager.deleteAll);
     app.use('/api/branch_manager', router);
