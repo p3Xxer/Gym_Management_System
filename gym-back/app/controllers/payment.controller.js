@@ -1,18 +1,19 @@
 const req = require("express/lib/request");
-const db = require("./app/models");
+const db = require("../models");
 //const Eqiupment = db.equipment;
-const Payment = db.Payment;
+const Payment = db.payment;
 const Op = db.Sequelize.Op;
 //Create and Save a new Payment
 //Doesnot make sense
 exports.create = (req, res) => {
     //Validate request
-    if (!req.body.Payment_Name) {
+    if (!req.body.Payment_Desc) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
         return;
     }
+
     // Create a Payment
     const payment = {
         //Branch_ID: req.body.Branch_ID,
@@ -20,6 +21,8 @@ exports.create = (req, res) => {
         Payment_Time: req.body.Payment_Time,
         Payment_Date: req.body.Payment_Date,
         Payment_Amt: req.body.Payment_Amt,
+        Member_ID: req.body.Member_ID,
+        Workout_ID: req.body.Workout_ID
     }
     Payment.create(payment)
         .then(data => {

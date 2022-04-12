@@ -3,6 +3,7 @@ const { branch_manager } = require("../models");
 const db = require("../models");
 const Branch_Manager = db.branch_manager;
 const Op = db.Sequelize.Op;
+var x = 1001;
 //console.log(db);
 //Create and Save a new Manager
 exports.create = (req, res) => {
@@ -26,6 +27,7 @@ exports.create = (req, res) => {
         Branch_Location: req.body.Branch_Location,
         Branch_Email: req.body.Branch_Email,
         Branch_Phone_Number: req.body.Branch_Phone_Number,
+        Manager_ID: x,
         Manager_Name: req.body.Manager_Name,
         Gender: req.body.Gender,
         Mobile_Number: req.body.Mobile_Number,
@@ -35,6 +37,7 @@ exports.create = (req, res) => {
     }
     Branch_Manager.create(branch_manager)
         .then(data => {
+            x=x+1
             res.send(data);
         })
         .catch(err => {
@@ -51,24 +54,6 @@ exports.findAll = (req, res) => {
     const Manager_Name = req.query.Manager_Name;
     var condition = Manager_Name ? { Manager_Name: { [Op.like]: `%${Manager_Name}%` } } : null;
     Branch_Manager.findAll({ where: condition })
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving Manager."
-            });
-        });
-};
-
-//Find all members from the database.
-//check DHAIRYA
-exports.findAllMembers = (req, res) => {
-    const Branch_ID = req.query.Branch_ID;
-    db.branch_manager.findAll({ where: { Branch_ID: Branch_ID }, include: [{ model: db.member, required: true }] });
-    var condition = Branch_ID ? { Branch_ID: { [Op.like]: `%${Branch_ID}%` } } : null;
-    Branch_ID.findAllMembers({ where: condition })
         .then(data => {
             res.send(data);
         })

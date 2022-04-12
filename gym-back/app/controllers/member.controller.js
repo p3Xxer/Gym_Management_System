@@ -1,10 +1,13 @@
 const req = require("express/lib/request");
 const db = require("../models");
 const Member = db.member;
+const Branch_Manager = db.branch_manager;
 const { Op } = require("sequelize");
+const { branch_manager } = require("../models");
 //Create and Save a new Member
 exports.create = (req, res) => {
     console.log(req);
+    branch_id = req.params.Branch_ID;
     //ValMem_IDate request
     if (!req.body.Mem_Name) {
         res.status(400).send({
@@ -27,6 +30,7 @@ exports.create = (req, res) => {
     }
     Member.create(member)
         .then(data => {
+            //this.addBranch(data.Mem_ID, branch_id);
             res.send(data);
         })
         .catch(err => {
@@ -134,6 +138,30 @@ exports.deleteAll = (req, res) => {
             });
         });
 };
+
+// exports.addBranch = (req, res) => {
+//     console.log(req);
+//     console.log(res);
+//     return Member.findByPk(req)
+//     .then((member) => {
+//         if(!member){
+//             console.log("Member Not found");
+//             return null;
+//         }
+//         return Branch_Manager.findByPk(res).then((branch_manager) => {
+//             if(!branch_manager){
+//                 console.log("Branch not found");
+//                 return null;
+//             }
+//             member.addBranch(branch_manager);
+//             console.log(`Added branch id ${branch_manager.Branch_ID} to member ${member.Mem_ID}`);
+//             return member;
+//         })
+//         .catch((err) => {
+//             console.log("Error in many to many between branch and member");
+//         })
+//     })
+// }
 // Find all published Members
 // Not meaningfull for our project
 // exports.findAllPublished = (req, res) => {

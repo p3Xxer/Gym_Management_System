@@ -8,7 +8,6 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey: true,
             allowNull: false,
             unique: true
-
         },
         Branch_Name:{
             type:Sequelize.STRING
@@ -25,7 +24,7 @@ module.exports = (sequelize, Sequelize) => {
         Manager_ID: {
             type: Sequelize.INTEGER,
             candidateKey: true,
-            //autoIncrement: true,
+            // autoIncrement: true,
             allowNull: false,
             unique: true
         },

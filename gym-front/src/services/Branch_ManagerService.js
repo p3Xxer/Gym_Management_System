@@ -9,7 +9,6 @@ const get = Branch_ID => {
 };
 
 const create = data => {
-  console.log(data);
   return http.post("/branch_manager", data);
 };
 

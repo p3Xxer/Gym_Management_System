@@ -5,8 +5,6 @@ module.exports = app => {
     router.post("/", member.create);
     // Retrieve all Member
     router.get("/", member.findAll);
-    // Retrieve all published Member
-    //router.get("/published", member.findAllPublished);
     // Retrieve a single Member with id
     router.get("/:Mem_ID", member.findOne);
     // Update a Member with Mem_ID

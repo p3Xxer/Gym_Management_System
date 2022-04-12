@@ -1,7 +1,7 @@
 const dbConfig = require('../config/db.config.js');
 const { Sequelize } = require('sequelize');
 console.log(dbConfig);
-const sequelize = new Sequelize('gym', 'root', 'root@123', {
+const sequelize = new Sequelize('gym', 'root', dbConfig.PASSWORD, {
     host: 'localhost',
     dialect: 'mysql',
 });
@@ -28,7 +28,8 @@ db.payment = require('./payment.model.js')(sequelize, Sequelize);
 db.workout = require('./workout.model.js')(sequelize, Sequelize);
 db.has = require('./has.model.js')(sequelize, Sequelize);
 db.uses = require('./uses.model.js')(sequelize, Sequelize);
-
+db.trainer = require('./trainer.model.js')(sequelize, Sequelize);
+db.trains = require('./trains.model.js')(sequelize, Sequelize);
 
 
 // Associations
@@ -37,11 +38,20 @@ db.branch_manager.hasMany(db.equipment, {
     //require testing
     //foreignKey: 'Manager_ID'
 });
+
 db.equipment.belongsTo(db.branch_manager, {
     //require testing
     targetKey: 'Manager_ID',
     //foreignKey: 'Manager_ID',
 });
+
+db.branch_manager.hasMany(db.trainer, {
+    foreignKey: 'Branch_ID'
+});
+
+db.trainer.belongsTo(db.branch_manager, {
+    foreignKey: 'Branch_ID'
+})
 
 db.workout.hasMany(db.member, {
     foreignKey: 'Workout_ID'
@@ -49,7 +59,6 @@ db.workout.hasMany(db.member, {
 db.member.belongsTo(db.workout, {
     foreignKey: 'Workout_ID',
 });
-
 
 db.branch_manager.belongsToMany(db.member, { through: db.has });
 db.member.belongsToMany(db.branch_manager, { through: db.has });
@@ -71,7 +80,7 @@ db.payment.belongsTo(db.workout, {
 db.equipment.belongsToMany(db.workout, { through: db.uses });
 db.workout.belongsToMany(db.equipment, { through: db.uses });
 
+db.trainer.belongsToMany(db.workout, { through: db.trains});
+db.workout.belongsToMany(db.trainer, { through: db.trains});
 
 module.exports = db;
-
-

@@ -8,11 +8,11 @@ module.exports = app => {
     // Retrieve all published Payment
     //router.get("/published", payment.findAllPublished);
     // Retrieve a single Payment with id
-    router.get("/:id", payment.findOne);
+    router.get("/:Payment_ID", payment.findOne);
     // Update a Payment with id
-    router.put("/:id", payment.update);
+    router.put("/:Payment_ID", payment.update);
     // Delete a Payment with id
-    router.delete("/:id", payment.delete);
+    router.delete("/:Payment_ID", payment.delete);
     // Delete all Payment
     router.delete("/", payment.deleteAll);
     app.use('/api/payment', router);

@@ -40,7 +40,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         Emer_Mobile: {
             type: Sequelize.INTEGER
-        },
+        }
     },
         {
             timestamp: false,
