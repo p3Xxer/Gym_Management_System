@@ -30,7 +30,7 @@ exports.login = (req, res) => {
 
         res.status(200).send({
             id: manager.dataValues.Branch_ID,
-            email: manager.dataValues.Manager_Email,
+            branch: manager.dataValues,
             accessToken: token
         });
 
