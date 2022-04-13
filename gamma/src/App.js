@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
+import AddMember from "./components/AddMember";
+import EditMember from "./components/Member";
 import AuthService from "./services/auth.service";
-
+import ShowMembers from "./components/ShowMembers";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
@@ -67,40 +68,58 @@ const App = () => {
             </Link>
           </li>
 
-          {showModeratorBoard && (
-            <li className="nav-item">
-              <Link to={"/mod"} className="nav-link">
-                Moderator Board
-              </Link>
-            </li>
-          )}
-
-          {showAdminBoard && (
-            <li className="nav-item">
-              <Link to={"/admin"} className="nav-link">
-                Admin Board
-              </Link>
-            </li>
-          )}
-
           {
-          //   currentUser && (
+          //   showModeratorBoard && (
           //   <li className="nav-item">
-          //     <Link to={"/user"} className="nav-link">
-          //       User
+          //     <Link to={"/mod"} className="nav-link">
+          //       Moderator Board
           //     </Link>
           //   </li>
           // )
+        }
+
+          {
+          //   showAdminBoard && (
+          //   <li className="nav-item">
+          //     <Link to={"/admin"} className="nav-link">
+          //       Admin Board
+          //     </Link>
+          //   </li>
+          // )
+        }
+        {
+          currentUser&&(
+            
+            <li className="nav-item">
+            <Link to={"/showmembers/"+currentUser.id} className="nav-link">
+            Show Members
+            </Link>
+            </li>
+           
+           
+          )
+        }
+
+          {
+             currentUser && (
+              <li className="nav-item">
+            <Link to={"/addmember/"+currentUser.id} className="nav-link">
+            Add Member
+            </Link>
+            </li>
+           )
         }
         </div>
 
         {currentUser ? (
           <div className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to={"/profile/"+currentUser.id} className="nav-link">
-                {currentUser.id}
-              </Link>
-            </li>
+            {
+            //   <li className="nav-item">
+            //   <Link to={"/profile/"+currentUser.id} className="nav-link">
+            //     {currentUser.id}
+            //   </Link>
+            // </li>
+          }
             <li className="nav-item">
               <a href="/login" className="nav-link" onClick={logOut}>
                 LogOut
@@ -136,6 +155,12 @@ const App = () => {
           <Route path="/user" element={<BoardUser/>} />
           <Route path="/mod" element={<BoardModerator/>} />
           <Route path="/admin" element={<BoardAdmin/>} />
+          <Route path="/addmember/:id" element={<AddMember />} />
+          <Route path="/editmember/:Mem_ID" element={<EditMember />} />
+            
+              <Route path="/showmembers/:id" element={<ShowMembers />} />
+            
+          
         </Routes>
       </div>
 

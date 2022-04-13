@@ -1,6 +1,9 @@
 const expresss = require("express");
 const cors = require("cors");
 const app = expresss();
+const db = require("./app/models");
+const branch_manager = db.branch_manager;
+const member = db.member;
 var corsOptions = {
     origin: "http://localhost:8081"
 };
@@ -13,10 +16,54 @@ app.use(expresss.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to GOLDY Gym" });
 });
-const db = require("./app/models");
 //In development, you may need to drop existing tables and re-sync database.
 //Just use force: true as following code:
-db.sequelize.sync().then(() => { console.log("Drop and re-sync db."); });
+db.sequelize.sync().then(() => { 
+    console.log("Drop and re-sync db.");
+    // initialize();
+});
+
+function initialize(){
+    branch_manager.create({
+        Branch_Name: "1",
+        Branch_Location: "1",
+        Branch_Email: "1",
+        Branch_Phone_Number: "1",
+        Manager_ID: "1",
+        Manager_Name: "1",
+        Gender: "1",
+        Mobile_Number: "1",
+        Address: "1",
+        Manager_Email: "1",
+        Password: "1"
+    });
+    branch_manager.create({
+        Branch_Name: "2",
+        Branch_Location: "2",
+        Branch_Email: "2",
+        Branch_Phone_Number: "2",
+        Manager_ID: "2",
+        Manager_Name: "2",
+        Gender: "2",
+        Mobile_Number: "2",
+        Address: "2",
+        Manager_Email: "2",
+        Password: "2"
+    });
+    branch_manager.create({
+        Branch_Name: "3",
+        Branch_Location: "3",
+        Branch_Email: "3",
+        Branch_Phone_Number: "3",
+        Manager_ID: "3",
+        Manager_Name: "3",
+        Gender: "3",
+        Mobile_Number: "3",
+        Address: "3",
+        Manager_Email: "3",
+        Password: "3"
+    })
+};
 //db.sequelize.sync();
 
 require("./app/routes/member.routes.js")(app);

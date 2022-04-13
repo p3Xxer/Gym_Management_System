@@ -60,8 +60,8 @@ db.member.belongsTo(db.workout, {
     foreignKey: 'Workout_ID',
 });
 
-db.branch_manager.belongsToMany(db.member, { through: db.has });
-db.member.belongsToMany(db.branch_manager, { through: db.has });
+// db.branch_manager.belongsToMany(db.member, { through: db.has });
+// db.member.belongsToMany(db.branch_manager, { through: db.has });
 
 db.member.hasMany(db.payment, {
     foreignKey: 'Member_ID'

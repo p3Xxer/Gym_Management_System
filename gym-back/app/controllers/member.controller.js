@@ -2,6 +2,7 @@ const req = require("express/lib/request");
 const db = require("../models");
 const Member = db.member;
 const Branch_Manager = db.branch_manager;
+const Has = db.has;
 const { Op } = require("sequelize");
 const { branch_manager } = require("../models");
 //Create and Save a new Member
@@ -30,7 +31,10 @@ exports.create = (req, res) => {
     }
     Member.create(member)
         .then(data => {
-            //this.addBranch(data.Mem_ID, branch_id);
+            Has.create({
+                Branch_ID: branch_id,
+                Member_ID: data.Mem_ID
+            });
             res.send(data);
         })
         .catch(err => {
@@ -44,25 +48,42 @@ exports.create = (req, res) => {
 
 // Retrieve all Members from the database.
 exports.findAll = (req, res) => {
-    const Mem_Name = req.query.Mem_Name;
-    var condition = Mem_Name ? { Mem_Name: { [Op.like]: `%${Mem_Name}%` } } : null;
-    Member.findAll({ where: condition })
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving members."
-            });
-        });
+    const bid = req.params.Branch_ID;
+
+    Has.findAll({
+        attributes: ['Member_ID'],
+        where: {Branch_ID: bid}
+    }).then(data => {
+        const memid = []
+        for(var i in data){
+            memid.push(data[i].dataValues.Member_ID);
+        }
+        console.log(memid);
+        Member.findAll({where: {Mem_ID: memid}})
+            .then(val => {
+                res.send(val);
+            })
+    })
+    
+    // Member.findAll({ where: {Mem_ID: memID}})
+    //     .then(data => {
+    //         res.send(data);
+    //     })
+    //     .catch(err => {
+    //         res.status(500).send({
+    //             message:
+    //                 err.message || "Some error occurred while retrieving members."
+    //         });
+    //     });
 };
 // Find a single Member with an Mem_ID
 exports.findOne = (req, res) => {
+    console.log("Hiii");
     const Mem_ID = req.params.Mem_ID;
     Member.findByPk(Mem_ID)
         .then(data => {
             if (data) {
+                console.log(data);
                 res.send(data);
             } else {
                 res.status(404).send({
