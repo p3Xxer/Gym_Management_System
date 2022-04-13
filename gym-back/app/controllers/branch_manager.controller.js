@@ -132,3 +132,6 @@ exports.delete = (req, res) => {
         });
 };
 
+exports.managerBoard = (req, res) => {
+    res.status(200).send("Manager Content.");
+}
