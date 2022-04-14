@@ -16,9 +16,27 @@ const createPayment = (data) => {
   console.log(data);
   return axios.post(API_URL+"payment", data);
 };
+const createEquipment = (id,data) => {
+  console.log(data);
+  console.log(id);
+  return axios.post(API_URL+"equipment/" + id, data);
+};
+const createTrainer = (id,data) => {
+  console.log(data);
+  console.log(id);
+  return axios.post(API_URL+"trainer/" + id, data);
+};
 const showPayment = (id) => {
   
   return axios.get(API_URL+"payment/"+id);
+};
+const showEquipment = (id) => {
+  
+  return axios.get(API_URL+"equipment/"+id);
+};
+const showTrainer = (id) => {
+  
+  return axios.get(API_URL+"trainer/"+id);
 };
 const update = (Mem_ID, data) => {
   return axios.put(API_URL+`member/${Mem_ID}`, data);
@@ -48,7 +66,11 @@ const UserService = {
   update,
   get,
   createPayment,
-  showPayment
+  showPayment,
+  showEquipment,
+  createEquipment,
+  showTrainer,
+  createTrainer
 };
 
 export default UserService;

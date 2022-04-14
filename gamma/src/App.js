@@ -16,6 +16,10 @@ import BoardAdmin from "./components/BoardAdmin";
 import Payment from "./components/Payment";
 import EventBus from "./common/EventBus";
 import ShowPayment from "./components/ShowPayment";
+import AddEquipment from "./components/AddEquipment";
+import AddTrainer from "./components/AddTrainer";
+import ShowEquipment from "./components/ShowEquipment";
+import ShowTrainer from "./components/ShowTrainer";
 const App = () => {
   // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   // const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -110,26 +114,61 @@ const App = () => {
         }
         {
           currentManager&&(
-            
+          
+            <li className="nav-item">
+            <Link to={"/payment/"+currentManager.id} className="nav-link">
+            Add Payment
+            </Link>
+            </li>             
+          )
+      }
+        {
+          currentManager&&(
             <li className="nav-item">
             <Link to={"/showpayment/"+currentManager.id} className="nav-link">
             Show Payments
             </Link>
             </li>
-           
-           
+          )
+        }
+        
+        {
+          currentManager&&(
+            <li className="nav-item">
+            <Link to={"/addtrainer/"+currentManager.id} className="nav-link">
+            Add Trainer
+            </Link>
+            </li>
           )
         }
         {
-            currentManager&&(
-            
-              <li className="nav-item">
-              <Link to={"/payment/"+currentManager.id} className="nav-link">
-              New Payment
-              </Link>
-              </li>             
-            )
+          currentManager&&(
+            <li className="nav-item">
+            <Link to={"/showtrainer/"+currentManager.id} className="nav-link">
+            Show Trainer
+            </Link>
+            </li>
+          )
         }
+        {
+          currentManager&&(
+            <li className="nav-item">
+            <Link to={"/addequipment/"+currentManager.id} className="nav-link">
+            Add Equipment
+            </Link>
+            </li>
+          )
+        }
+        {
+          currentManager&&(
+            <li className="nav-item">
+            <Link to={"/showequipment/"+currentManager.id} className="nav-link">
+            Show Equipment
+            </Link>
+            </li>
+          )
+        }
+        
 
         </div>
 
@@ -181,6 +220,10 @@ const App = () => {
           <Route path="/editmember/:Mem_ID" element={<EditMember />} />
           <Route path="/payment/:id" element={<Payment />} />
           <Route path="showpayment/:id" element={<ShowPayment />} />
+          <Route path="addequipment/:id" element={<AddEquipment />} />
+          <Route path="showequipment/:id" element={<ShowEquipment />} />
+          <Route path="addtrainer/:id" element={<AddTrainer />} />
+          <Route path="showtrainer/:id" element={<ShowTrainer />} />
             
               <Route path="/showmembers/:id" element={<ShowMembers />} />
             

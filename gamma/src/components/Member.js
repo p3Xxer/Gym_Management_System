@@ -6,7 +6,7 @@ const Member = props => {
     
     console.log(useParams());
   const { Mem_ID } = useParams();
-  ManagerDataService.get(Mem_ID).then(response=>console.log(response));
+//  ManagerDataService.get(Mem_ID).then(response=>console.log(response));
 //   const {id}=useParams();
   
 //   const { id } = useParams();
