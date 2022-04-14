@@ -50,8 +50,8 @@ const Login = () => {
         (response) => {
           navigate("/profile/" + response.id);
           // console.log(response);
-        
-          
+
+
           window.location.reload();
         },
         (error) => {
@@ -72,8 +72,8 @@ const Login = () => {
   };
 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
+    <div className="col-md-12 back-in form form-in">
+      <div className="card card-container ">
         <img
           src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
           alt="profile-img"
@@ -82,7 +82,7 @@ const Login = () => {
 
         <Form onSubmit={handleLogin} ref={form}>
           <div className="form-group">
-            <label htmlFor="manager_Email">Manager_Email</label>
+            <label htmlFor="manager_Email">Email</label>
             <Input
               type="text"
               className="form-control"
@@ -90,6 +90,8 @@ const Login = () => {
               value={manager_Email}
               onChange={onChangeManager_Email}
               validations={[required]}
+              placeholder="Email"
+              id="username"
             />
           </div>
 
@@ -99,6 +101,7 @@ const Login = () => {
               type="password"
               className="form-control"
               name="password"
+              placeholder="Password"
               value={password}
               onChange={onChangePassword}
               validations={[required]}
@@ -106,7 +109,7 @@ const Login = () => {
           </div>
 
           <div className="form-group">
-            <button className="btn btn-primary btn-block" disabled={loading}>
+            <button className="btn btn-primary btn-block login-btn" disabled={loading}>
               {loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}

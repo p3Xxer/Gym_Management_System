@@ -1,0 +1,39 @@
+body {
+  background-image: url("https://t4.ftcdn.net/jpg/01/84/63/09/360_F_184630923_GF9S3Yz4XydO3ZDjBBslhq6Q5pdLeIKk.jpg");
+  background-size: auto 100%;
+  opacity: 0.5;
+}
+
+
+/* .submit-form{
+  background: white;
+  border-radius: 20px;
+  width: 630px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+  margin-top: 100px;
+} */
+
+.container
+{
+  background: white;
+  border-radius: 20px;
+  width: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+  margin-top: 100px;
+}
+
+
+
+.pulkit
+{
+  margin-left: 100px;
+}
+
+.label
+{
+  font-weight: bold;
+}

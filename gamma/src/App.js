@@ -49,11 +49,11 @@ const App = () => {
     setCurrentUser(undefined);
   };
   console.log(currentUser);
-  
-  
+
+
 
   return (
-    
+
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         {
@@ -89,14 +89,14 @@ const App = () => {
         }
         {
           currentUser&&(
-            
+
             <li className="nav-item">
             <Link to={"/showmembers/"+currentUser.id} className="nav-link">
             Show Members
             </Link>
             </li>
-           
-           
+
+
           )
         }
 
@@ -145,7 +145,7 @@ const App = () => {
         )}
       </nav>
 
-      <div className="container mt-3">
+      <div className="container mt-3 ">
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/home" element={<Home/>} />
@@ -157,15 +157,15 @@ const App = () => {
           <Route path="/admin" element={<BoardAdmin/>} />
           <Route path="/addmember/:id" element={<AddMember />} />
           <Route path="/editmember/:Mem_ID" element={<EditMember />} />
-            
+
               <Route path="/showmembers/:id" element={<ShowMembers />} />
-            
-          
+
+
         </Routes>
       </div>
 
     </div>
-        
+
   );
 };
 

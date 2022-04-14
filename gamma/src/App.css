@@ -3,13 +3,52 @@ label {
   margin-top: 10px;
 }
 
+body{
+    background-image: url("https://t4.ftcdn.net/jpg/01/84/63/09/360_F_184630923_GF9S3Yz4XydO3ZDjBBslhq6Q5pdLeIKk.jpg");
+    background-size: cover;
+}
 .card-container.card {
   max-width: 350px !important;
   padding: 40px 40px;
+  border-radius: 20px;
+}
+.login-btn{
+    margin-top: 30px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 10px 0;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 13px;
+    cursor: pointer;
+    font-family: 'Poppins',sans-serif;
+}
+.form{
+  font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+
+form-in{
+    height: 520px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
 }
 
 .card {
-  background-color: #f7f7f7;
+  background-color: rgba(255,255,255,0.13);
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;
