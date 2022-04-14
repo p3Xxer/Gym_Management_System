@@ -21,6 +21,12 @@ module.exports = (sequelize, Sequelize) => {
         Payment_Amt: {
             type: Sequelize.FLOAT
         },
+        Member_ID: {
+            type: Sequelize.INTEGER
+        },
+        Workout_ID: {
+            type: Sequelize.INTEGER
+        }
     },
     {
         timestamp: false,

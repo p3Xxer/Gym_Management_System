@@ -30,7 +30,7 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
-const getCurrentUser = () => {
+const getCurrentManager = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
 
@@ -38,7 +38,7 @@ const AuthService = {
   register,
   login,
   logout,
-  getCurrentUser,
+  getCurrentManager,
 };
 
 export default AuthService;

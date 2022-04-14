@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import ManagerService from "../services/ManagerService";
+import PaymentService from "../services/ManagerService";
 import { Link ,useParams} from "react-router-dom";
 
 
-const MemberList = () => {
+const PaymentList = () => {
     const {id} = useParams();
-  const [member, setMember] = useState([]);
-  const [currentMember, setCurrentMember] = useState(null);
+  const [payment, setPayment] = useState([]);
+  const [currentPayment, setCurrentPayment] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchMem_Name, setSearchMem_Name] = useState("");
 
   useEffect(() => {
-    retrieveMembers();
+    retrievePayments();
   }, []);
 
   const onChangeSearchMem_Name = e => {
@@ -19,10 +19,10 @@ const MemberList = () => {
     setSearchMem_Name(searchMem_Name);
   };
 
-  const retrieveMembers = () => {
-    ManagerService.getAll(id)
+  const retrievePayments = () => {
+    PaymentService.showPayment(id)
       .then(response => {
-        setMember(response.data);
+        setPayment(response.data);
         console.log(response.data);
       })
       .catch(e => {
@@ -31,18 +31,18 @@ const MemberList = () => {
   };
 
   const refreshList = () => {
-    retrieveMembers();
-    setCurrentMember(null);
+    retrievePayments();
+    setCurrentPayment(null);
     setCurrentIndex(-1);
   };
 
-  const setActiveMember = (member, index) => {
-    setCurrentMember(member);
+  const setActivePayment = (payment, index) => {
+    setCurrentPayment(payment);
     setCurrentIndex(index);
   };
 
-//   const removeAllMembers = () => {
-//     MemberDataService.removeAll()
+//   const removeAllPayments = () => {
+//     PaymentDataService.removeAll()
 //       .then(response => {
 //         console.log(response.data);
 //         refreshList();
@@ -53,16 +53,16 @@ const MemberList = () => {
 //   };
 
 //   const findByMem_Name = () => {
-//     MemberDataService.findByMem_Name(searchMem_Name)
+//     PaymentDataService.findByMem_Name(searchMem_Name)
 //       .then(response => {
-//         setMember(response.data);
+//         setPayment(response.data);
 //         console.log(response.data);
 //       })
 //       .catch(e => {
 //         console.log(e);
 //       });
 //   };
-
+console.log(payment)
   return (
     <div className="list row">
       <div className="col-md-8">
@@ -71,8 +71,8 @@ const MemberList = () => {
             type="text"
             className="form-control"
             placeholder="Search by Mem_Name"
-            value={searchMem_Name}
-            onChange={onChangeSearchMem_Name}
+            //value={searchMem_Name}
+            //onChange={onChangeSearchMem_Name}
           />
           {
         //       <div className="input-group-append">
@@ -88,63 +88,64 @@ const MemberList = () => {
         </div>
       </div>
       <div className="col-md-6">
-        <h4>Members List</h4>
+        <h4>Payments List</h4>
 
         <ul className="list-group">
-          {member &&
-            member.map((member, index) => (
+          {payment &&
+            payment.map((payment, index) => (
               <li
                 className={
-                  "list-group-item " + (index === currentIndex ? "active" : "")
+                  "list-group-item " 
                 }
-                onClick={() => {
-                  setActiveMember(member, index)
-                  console.log(member.Mem_ID)
-                }
-                }
+                
+                
                 key={index}
               >
-                {member.Mem_Name}
+                {payment.Payment_ID    }                  {payment.Payment_Desc}   
               </li>
+              
+              
             ))}
         </ul>
 
         {
         //     <button
         //   className="m-3 btn btn-sm btn-danger"
-        //   onClick={removeAllMembers}
+        //   onClick={removeAllPayments}
         // >
         //   Remove All
         // </button>
     }
       </div>
-      <div className="col-md-6">
-        {currentMember ? (
-          <div>
-            <h4>Members</h4>
-            <div>
-              <label>
-                <strong>Mem_Name:</strong>
-              </label>{" "}
+      {
+    //       <div className="col-md-6">
+    //     {currentPayment ? (
+    //       <div>
+    //         <h4>Payments</h4>
+    //         <div>
+    //           <label>
+    //             <strong>Mem_Name:</strong>
+    //           </label>{" "}
              
-              {currentMember.Mem_ID}
-            </div>
-            <Link
-              to={"/editmember/" + currentMember.Mem_ID}
-              className="badge badge-warning"
-            >
-              Edit
-            </Link>
-          </div>
-        ) : (
-          <div>
-            <br />
-            <p>Please click on a Member...</p>
-          </div>
-        )}
-      </div>
+    //           {currentPayment.Payment_ID}
+    //         </div>
+    //         <Link
+    //           to={"/editpayment/" + currentPayment.Payment_ID}
+    //           className="badge badge-warning"
+    //         >
+    //           Edit
+    //         </Link>
+    //       </div>
+    //     ) : (
+    //       <div>
+    //         <br />
+    //         <p>Please click on a Payment...</p>
+    //       </div>
+    //     )}
+    //   </div>
+    }
     </div>
   );
 };
 
-export default MemberList;
+export default PaymentList;

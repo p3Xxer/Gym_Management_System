@@ -13,22 +13,22 @@ import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
-
+import Payment from "./components/Payment";
 import EventBus from "./common/EventBus";
-
+import ShowPayment from "./components/ShowPayment";
 const App = () => {
-  const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  const [showAdminBoard, setShowAdminBoard] = useState(false);
-  const [currentUser, setCurrentUser] = useState(undefined);
+  // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
+  // const [showAdminBoard, setShowAdminBoard] = useState(false);
+  const [currentManager, setCurrentManager] = useState(undefined);
 
   useEffect(() => {
-    const user = AuthService.getCurrentUser();
+    const user = AuthService.getCurrentManager();
     // console.log(user);
     //const {id} = user;
     //console.log(id);
 
     if (user) {
-      setCurrentUser(user);
+      setCurrentManager(user);
       // setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
       // setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
     }
@@ -44,11 +44,11 @@ const App = () => {
 
   const logOut = () => {
     AuthService.logout();
-    setShowModeratorBoard(false);
-    setShowAdminBoard(false);
-    setCurrentUser(undefined);
+    // setShowModeratorBoard(false);
+    // setShowAdminBoard(false);
+    setCurrentManager(undefined);
   };
-  console.log(currentUser);
+  console.log(currentManager);
   
   
 
@@ -88,10 +88,19 @@ const App = () => {
           // )
         }
         {
-          currentUser&&(
+            currentManager && (
+              <li className="nav-item">
+            <Link to={"/addmember/"+currentManager.id} className="nav-link">
+            Add Member
+            </Link>
+            </li>
+           )
+        }
+        {
+          currentManager&&(
             
             <li className="nav-item">
-            <Link to={"/showmembers/"+currentUser.id} className="nav-link">
+            <Link to={"/showmembers/"+currentManager.id} className="nav-link">
             Show Members
             </Link>
             </li>
@@ -99,24 +108,37 @@ const App = () => {
            
           )
         }
-
-          {
-             currentUser && (
-              <li className="nav-item">
-            <Link to={"/addmember/"+currentUser.id} className="nav-link">
-            Add Member
+        {
+          currentManager&&(
+            
+            <li className="nav-item">
+            <Link to={"/showpayment/"+currentManager.id} className="nav-link">
+            Show Payments
             </Link>
             </li>
-           )
+           
+           
+          )
         }
+        {
+            currentManager&&(
+            
+              <li className="nav-item">
+              <Link to={"/payment/"+currentManager.id} className="nav-link">
+              New Payment
+              </Link>
+              </li>             
+            )
+        }
+
         </div>
 
-        {currentUser ? (
+        {currentManager ? (
           <div className="navbar-nav ml-auto">
             {
             //   <li className="nav-item">
-            //   <Link to={"/profile/"+currentUser.id} className="nav-link">
-            //     {currentUser.id}
+            //   <Link to={"/profile/"+currentManager.id} className="nav-link">
+            //     {currentManager.id}
             //   </Link>
             // </li>
           }
@@ -157,6 +179,8 @@ const App = () => {
           <Route path="/admin" element={<BoardAdmin/>} />
           <Route path="/addmember/:id" element={<AddMember />} />
           <Route path="/editmember/:Mem_ID" element={<EditMember />} />
+          <Route path="/payment/:id" element={<Payment />} />
+          <Route path="showpayment/:id" element={<ShowPayment />} />
             
               <Route path="/showmembers/:id" element={<ShowMembers />} />
             

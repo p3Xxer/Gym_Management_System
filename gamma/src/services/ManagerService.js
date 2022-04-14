@@ -12,6 +12,14 @@ const getAll=(id)=>{
 const create = (id,data) => {
   return axios.post(API_URL+"member/"+id, data);
 };
+const createPayment = (data) => {
+  console.log(data);
+  return axios.post(API_URL+"payment", data);
+};
+const showPayment = (id) => {
+  
+  return axios.get(API_URL+"payment/"+id);
+};
 const update = (Mem_ID, data) => {
   return axios.put(API_URL+`member/${Mem_ID}`, data);
 };
@@ -38,7 +46,9 @@ const UserService = {
   getAll,
   create,
   update,
-  get
+  get,
+  createPayment,
+  showPayment
 };
 
 export default UserService;

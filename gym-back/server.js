@@ -3,6 +3,7 @@ const cors = require("cors");
 const app = expresss();
 const db = require("./app/models");
 const branch_manager = db.branch_manager;
+const workout = db.workout;
 const member = db.member;
 var corsOptions = {
     origin: "http://localhost:8081"
@@ -18,9 +19,9 @@ app.get("/", (req, res) => {
 });
 //In development, you may need to drop existing tables and re-sync database.
 //Just use force: true as following code:
-db.sequelize.sync().then(() => { 
+db.sequelize.sync({force: true}).then(() => { 
     console.log("Drop and re-sync db.");
-    // initialize();
+    initialize();
 });
 
 function initialize(){
@@ -62,6 +63,16 @@ function initialize(){
         Address: "3",
         Manager_Email: "3",
         Password: "3"
+    });
+    workout.create({
+        Workout_Name: "Cardio",
+        Workout_DietChart: "Banana",
+        Workout_Duration: "30"
+    })
+    workout.create({
+        Workout_Name: "Weight Lifting",
+        Workout_DietChart: "Egg",
+        Workout_Duration: "15"
     })
 };
 //db.sequelize.sync();

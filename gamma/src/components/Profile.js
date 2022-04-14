@@ -3,39 +3,36 @@ import AuthService from "../services/auth.service";
 import { useParams } from "react-router-dom";
 
 const Profile = () => {
-  const currentUser = AuthService.getCurrentUser();
-  console.log(currentUser);
+  const currentManager = AuthService.getCurrentManager();
+  console.log(currentManager);
   // console.log(useParams);
 
   return (
     <div className="container">
       <header className="jumbotron">
         
-          <h3>
-          <strong>{currentUser.branch.Branch_Name}</strong>
-          </h3>
+          <h3>Branch_Name: <strong>{currentManager.branch.Branch_Name}</strong></h3>
       
       </header>
       
       {
       //   <p>
-      //   <strong>Token:</strong> {currentUser.accessToken.substring(0, 20)} ...{" "}
-      //   {currentUser.accessToken.substr(currentUser.accessToken.length - 20)}
+      //   <strong>Token:</strong> {currentManager.accessToken.substring(0, 20)} ...{" "}
+      //   {currentManager.accessToken.substr(currentManager.accessToken.length - 20)}
       // </p>
     }
       {
       //   <p>
-      //   <strong>Id:</strong> {currentUser.id}
+      //   <strong>Id:</strong> {currentManager.id}
       // </p>
       // <p>
-      //   <strong>Email:</strong> {currentUser.email}
+      //   <strong>Email:</strong> {currentManager.email}
       // </p>
     }
-      <strong>Authorities:</strong>
     { 
       //  <ul>
-      //   {currentUser.roles &&
-      //     currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
+      //   {currentManager.roles &&
+      //     currentManager.roles.map((role, index) => <li key={index}>{role}</li>)}
       // </ul>
     }
     </div>

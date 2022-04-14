@@ -4,16 +4,16 @@ module.exports = app => {
     // Create a new Payment
     router.post("/", payment.create);
     // Retrieve all Payment
-    router.get("/", payment.findAll);
+    router.get("/:Branch_ID", payment.findAll);
     // Retrieve all published Payment
     //router.get("/published", payment.findAllPublished);
     // Retrieve a single Payment with id
-    router.get("/:Payment_ID", payment.findOne);
+    router.get("/details/:Member_ID", payment.findOne);
     // Update a Payment with id
-    router.put("/:Payment_ID", payment.update);
+    // router.put("/:Payment_ID", payment.update);
     // Delete a Payment with id
     router.delete("/:Payment_ID", payment.delete);
     // Delete all Payment
-    router.delete("/", payment.deleteAll);
-    app.use('/api/payment', router);
+    // router.delete("/", payment.deleteAll);
+    app.use('/payment', router);
 };

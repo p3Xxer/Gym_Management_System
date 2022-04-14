@@ -15,8 +15,6 @@ try {
 
 const db = {};
 
-
-
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
@@ -63,12 +61,12 @@ db.member.belongsTo(db.workout, {
 // db.branch_manager.belongsToMany(db.member, { through: db.has });
 // db.member.belongsToMany(db.branch_manager, { through: db.has });
 
-db.member.hasMany(db.payment, {
-    foreignKey: 'Member_ID'
-});
-db.payment.belongsTo(db.member, {
-    foreignKey: 'Member_ID',
-});
+// db.member.hasMany(db.payment, {
+//     foreignKey: 'Member_ID'
+// });
+// db.payment.belongsTo(db.member, {
+//     foreignKey: 'Member_ID',
+// });
 
 db.workout.hasMany(db.payment, {
     foreignKey: 'Workout_ID'

@@ -3,6 +3,7 @@ const db = require("../models");
 //const Eqiupment = db.equipment;
 const Payment = db.payment;
 const Op = db.Sequelize.Op;
+const Workout = db.workout;
 //Create and Save a new Payment
 //Doesnot make sense
 exports.create = (req, res) => {
@@ -14,16 +15,24 @@ exports.create = (req, res) => {
         return;
     }
 
+    console.log(req.body.Workout_Name);
+
+    Workout.findAll({
+        attributes: ['Workout_ID'],
+        where: {Workout_Name: req.body.Workout_Name}
+    }).then(val => {
+        console.log(val);
+    })
     // Create a Payment
     const payment = {
-        //Branch_ID: req.body.Branch_ID,
         Payment_Desc: req.body.Payment_Desc,
         Payment_Time: req.body.Payment_Time,
         Payment_Date: req.body.Payment_Date,
         Payment_Amt: req.body.Payment_Amt,
         Member_ID: req.body.Member_ID,
-        Workout_ID: req.body.Workout_ID
+        // Workout_ID: req.body.Workout_ID
     }
+    
     Payment.create(payment)
         .then(data => {
             res.send(data);
