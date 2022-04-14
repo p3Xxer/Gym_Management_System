@@ -4,6 +4,8 @@ const db = require("../models");
 const Payment = db.payment;
 const Op = db.Sequelize.Op;
 const Workout = db.workout;
+const Member = db.member;
+const Has = db.has;
 //Create and Save a new Payment
 //Doesnot make sense
 exports.create = (req, res) => {
@@ -15,51 +17,69 @@ exports.create = (req, res) => {
         return;
     }
 
+
     console.log(req.body.Workout_Name);
 
     Workout.findAll({
         attributes: ['Workout_ID'],
         where: {Workout_Name: req.body.Workout_Name}
     }).then(val => {
-        console.log(val);
-    })
-    // Create a Payment
-    const payment = {
-        Payment_Desc: req.body.Payment_Desc,
-        Payment_Time: req.body.Payment_Time,
-        Payment_Date: req.body.Payment_Date,
-        Payment_Amt: req.body.Payment_Amt,
-        Member_ID: req.body.Member_ID,
-        // Workout_ID: req.body.Workout_ID
-    }
-    
-    Payment.create(payment)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while creating the Payment."
+        if(val[0]){
+            Member.findByPk(req.body.Member_ID)
+            .then(data => {
+                if (!data) {
+                    res.status(404).send({
+                        message: `Cannot find Member with Mem_ID=${req.body.Member_ID}.`
+                    });
+                    return;
+                }else{
+                    console.log(val);
+                    const payment = {
+                        Payment_Desc: req.body.Payment_Desc,
+                        Payment_Time: req.body.Payment_Time,
+                        Payment_Date: req.body.Payment_Date,
+                        Payment_Amt: req.body.Payment_Amt,
+                        Member_ID: req.body.Member_ID,
+                        Workout_ID: val[0].dataValues.Workout_ID
+                    }
+                    Payment.create(payment)
+                    .then(data => {
+                        res.send(data);
+                    })
+                }
             });
-        });
+        }else {
+            res.status(404).send({
+                message: `Cannot find Workout with Name=${req.body.Workout_Name}.`
+            });
+        }
+    })
+    
 };
 
 
 // Retrieve all Payment from the database.
 exports.findAll = (req, res) => {
-    const Workout_Name = req.query.Workout_Name;
-    var condition = Workout_Name ? { Workout_Name: { [Op.like]: `%${Workout_Name}%` } } : null;
-    Payment.findAll({ where: condition })
-        .then(data => {
-            res.send(data);
-        })
+    Has.findAll({
+        attributes: ['Member_ID'],
+        where: {Branch_ID: req.params.Branch_ID}
+    }).then(data => {
+        const memid = []
+        for(var i in data){
+            memid.push(data[i].dataValues.Member_ID);
+        }
+        Payment.findAll({where: {Member_ID: memid}})
+        .then(val => {
+            res.send(val);
+        })               
         .catch(err => {
             res.status(500).send({
                 message:
                     err.message || "Some error occurred while retrieving Payment."
             });
         });
+    });
+
 };
 // Find a single Payment with an id
 exports.findOne = (req, res) => {

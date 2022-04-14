@@ -2,9 +2,9 @@ module.exports = app => {
     const equipment = require("../controllers/equipment.controller.js");
     var router = require("express").Router();
     // Create a new Equipment
-    router.post("/", equipment.create);
+    router.post("/:Branch_ID", equipment.create);
     // Retrieve all Equipment
-    router.get("/", equipment.findAll);
+    router.get("/:Branch_ID", equipment.findAll);
     // Retrieve all published Equipment
     //router.get("/published", equipment.findAllPublished);
     // Retrieve a single Equipment with id
@@ -15,5 +15,5 @@ module.exports = app => {
     router.delete("/:id", equipment.delete);
     // Delete all Equipment
     router.delete("/", equipment.deleteAll);
-    app.use('/api/equipment', router);
+    app.use('/equipment', router);
 };
