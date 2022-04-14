@@ -18,7 +18,8 @@ exports.create = (req, res) => {
         Phone: req.body.Phone,
         Address: req.body.Address,
         Emer_Name: req.body.Emer_Name,
-        Emer_Mobile: req.body.Emer_Mobile
+        Emer_Mobile: req.body.Emer_Mobile,
+        Branch_ID: req.params.Branch_ID
     }
     Trainer.create(trainer)
         .then(data => {
@@ -34,9 +35,7 @@ exports.create = (req, res) => {
 
 
 exports.findAll = (req, res) => {
-    const Trainer_Name = req.query.Trainer_Name;
-    var condition = Trainer_Name ? { Trainer_Name: { [Op.like]: `%${Trainer_Name}%` } } : null;
-    Trainer.findAll({ where: condition })
+    Trainer.findAll({ where: {Branch_ID: req.params.Branch_ID} })
         .then(data => {
             res.send(data);
         })

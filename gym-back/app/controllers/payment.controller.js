@@ -17,9 +17,6 @@ exports.create = (req, res) => {
         return;
     }
 
-
-    console.log(req.body.Workout_Name);
-
     Workout.findAll({
         attributes: ['Workout_ID'],
         where: {Workout_Name: req.body.Workout_Name}
@@ -33,7 +30,6 @@ exports.create = (req, res) => {
                     });
                     return;
                 }else{
-                    console.log(val);
                     const payment = {
                         Payment_Desc: req.body.Payment_Desc,
                         Payment_Time: req.body.Payment_Time,
@@ -42,6 +38,14 @@ exports.create = (req, res) => {
                         Member_ID: req.body.Member_ID,
                         Workout_ID: val[0].dataValues.Workout_ID
                     }
+                    Member.update({WorkoutPlan_ID: payment.Workout_ID}, {where: {Mem_ID: req.body.Member_ID}})
+                        .then(num => {
+                            if(num==1){
+                                console.log("Updation Successfull");
+                            }else{
+                                console.log("Not Updated");
+                            }
+                        })
                     Payment.create(payment)
                     .then(data => {
                         res.send(data);

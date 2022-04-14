@@ -29,6 +29,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         Emer_Name: {
             type: Sequelize.STRING
+        },
+        Branch_ID: {
+            type: Sequelize.INTEGER
         }
     },
         {

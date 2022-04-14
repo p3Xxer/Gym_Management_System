@@ -1,7 +1,7 @@
 const req = require("express/lib/request");
-const db = require("./app/models");
+const db = require("../models");
 //const Eqiupment = db.equipment;
-const Equipment = db.Equipment;
+const Equipment = db.equipment;
 const Op = db.Sequelize.Op;
 //Create and Save a new Equipment
 exports.create = (req, res) => {
@@ -18,6 +18,7 @@ exports.create = (req, res) => {
         Equipment_Name: req.body.Equipment_Name,
         Equipment_Kind: req.body.Equipment_Kind,
         Working_Status: req.body.Working_Status,
+        Branch_ID: req.params.Branch_ID
     }
     Equipment.create(equipment)
         .then(data => {
@@ -34,9 +35,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Equipment from the database.
 exports.findAll = (req, res) => {
-    const Equipment_Name = req.query.Equipment_Name;
-    var condition = Equipment_Name ? { Equipment_Name: { [Op.like]: `%${Equipment_Name}%` } } : null;
-    Equipment.findAll({ where: condition })
+    Equipment.findAll({ where: {Branch_ID: req.params.Branch_ID} })
         .then(data => {
             res.send(data);
         })

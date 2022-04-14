@@ -40,6 +40,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         Emer_Mobile: {
             type: Sequelize.INTEGER
+        },
+        WorkoutPlan_ID: {
+            type: Sequelize.INTEGER
         }
     },
         {

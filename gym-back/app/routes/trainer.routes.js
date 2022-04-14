@@ -4,7 +4,7 @@ module.exports = app => {
     
     router.post("/:Branch_ID", trainer.create);
     
-    router.get("/", trainer.findAll);
+    router.get("/:Branch_ID", trainer.findAll);
     
     router.get("/:Trainer_ID", trainer.findOne);
     
@@ -13,5 +13,5 @@ module.exports = app => {
     router.delete("/:Trainer_ID", trainer.delete);
     
     router.delete("/", trainer.deleteAll);
-    app.use('/api/trainer', router);
+    app.use('/trainer', router);
 };

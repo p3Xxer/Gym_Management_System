@@ -100,6 +100,7 @@ exports.findOne = (req, res) => {
 // Update a Member by the Mem_ID in the request
 exports.update = (req, res) => {
     const Mem_ID = req.params.Mem_ID;
+    console.log(req.body);
     Member.update(req.body, {
         where: { Mem_ID: Mem_ID }
     })

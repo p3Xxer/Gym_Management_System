@@ -67,12 +67,12 @@ function initialize(){
     workout.create({
         Workout_Name: "Cardio",
         Workout_DietChart: "Banana",
-        Workout_Duration: "30"
+        Working_Duration: "30"
     })
     workout.create({
         Workout_Name: "Weight Lifting",
         Workout_DietChart: "Egg",
-        Workout_Duration: "15"
+        Working_Duration: "15"
     })
 };
 //db.sequelize.sync();
@@ -82,6 +82,9 @@ require("./app/routes/branch_manager.routes.js")(app);
 require("./app/routes/payment.routes.js")(app);
 require("./app/routes/auth.routes.js")(app);
 require("./app/routes/manager.routes.js")(app);
+require("./app/routes/equipment.routes.js")(app);
+require("./app/routes/workout.routes.js")(app);
+require("./app/routes/trainer.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

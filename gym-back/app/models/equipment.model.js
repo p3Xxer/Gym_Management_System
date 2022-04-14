@@ -18,6 +18,9 @@ module.exports = (sequelize, Sequelize) => {
         Working_Status: {
             type: Sequelize.STRING
         },
+        Branch_ID: {
+            type: Sequelize.INTEGER
+        }
     },
         {
             timestamp: false,
