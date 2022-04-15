@@ -4,7 +4,7 @@ import { Link ,useParams} from "react-router-dom";
 
 
 const WorkoutList = () => {
-    const {id} = useParams();
+    
   const [workout, setWorkout] = useState([]);
   const [currentWorkout, setCurrentWorkout] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);

@@ -34,12 +34,15 @@ exports.create = (req, res) => {
         Manager_Email: req.body.Manager_Email,
         Password: req.body.Password,
     }
+    console.log("test1");
     Branch_Manager.create(branch_manager)
         .then(data => {
+            console.log("test2");
             x=x+1
             res.send(data);
         })
         .catch(err => {
+            console.log("3");
             res.status(500).send({
                 message:
                     err.message || "Some error occurred while creating the Manager."

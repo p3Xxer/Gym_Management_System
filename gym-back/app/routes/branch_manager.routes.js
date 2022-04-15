@@ -15,5 +15,5 @@ module.exports = app => {
     router.delete("/:Branch_ID", branch_manager.delete);
     // Delete all Manager
     // router.delete("/", branch_manager.deleteAll);
-    app.use('/api/branch_manager', router);
+    app.use('/branch_manager', router);
 };

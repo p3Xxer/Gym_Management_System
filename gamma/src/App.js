@@ -20,9 +20,14 @@ import AddEquipment from "./components/AddEquipment";
 import AddTrainer from "./components/AddTrainer";
 import ShowEquipment from "./components/ShowEquipment";
 import ShowTrainer from "./components/ShowTrainer";
+import AddWorkout from "./components/AddWorkout";
+import ShowWorkout from "./components/ShowWorkout";
+import AddBranches from "./components/AddBranch";
+import ShowBranches from "./components/ShowBranches";
+
 const App = () => {
   // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  // const [showAdminBoard, setShowAdminBoard] = useState(false);
+   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentManager, setCurrentManager] = useState(undefined);
 
   useEffect(() => {
@@ -32,9 +37,16 @@ const App = () => {
     //console.log(id);
 
     if (user) {
+      console.log(user.role);
+      if (user.role==="admin") {
+        setShowAdminBoard(true);
+        
+      }
+      else{
       setCurrentManager(user);
+      }
       // setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
-      // setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
+       
     }
 
     EventBus.on("logout", () => {
@@ -49,7 +61,7 @@ const App = () => {
   const logOut = () => {
     AuthService.logout();
     // setShowModeratorBoard(false);
-    // setShowAdminBoard(false);
+     setShowAdminBoard(false);
     setCurrentManager(undefined);
   };
   console.log(currentManager);
@@ -151,6 +163,24 @@ const App = () => {
           )
         }
         {
+          showAdminBoard&&(
+            <li className="nav-item">
+            <Link to={"/addworkout"} className="nav-link">
+            Add Workout
+            </Link>
+            </li>
+          )
+        }
+        {
+          showAdminBoard&&(
+            <li className="nav-item">
+            <Link to={"/showworkout"} className="nav-link">
+            Show Workout
+            </Link>
+            </li>
+          )
+        }
+        {
           currentManager&&(
             <li className="nav-item">
             <Link to={"/addequipment/"+currentManager.id} className="nav-link">
@@ -168,11 +198,29 @@ const App = () => {
             </li>
           )
         }
+        {
+          showAdminBoard&&(
+            <li className="nav-item">
+            <Link to={"/addbranch"} className="nav-link">
+            Add Branch
+            </Link>
+            </li>
+          )
+        }
+        {
+          showAdminBoard&&(
+            <li className="nav-item">
+            <Link to={"/showbranch"} className="nav-link">
+            Show Branches
+            </Link>
+            </li>
+          )
+        }
         
 
         </div>
 
-        {currentManager ? (
+        {currentManager||showAdminBoard ? (
           <div className="navbar-nav ml-auto">
             {
             //   <li className="nav-item">
@@ -224,6 +272,10 @@ const App = () => {
           <Route path="showequipment/:id" element={<ShowEquipment />} />
           <Route path="addtrainer/:id" element={<AddTrainer />} />
           <Route path="showtrainer/:id" element={<ShowTrainer />} />
+          <Route path="showworkout" element={<ShowWorkout/>} />
+          <Route path="addworkout" element={<AddWorkout />} />
+          <Route path="/showbranch" element={<ShowBranches />} />
+          <Route path="addbranch" element={<AddBranches />} />
             
               <Route path="/showmembers/:id" element={<ShowMembers />} />
             

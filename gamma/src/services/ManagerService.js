@@ -9,8 +9,20 @@ const getPublicContent = () => {
 const getAll=(id)=>{
   return axios.get(API_URL +"member/" + id);
 };
+const getAllWorkout=()=>{
+  return axios.get(API_URL +"workout/");
+};
+const getAllBranches=()=>{
+  return axios.get(API_URL +"branch_manager/");
+};
 const create = (id,data) => {
   return axios.post(API_URL+"member/"+id, data);
+};
+const createBranch = (data) => {
+  return axios.post(API_URL+"branch_manager/", data);
+};
+const AddWorkout = (data) => {
+  return axios.post(API_URL+"workout", data);
 };
 const createPayment = (data) => {
   console.log(data);
@@ -70,7 +82,11 @@ const UserService = {
   showEquipment,
   createEquipment,
   showTrainer,
-  createTrainer
+  createTrainer,
+  getAllWorkout,
+  AddWorkout,
+  createBranch,
+  getAllBranches
 };
 
 export default UserService;

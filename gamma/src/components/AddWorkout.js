@@ -3,8 +3,7 @@ import WorkoutService from "../services/ManagerService";
 import { useParams } from "react-router-dom";
 
 const AddWorkout = () => {
-    const {id}=useParams();
-    console.log(id);
+    
   const initialWorkoutState = {
     Workout_ID:null,
     Workout_Name:"",
@@ -74,7 +73,7 @@ const AddWorkout = () => {
           <div className="form-group">
             <label htmlFor="Workout_DietChart">Workout_DietChart</label>
             <input
-              type="time"
+              type="text"
               className="form-control"
               id="Workout_DietChart"
               required
