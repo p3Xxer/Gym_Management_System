@@ -45,8 +45,6 @@ exports.create = (req, res) => {
         });
 };
 
-
-// Retrieve all Members from the database.
 exports.findAll = (req, res) => {
     const bid = req.params.Branch_ID;
 
@@ -64,26 +62,13 @@ exports.findAll = (req, res) => {
                 res.send(val);
             })
     })
-    
-    // Member.findAll({ where: {Mem_ID: memID}})
-    //     .then(data => {
-    //         res.send(data);
-    //     })
-    //     .catch(err => {
-    //         res.status(500).send({
-    //             message:
-    //                 err.message || "Some error occurred while retrieving members."
-    //         });
-    //     });
 };
-// Find a single Member with an Mem_ID
+
 exports.findOne = (req, res) => {
-    console.log("Hiii");
     const Mem_ID = req.params.Mem_ID;
     Member.findByPk(Mem_ID)
         .then(data => {
             if (data) {
-                console.log(data);
                 res.send(data);
             } else {
                 res.status(404).send({
@@ -97,10 +82,9 @@ exports.findOne = (req, res) => {
             });
         });
 };
-// Update a Member by the Mem_ID in the request
+
 exports.update = (req, res) => {
     const Mem_ID = req.params.Mem_ID;
-    console.log(req.body);
     Member.update(req.body, {
         where: { Mem_ID: Mem_ID }
     })
@@ -121,7 +105,7 @@ exports.update = (req, res) => {
             });
         });
 };
-// Delete a Member with the specified Mem_ID in the request
+
 exports.delete = (req, res) => {
     const Mem_ID = req.params.Mem_ID;
     Member.destroy({
@@ -144,7 +128,7 @@ exports.delete = (req, res) => {
             });
         });
 };
-// Delete all Members from the database.
+
 exports.deleteAll = (req, res) => {
     Member.destroy({
         where: {},
@@ -160,41 +144,3 @@ exports.deleteAll = (req, res) => {
             });
         });
 };
-
-// exports.addBranch = (req, res) => {
-//     console.log(req);
-//     console.log(res);
-//     return Member.findByPk(req)
-//     .then((member) => {
-//         if(!member){
-//             console.log("Member Not found");
-//             return null;
-//         }
-//         return Branch_Manager.findByPk(res).then((branch_manager) => {
-//             if(!branch_manager){
-//                 console.log("Branch not found");
-//                 return null;
-//             }
-//             member.addBranch(branch_manager);
-//             console.log(`Added branch id ${branch_manager.Branch_ID} to member ${member.Mem_ID}`);
-//             return member;
-//         })
-//         .catch((err) => {
-//             console.log("Error in many to many between branch and member");
-//         })
-//     })
-// }
-// Find all published Members
-// Not meaningfull for our project
-// exports.findAllPublished = (req, res) => {
-    // Member.findAll({ where: { published: true } })
-    // .then(data => {
-    //   res.send(data);
-    // })
-    // .catch(err => {
-    //   res.status(500).send({
-    //     message:
-    //       err.message || "Some error occurred while retrieving member."
-    //   });
-    // });
-// };

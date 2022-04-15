@@ -17,7 +17,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         Working_Duration: {
             type: Sequelize.STRING
-        },
+        }
     },
         {
             timestamp: false,

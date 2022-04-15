@@ -22,7 +22,6 @@ exports.create = (req, res) => {
     }
     // Create a Manager
     const branch_manager = {
-        //Manger_Branch_ID: req.body.Manger_Branch_ID,
         Branch_Name: req.body.Branch_Name,
         Branch_Location: req.body.Branch_Location,
         Branch_Email: req.body.Branch_Email,
@@ -51,9 +50,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Manager from the database.
 exports.findAll = (req, res) => {
-    const Manager_Name = req.query.Manager_Name;
-    var condition = Manager_Name ? { Manager_Name: { [Op.like]: `%${Manager_Name}%` } } : null;
-    Branch_Manager.findAll({ where: condition })
+    Branch_Manager.findAll()
         .then(data => {
             res.send(data);
         })

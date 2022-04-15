@@ -22,10 +22,18 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.FLOAT
         },
         Member_ID: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'members',
+                key: 'Mem_ID'
+            }
         },
         Workout_ID: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'workouts',
+                key: 'Workout_ID'
+            }
         }
     },
     {

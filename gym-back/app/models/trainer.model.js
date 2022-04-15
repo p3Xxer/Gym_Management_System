@@ -31,7 +31,11 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         Branch_ID: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'branch_managers',
+                key: 'Branch_ID'
+            }
         }
     },
         {

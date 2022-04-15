@@ -9,7 +9,8 @@ const AddEquipment = () => {
     Equipment_ID:null,
     Equipment_Name:"",
     Equipment_Kind:"",
-    Equipment_Status:""
+    Working_Status:"",
+    Exercise:"",
   };
   const [equipment, setEquipment] = useState(initialEquipmentState);
   const [submitted, setSubmitted] = useState(false);
@@ -23,7 +24,8 @@ const AddEquipment = () => {
     var data = {
       Equipment_Name:equipment.Equipment_Name,
       Equipment_Kind:equipment.Equipment_Kind,
-      Working_Status:equipment.Working_Status
+      Working_Status:equipment.Working_Status,
+      Exercise:equipment.Exercise
     };
 
     EquipmentService.createEquipment(id,data)
@@ -32,7 +34,8 @@ const AddEquipment = () => {
             Equipment_ID:response.data.Equipment_ID,
             Equipment_Name:response.data.Equipment_Name,
             Equipment_Kind:response.data.Equipment_Kind,
-            Working_Status:response.data.Working_Status
+            Working_Status:response.data.Working_Status,
+            Exercise:response.data.Exercise
         });
         setSubmitted(true);
         console.log(response.data);
@@ -93,6 +96,18 @@ const AddEquipment = () => {
               value={equipment.Working_Status}
               onChange={handleInputChange}
               name="Working_Status"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="Exercise">Exercise</label>
+            <input
+              type="text"
+              className="form-control"
+              id="Exercise"
+              required
+              value={equipment.Exercise}
+              onChange={handleInputChange}
+              name="Exercise"
             />
           </div>
           {

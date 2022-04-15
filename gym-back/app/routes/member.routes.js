@@ -11,7 +11,6 @@ module.exports = app => {
     router.put("/:Mem_ID", member.update);
     // Delete a Member with Mem_ID
     router.delete("/:Mem_ID", member.delete);
-    // Delete all Member
-    router.delete("/", member.deleteAll);
+
     app.use('/member', router);
 };

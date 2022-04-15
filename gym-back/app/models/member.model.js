@@ -42,7 +42,11 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.INTEGER
         },
         WorkoutPlan_ID: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'workouts',
+                key: 'Workout_ID'
+            }
         }
     },
         {

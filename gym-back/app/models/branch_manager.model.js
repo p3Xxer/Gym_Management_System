@@ -24,7 +24,6 @@ module.exports = (sequelize, Sequelize) => {
         Manager_ID: {
             type: Sequelize.INTEGER,
             candidateKey: true,
-            // autoIncrement: true,
             allowNull: false,
             unique: true
         },

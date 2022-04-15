@@ -22,36 +22,31 @@ exports.create = (req, res) => {
         where: {Workout_Name: req.body.Workout_Name}
     }).then(val => {
         if(val[0]){
-            Member.findByPk(req.body.Member_ID)
+            const payment = {
+                Payment_Desc: req.body.Payment_Desc,
+                Payment_Time: req.body.Payment_Time,
+                Payment_Date: req.body.Payment_Date,
+                Payment_Amt: req.body.Payment_Amt,
+                Member_ID: req.body.Member_ID,
+                Workout_ID: val[0].dataValues.Workout_ID
+            }
+            Payment.create(payment)
             .then(data => {
-                if (!data) {
-                    res.status(404).send({
-                        message: `Cannot find Member with Mem_ID=${req.body.Member_ID}.`
-                    });
-                    return;
-                }else{
-                    const payment = {
-                        Payment_Desc: req.body.Payment_Desc,
-                        Payment_Time: req.body.Payment_Time,
-                        Payment_Date: req.body.Payment_Date,
-                        Payment_Amt: req.body.Payment_Amt,
-                        Member_ID: req.body.Member_ID,
-                        Workout_ID: val[0].dataValues.Workout_ID
+                res.send(data);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    message: err.message||"Some error occurred"
+                })
+            })
+            Member.update({WorkoutPlan_ID: payment.Workout_ID}, {where: {Mem_ID: req.body.Member_ID}})
+                .then(num => {
+                    if(num==1){
+                        console.log("Updation Successfull");
+                    }else{
+                        console.log("Not Updated");
                     }
-                    Member.update({WorkoutPlan_ID: payment.Workout_ID}, {where: {Mem_ID: req.body.Member_ID}})
-                        .then(num => {
-                            if(num==1){
-                                console.log("Updation Successfull");
-                            }else{
-                                console.log("Not Updated");
-                            }
-                        })
-                    Payment.create(payment)
-                    .then(data => {
-                        res.send(data);
-                    })
-                }
-            });
+                })
         }else {
             res.status(404).send({
                 message: `Cannot find Workout with Name=${req.body.Workout_Name}.`

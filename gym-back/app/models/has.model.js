@@ -5,12 +5,20 @@ module.exports = (sequelize, Sequelize) => {
         Branch_ID: {
             type: Sequelize.INTEGER,
             primaryKey: true,
-            allowNull: false
+            allowNull: false,
+            references: {
+                model: 'branch_managers',
+                key: 'Branch_ID'
+            }
         },
         Member_ID: {
             type: Sequelize.INTEGER,
             primaryKey: true,
-            allowNULL: false
+            allowNULL: false,
+            references: {
+                model: 'members',
+                key: 'Mem_ID'
+            }
         },
     },
         {

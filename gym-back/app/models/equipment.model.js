@@ -18,8 +18,15 @@ module.exports = (sequelize, Sequelize) => {
         Working_Status: {
             type: Sequelize.STRING
         },
+        Exercise: {
+            type: Sequelize.STRING
+        },
         Branch_ID: {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'branch_managers',
+                key: 'Branch_ID'
+            }
         }
     },
         {

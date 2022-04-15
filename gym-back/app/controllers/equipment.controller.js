@@ -18,6 +18,7 @@ exports.create = (req, res) => {
         Equipment_Name: req.body.Equipment_Name,
         Equipment_Kind: req.body.Equipment_Kind,
         Working_Status: req.body.Working_Status,
+        Exercise: req.body.Exercise,
         Branch_ID: req.params.Branch_ID
     }
     Equipment.create(equipment)
@@ -32,8 +33,6 @@ exports.create = (req, res) => {
         });
 };
 
-
-// Retrieve all Equipment from the database.
 exports.findAll = (req, res) => {
     Equipment.findAll({ where: {Branch_ID: req.params.Branch_ID} })
         .then(data => {
@@ -46,7 +45,7 @@ exports.findAll = (req, res) => {
             });
         });
 };
-// Find a single Equipment with an id
+
 exports.findOne = (req, res) => {
     const id = req.params.id;
     Equipment.findByPk(id)
@@ -65,11 +64,11 @@ exports.findOne = (req, res) => {
             });
         });
 };
-// Update a Equipment by the id in the request
+
 exports.update = (req, res) => {
     const id = req.params.id;
     Equipment.update(req.body, {
-        where: { id: id }
+        where: { Equipment_ID: id }
     })
         .then(num => {
             if (num == 1) {
@@ -88,11 +87,11 @@ exports.update = (req, res) => {
             });
         });
 };
-// Delete a Equipment with the specified id in the request
+
 exports.delete = (req, res) => {
     const id = req.params.id;
     Equipment.destroy({
-        where: { id: id }
+        where: { Equipment_ID: id }
     })
         .then(num => {
             if (num == 1) {
@@ -111,7 +110,7 @@ exports.delete = (req, res) => {
             });
         });
 };
-// Delete all Equipment from the database.
+
 exports.deleteAll = (req, res) => {
     Equipment.destroy({
         where: {},
@@ -127,17 +126,3 @@ exports.deleteAll = (req, res) => {
             });
         });
 };
-// Find all published Users
-// Not meaningfull for our project
-// exports.findAllPublished = (req, res) => {
-    // User.findAll({ where: { published: true } })
-    // .then(data => {
-    //   res.send(data);
-    // })
-    // .catch(err => {
-    //   res.status(500).send({
-    //     message:
-    //       err.message || "Some error occurred while retrieving member."
-    //   });
-    // });
-// };

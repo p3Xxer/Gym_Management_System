@@ -1,6 +1,6 @@
 const req = require("express/lib/request");
 const db = require("../models");
-const Workout = db.Workout;
+const Workout = db.workout;
 const Op = db.Sequelize.Op;
 //Create and Save a new Workout
 exports.create = (req, res) => {
@@ -33,9 +33,7 @@ exports.create = (req, res) => {
 
 // Retrieve all Workout from the database.
 exports.findAll = (req, res) => {
-    const Workout_Name = req.query.Workout_Name;
-    var condition = Workout_Name ? { Workout_Name: { [Op.like]: `%${Workout_Name}%` } } : null;
-    Workout.findAll({ where: condition })
+    Workout.findAll()
         .then(data => {
             res.send(data);
         })
@@ -92,7 +90,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
     Workout.destroy({
-        where: { id: id }
+        where: { Workout_ID: id }
     })
         .then(num => {
             if (num == 1) {

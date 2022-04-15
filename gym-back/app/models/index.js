@@ -19,14 +19,13 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 // // we have used users instead of tutorials
-db.member = require('./member.model.js')(sequelize, Sequelize);
 db.branch_manager = require('./branch_manager.model.js')(sequelize, Sequelize);
+db.workout = require('./workout.model.js')(sequelize, Sequelize);
+db.member = require('./member.model.js')(sequelize, Sequelize);
 db.equipment = require('./equipment.model.js')(sequelize, Sequelize);
 db.payment = require('./payment.model.js')(sequelize, Sequelize);
-db.workout = require('./workout.model.js')(sequelize, Sequelize);
-db.has = require('./has.model.js')(sequelize, Sequelize);
-db.uses = require('./uses.model.js')(sequelize, Sequelize);
 db.trainer = require('./trainer.model.js')(sequelize, Sequelize);
 db.trains = require('./trains.model.js')(sequelize, Sequelize);
+db.has = require('./has.model.js')(sequelize, Sequelize);
 
 module.exports = db;

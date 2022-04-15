@@ -97,8 +97,10 @@ console.log(equipment)
                 className={
                   "list-group-item " 
                 }
-                
-                
+                onClick={() => {
+                  setActiveEquipment(equipment, index)
+                }
+                }
                 key={index}
               >
                 {equipment.Equipment_ID    }                  {equipment.Equipment_Desc}   
