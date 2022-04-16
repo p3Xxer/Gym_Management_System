@@ -15,7 +15,8 @@ const AddTrainer = () => {
     Phone: 0,
     Address: "",
     Emer_Name: "",
-    Emer_Mobile: 0
+    Emer_Mobile: 0,
+    Workout_Name:""
   };
   const [trainer, setTrainer] = useState(initialTrainerState);
   const [submitted, setSubmitted] = useState(false);
@@ -36,7 +37,8 @@ const AddTrainer = () => {
       Phone: trainer.Phone,
       Address: trainer.Address,
       Emer_Name: trainer.Emer_Name,
-      Emer_Mobile: trainer.Emer_Mobile
+      Emer_Mobile: trainer.Emer_Mobile,
+      Workout_Name:trainer.Workout_Name
     };
 
     TrainerDataService.createTrainer(id,data)
@@ -52,7 +54,8 @@ const AddTrainer = () => {
           Phone: response.data.Phone,
           Address: response.data.Address,
           Emer_Name: response.data.Emer_Name,
-          Emer_Mobile: response.data.Emer_Mobile
+          Emer_Mobile: response.data.Emer_Mobile,
+          Workout_Name:response.data.Workout_Name
         });
         setSubmitted(true);
         console.log(response.data);
@@ -163,7 +166,18 @@ const AddTrainer = () => {
               name="Emer_Mobile"
             />
           </div>
-
+          <div className="form-group">
+          <label htmlFor="Workout_Name">Workout_Name</label>
+          <input
+            type="text"
+            className="form-control"
+            id="Workout_Name"
+            required
+            value={trainer.Workout_Name}
+            onChange={handleInputChange}
+            name="Workout_Name"
+          />
+        </div>
           <button onClick={saveTrainer} className="btn btn-success">
             Submit
           </button>

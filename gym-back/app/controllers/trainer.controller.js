@@ -2,7 +2,7 @@ const req = require("express/lib/request");
 const db = require("../models");
 const Trainer = db.trainer;
 const { Op } = require("sequelize");
-
+const Workout = db.workout;
 exports.create = (req, res) => {
     if (!req.body.Trainer_Name) {
         res.status(400).send({
@@ -10,27 +10,41 @@ exports.create = (req, res) => {
         });
         return;
     }
-
-    const trainer = {
-        Trainer_Name: req.body.Trainer_Name,
-        Gender: req.body.Gender,
-        Blood_Type: req.body.Blood_Type,
-        Phone: req.body.Phone,
-        Address: req.body.Address,
-        Emer_Name: req.body.Emer_Name,
-        Emer_Mobile: req.body.Emer_Mobile,
-        Branch_ID: req.params.Branch_ID
-    }
-    Trainer.create(trainer)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while creating the Trainer."
+    console.log(req.body.Workout_Name)
+    Workout.findAll({
+        attributes: ['Workout_ID'],
+        where: {Workout_Name: req.body.Workout_Name}
+    }).then(val => {
+        if(val[0]){
+            console.log("Found");
+            console.log(val[0].dataValues.Workout_ID)
+            const trainer = {
+                Trainer_Name: req.body.Trainer_Name,
+                Gender: req.body.Gender,
+                Blood_Type: req.body.Blood_Type,
+                Phone: req.body.Phone,
+                Address: req.body.Address,
+                Emer_Name: req.body.Emer_Name,
+                Emer_Mobile: req.body.Emer_Mobile,
+                Branch_ID: req.params.Branch_ID,
+                Workout_ID: val[0].dataValues.Workout_ID
+            }
+            Trainer.create(trainer)
+                .then(data => {
+                    res.send(data);
+                })
+                .catch(err => {
+                    res.status(500).send({
+                        message:
+                            err.message || "Some error occurred while creating the Trainer."
+                    });
+                });
+        }else {
+            res.status(404).send({
+                message: `Cannot find Workout with Name=${req.body.Workout_Name}.`
             });
-        });
+        }
+    })
 };
 
 

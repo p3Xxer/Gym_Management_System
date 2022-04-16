@@ -36,6 +36,13 @@ module.exports = (sequelize, Sequelize) => {
                 model: 'branch_managers',
                 key: 'Branch_ID'
             }
+        },
+        Workout_ID: {
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'workouts',
+                key: 'Workout_ID'
+            }
         }
     },
         {

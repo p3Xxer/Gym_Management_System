@@ -17,6 +17,7 @@
     "react-tsparticles": "^2.0.5",
     "react-validation": "^3.0.7",
     "tsparticles": "^2.0.5",
+    "typewriter-effect": "^2.18.2",
     "validator": "^13.0.0"
   },
   "scripts": {
