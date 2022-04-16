@@ -105,7 +105,7 @@ const EquipmentList = () => {
             </tr>
           </thead>
 
-          {equipment.map((branch_manager, index) => (
+          {equipment.map((equipment, index) => (
             <tr>
               <td>{equipment.Equipment_ID}</td>
               <td>{equipment.Equipment_Name}</td>
@@ -123,7 +123,7 @@ const EquipmentList = () => {
           ))}
         </Table>
 
-        <ul className="list-group">
+        {/* <ul className="list-group">
           {equipment &&
             equipment.map((equipment, index) => (
               <li
@@ -141,7 +141,7 @@ const EquipmentList = () => {
 
 
             ))}
-        </ul>
+        </ul> */}
 
         {
           //     <button
