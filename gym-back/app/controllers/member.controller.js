@@ -108,25 +108,35 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
     const Mem_ID = req.params.Mem_ID;
-    Member.destroy({
-        where: { Mem_ID: Mem_ID }
-    })
-        .then(num => {
-            if (num == 1) {
-                res.send({
-                    message: "Member was deleted successfully!"
+    Has.destroy({
+        where: {Member_ID: Mem_ID}
+    }).then(n => {
+        if(n==1){
+            Member.destroy({
+                where: { Mem_ID: Mem_ID }
+            })
+                .then(num => {
+                    if (num == 1) {
+                        res.send({
+                            message: "Member was deleted successfully!"
+                        });
+                    } else {
+                        res.send({
+                            message: `Cannot delete Member with Mem_ID=${Mem_ID}. Maybe Member was not found!`
+                        });
+                    }
+                })
+                .catch(err => {
+                    res.status(500).send({
+                        message: err.message || "Cannot delete"
+                    });
                 });
-            } else {
-                res.send({
-                    message: `Cannot delete Member with Mem_ID=${Mem_ID}. Maybe Member was not found!`
-                });
-            }
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: "Could not delete Member with Mem_ID=" + Mem_ID
+        }else{
+            res.send({
+                message: `Cannot delete Member with Mem_ID=${Mem_ID}.`
             });
-        });
+        }
+    })
 };
 
 exports.deleteAll = (req, res) => {

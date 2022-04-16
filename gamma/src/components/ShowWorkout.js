@@ -127,10 +127,10 @@ const WorkoutList = () => {
                 <strong>Mem_Name:</strong>
               </label>{" "}
              
-              {currentWorkout.Mem_ID}
+              {currentWorkout.Workout_ID}
             </div>
             <Link
-              to={"/editworkout/" + currentWorkout.Mem_ID}
+              to={"/editworkout/" + currentWorkout.Workout_ID}
               className="badge badge-warning"
             >
               Edit

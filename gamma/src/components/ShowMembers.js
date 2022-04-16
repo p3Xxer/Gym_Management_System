@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ManagerService from "../services/ManagerService";
 import { Link ,useParams} from "react-router-dom";
-
+import {Table} from "react-bootstrap";
 
 const MemberList = () => {
     const {id} = useParams();
@@ -62,18 +62,28 @@ const MemberList = () => {
 //         console.log(e);
 //       });
 //   };
+const deleteMember=(Mem_ID)=>{
+  console.log(Mem_ID);
+  ManagerService.removeMember(Mem_ID)
+  .then(response =>{
+    console.log(response.data);
+    refreshList();
+  })
+}
 
   return (
     <div className="list row">
       <div className="col-md-8">
         <div className="input-group mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search by Mem_Name"
-            value={searchMem_Name}
-            onChange={onChangeSearchMem_Name}
-          />
+         { 
+          //  <input
+          //   type="text"
+          //   className="form-control"
+          //   placeholder="Search by Mem_Name"
+          //   value={searchMem_Name}
+          //   onChange={onChangeSearchMem_Name}
+          // />
+        }
           {
         //       <div className="input-group-append">
         //     <button
@@ -90,24 +100,32 @@ const MemberList = () => {
       <div className="col-md-6">
         <h4>Members List</h4>
 
-        <ul className="list-group">
+        <Table striped bordered hover variant="dark">
+        <thead>
+              <tr>
+                
+                <th>Member id</th>
+                <th>Member Name</th>
+                <th>Member Phone</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
           {member &&
             member.map((member, index) => (
-              <li
-                className={
-                  "list-group-item " + (index === currentIndex ? "active" : "")
-                }
-                onClick={() => {
-                  setActiveMember(member, index)
-                  console.log(member.Mem_ID)
-                }
-                }
-                key={index}
-              >
-                {member.Mem_Name}
-              </li>
+              <tr>
+                <td>{member.Mem_ID}</td>
+                <td>{member.Mem_Name}</td>
+                <td>{member.Mobile_Number}</td>
+                <td><Link
+                to={"/editmember/" + member.Mem_ID}
+                className="badge badge-warning">
+                Edit
+              </Link></td>
+              <td><button className="m-3 btn-sm btn-danger" onClick={()=>{deleteMember(member.Mem_ID)}}>Delete</button></td>
+              </tr>
             ))}
-        </ul>
+        </Table>
 
         {
         //     <button
@@ -118,31 +136,33 @@ const MemberList = () => {
         // </button>
     }
       </div>
-      <div className="col-md-6">
-        {currentMember ? (
-          <div>
-            <h4>Members</h4>
-            <div>
-              <label>
-                <strong>Mem_Name:</strong>
-              </label>{" "}
+      {
+      //   <div className="col-md-6">
+      //   {currentMember ? (
+      //     <div>
+      //       <h4>Members</h4>
+      //       <div>
+      //         <label>
+      //           <strong>Mem_Name:</strong>
+      //         </label>{" "}
              
-              {currentMember.Mem_ID}
-            </div>
-            <Link
-              to={"/editmember/" + currentMember.Mem_ID}
-              className="badge badge-warning"
-            >
-              Edit
-            </Link>
-          </div>
-        ) : (
-          <div>
-            <br />
-            <p>Please click on a Member...</p>
-          </div>
-        )}
-      </div>
+      //         {currentMember.Mem_ID}
+      //       </div>
+      //       <Link
+      //         to={"/editmember/" + currentMember.Mem_ID}
+      //         className="badge badge-warning"
+      //       >
+      //         Edit
+      //       </Link>
+      //     </div>
+      //   ) : (
+      //     <div>
+      //       <br />
+      //       <p>Please click on a Member...</p>
+      //     </div>
+      //   )}
+      // </div>
+    }
     </div>
   );
 };

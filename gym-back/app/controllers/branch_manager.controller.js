@@ -3,7 +3,7 @@ const { branch_manager } = require("../models");
 const db = require("../models");
 const Branch_Manager = db.branch_manager;
 const Op = db.Sequelize.Op;
-var x = 1001;
+var x = 1004;
 //console.log(db);
 //Create and Save a new Manager
 exports.create = (req, res) => {

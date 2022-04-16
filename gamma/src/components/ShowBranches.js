@@ -123,7 +123,7 @@ const Branch_ManagerList = () => {
               {currentBranch_Manager.Branch_ID}
             </div>
             <Link
-              to={"/branch_manager/"+currentBranch_Manager.Branch_ID}
+              to={"/editbranch/"+currentBranch_Manager.Branch_ID}
               className="badge badge-warning"
             >
               Edit
