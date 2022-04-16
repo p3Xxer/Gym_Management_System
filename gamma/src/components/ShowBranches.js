@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BranchServices from "../services/ManagerService";
 import { Link } from "react-router-dom";
-
+import { Table } from 'react-bootstrap';
 
 const Branch_ManagerList = () => {
   const [branch_manager, setBranch_Manager] = useState([]);
@@ -14,7 +14,7 @@ const Branch_ManagerList = () => {
   }, []);
 
   const onChangeSearchBranch_Name = e => {
-    const searchBranch_Name= e.target.value;
+    const searchBranch_Name = e.target.value;
     setSearchBranch_Name(searchBranch_Name);
   };
 
@@ -87,7 +87,49 @@ const Branch_ManagerList = () => {
       <div className="col-md-6">
         <h4>Branch_Managers List</h4>
 
-        <ul className="list-group">
+        {/* //khushil working */}
+
+        <Table striped bordered hover variant="dark">
+          <thead>
+            <tr>
+
+              <th>Branch ID</th>
+              <th>Branch Name</th>
+              <th>Branch Location</th>
+              <th>Branch Email</th>
+              <th>Branch Phone Number</th>
+              <th>Manager-ID</th>
+              <th>Manager Name</th>
+              <th>Manager Mobile Number</th>
+              <th>Manager Email</th>
+              <th>Manager Address</th>
+
+            </tr>
+          </thead>
+
+          {branch_manager.map((branch_manager, index) => (
+            <tr>
+              <td>{branch_manager.Branch_ID}</td>
+              <td>{branch_manager.Branch_Name}</td>
+              <td>{branch_manager.Branch_Location}</td>
+              <td>{branch_manager.Branch_Email}</td>
+              <td>{branch_manager.Branch_Phone_Number}</td>
+              <td>{branch_manager.Manager_ID}</td>
+              <td>{branch_manager.Manager_Name}</td>
+              <td>{branch_manager.Manager_Mobile_Number}</td>
+              <td>{branch_manager.Manager_Email}</td>
+              <td>{branch_manager.Manager_Address}</td>
+
+              <td>
+                <Link
+                  to={"/branch_manager/" + branch_manager.Branch_ID}
+                  className="badge badge_warning">Edit</Link>
+              </td>
+              <td>{/*<button className="m-3 btn-sm btn-danger" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button>*/}</td>
+            </tr>
+          ))}
+        </Table>
+        {/* <ul className="list-group">
           {branch_manager &&
             branch_manager.map((branch_manager, index) => (
               <li
@@ -102,17 +144,17 @@ const Branch_ManagerList = () => {
                 {branch_manager.Branch_Name}
               </li>
             ))}
-        </ul>
+        </ul> */}
 
-        <button
+        {/* <button
           className="m-3 btn btn-sm btn-danger"
           onClick={removeAllBranch_Managers}
         >
           Remove All
         </button>
-      </div>
-      <div className="col-md-6">
-        {currentBranch_Manager ? (
+      </div> */}
+        {/* <div className="col-md-6"> */}
+        {/* {currentBranch_Manager ? (
           <div>
             <h4>Branch_Managers</h4>
             <div>
@@ -123,7 +165,7 @@ const Branch_ManagerList = () => {
               {currentBranch_Manager.Branch_ID}
             </div>
             <Link
-              to={"/editbranch/"+currentBranch_Manager.Branch_ID}
+              to={"/editbranch/" + currentBranch_Manager.Branch_ID}
               className="badge badge-warning"
             >
               Edit
@@ -134,7 +176,7 @@ const Branch_ManagerList = () => {
             <br />
             <p>Please click on a Branch_Manager...</p>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
