@@ -4,8 +4,9 @@ import { useParams } from "react-router-dom";
 import "./Member.css";
 import image from "../Images/wp4377350-man-fitness-wallpapers.jpg"
 import sample from "../Videos/pexels-tima-miroshnichenko-6388436.mp4"
+import { Card } from "react-bootstrap";
 const AddMember = () => {
-    const {id}=useParams();
+  const { id } = useParams();
   const initialMemberState = {
     Mem_ID: null,
     Mem_Name: "",
@@ -41,7 +42,7 @@ const AddMember = () => {
       Emer_Mobile: member.Emer_Mobile
     };
 
-    MemberDataService.create(id,data)
+    MemberDataService.create(id, data)
       .then(response => {
         setMember({
           Mem_ID: response.data.Mem_ID,
@@ -70,145 +71,150 @@ const AddMember = () => {
   };
 
   return (
-    
+
     <div className="member-submit-form" id="member" >
-    <img src ={image} id="imgt" />
-      {submitted ? (
-        <div>
-          <h4>You submitted successfully!</h4>
-          <button className="btn btn-success" onClick={newMember}>
-            Add
-          </button>
-        </div>
-      ) : (
-        <div>
-          <div className="form-group">
-            <label htmlFor="Mem_Name">Mem_Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="title"
-              required
-              value={member.Mem_Name}
-              onChange={handleInputChange}
-              name="Mem_Name"
-            />
+      <img src={image} id="imgt" />
+      <Card style={{ height: '60rem', width: '44rem', marginBlockStart: '0rem', backgroundColor: 'black', textAlign: 'center', alignContent: 'center', alignItems: 'center', top: '0' }}>
+        {submitted ? (
+          <div>
+            <h4>You submitted successfully!</h4>
+            <button className="btn btn-success" onClick={newMember}>
+              Add
+            </button>
           </div>
+        ) : (
+          <div>
+            <div className="form-group">
+              <br />
+              <br />
+              <label className="lab" htmlFor="Mem_Name">Mem_Name</label>
+              <input
+                type="text"
+                className="form-control int"
+                id="title"
+                required
+                size="20"
+                value={member.Mem_Name} ß
+                onChange={handleInputChange}
+                name="Mem_Name"
+              />
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="Mem_Weight">Mem_Weight</label>
-            <input
-              type="number"
-              className="form-control"
-              id="Mem_Weight"
-              required
-              value={member.Mem_Weight}
-              onChange={handleInputChange}
-              name="Mem_Weight"
-            />
+            <div className="form-group">
+              <label className="lab" htmlFor="Mem_Weight">Mem_Weight</label>
+              <input
+                type="number"
+                className="form-control int"
+                id="Mem_Weight"
+                required
+                value={member.Mem_Weight}
+                onChange={handleInputChange}
+                name="Mem_Weight"
+              />
+            </div>
+            <div className="form-group">
+              <label className="lab" htmlFor="Mem_Height">Mem_Height</label>
+              <input
+                type="number"
+                className="form-control int"
+                id="Mem_Height"
+                required
+                value={member.Mem_Height}
+                onChange={handleInputChange}
+                name="Mem_Height"
+              />
+            </div>
+            <div className="form-group">
+              <label className="lab" htmlFor="Age">Age</label>
+              <input
+                type="number"
+                className="form-control int"
+                id="Age"
+                required
+                value={member.Age}
+                onChange={handleInputChange}
+                name="Age"
+              />
+            </div>
+            <div className="form-group">
+              <label className="lab" htmlFor="Gender">Gender</label>
+              <input
+                type="text"
+                className="form-control int"
+                id="Gender"
+                required
+                value={member.Gender}
+                onChange={handleInputChange}
+                name="Gender"
+              />
+            </div>
+            <div className="form-group">
+              <label className="lab" htmlFor="Blood_Type">Blood_Type</label>
+              <input
+                type="text"
+                className="form-control int"
+                id="Blood_Type"
+                required
+                value={member.Blood_Type}
+                onChange={handleInputChange}
+                name="Blood_Type"
+              />
+            </div>
+            <div className="form-group">
+              <label className="lab" htmlFor="Mobile_Number">Mobile_Number</label>
+              <input
+                type="number"
+                className="form-control int"
+                id="Mobile_Number"
+                required
+                value={member.Mobile_Number}
+                onChange={handleInputChange}
+                name="Mobile_Number"
+              />
+            </div>
+            <div className="form-group">
+              <label className="lab" htmlFor="Address">Address</label>
+              <input
+                type="text"
+                className="form-control int"
+                id="Address"
+                required
+                value={member.Address}
+                onChange={handleInputChange}
+                name="Address"
+              />
+            </div>
+            <div className="form-group">
+              <label className="lab" htmlFor="Emer_Name">Emer_Name</label>
+              <input
+                type="text"
+                className="form-control int"
+                id="Emer_Name"
+                required
+                value={member.Emer_Name}
+                onChange={handleInputChange}
+                name="Emer_Name"
+              />
+            </div>
+            <div className="form-group">
+              <label className="lab" htmlFor="Emer_Mobile">Emer_Mobile</label>
+              <input
+                type="number"
+                className="form-control int"
+                id="Emer_Mobile"
+                required
+                value={member.Emer_Mobile}
+                onChange={handleInputChange}
+                name="Emer_Mobile"
+              />
+            </div>
+            <br />
+            <button onClick={saveMember} className="btn btn-success">
+              Submit
+            </button>
           </div>
-          <div className="form-group">
-            <label htmlFor="Mem_Height">Mem_Height</label>
-            <input
-              type="number"
-              className="form-control"
-              id="Mem_Height"
-              required
-              value={member.Mem_Height}
-              onChange={handleInputChange}
-              name="Mem_Height"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="Age">Age</label>
-            <input
-              type="number"
-              className="form-control"
-              id="Age"
-              required
-              value={member.Age}
-              onChange={handleInputChange}
-              name="Age"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="Gender">Gender</label>
-            <input
-              type="text"
-              className="form-control"
-              id="Gender"
-              required
-              value={member.Gender}
-              onChange={handleInputChange}
-              name="Gender"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="Blood_Type">Blood_Type</label>
-            <input
-              type="text"
-              className="form-control"
-              id="Blood_Type"
-              required
-              value={member.Blood_Type}
-              onChange={handleInputChange}
-              name="Blood_Type"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="Mobile_Number">Mobile_Number</label>
-            <input
-              type="number"
-              className="form-control"
-              id="Mobile_Number"
-              required
-              value={member.Mobile_Number}
-              onChange={handleInputChange}
-              name="Mobile_Number"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="Address">Address</label>
-            <input
-              type="text"
-              className="form-control"
-              id="Address"
-              required
-              value={member.Address}
-              onChange={handleInputChange}
-              name="Address"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="Emer_Name">Emer_Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="Emer_Name"
-              required
-              value={member.Emer_Name}
-              onChange={handleInputChange}
-              name="Emer_Name"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="Emer_Mobile">Emer_Mobile</label>
-            <input
-              type="number"
-              className="form-control"
-              id="Emer_Mobile"
-              required
-              value={member.Emer_Mobile}
-              onChange={handleInputChange}
-              name="Emer_Mobile"
-            />
-          </div>
-
-          <button onClick={saveMember} className="btn btn-success">
-            Submit
-          </button>
-        </div>
-      )}
+        )}
+      </Card>
     </div>
   );
 };

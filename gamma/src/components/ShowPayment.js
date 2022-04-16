@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PaymentService from "../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
+import image from "../Images/pexels-victor-freitas-841130.jpg"
 
 const PaymentList = () => {
   const { id } = useParams();
@@ -64,8 +65,9 @@ const PaymentList = () => {
   //   };
   console.log(payment)
   return (
-    <div className="list row">
-      <div className="col-md-8">
+    <div className="list row" align="center">
+      <img src={image} id="imgt2" />
+      <div className="">
         <div className="input-group mb-3">
           <input
             type="text"
@@ -87,14 +89,14 @@ const PaymentList = () => {
           }
         </div>
       </div>
-      <div className="col-md-6">
-        <h4>Payments List</h4>
-
+      <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
+        <h4 className="lab">Payments List</h4>
+        <br />
         {/* khushil working */}
 
-        <Table striped bordered hover variant="dark">
+        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ textAlign: "center", borderRadius: '20px', marginInlineStart: '1rem' }}>
           <thead>
-            <tr>
+            <tr textAlign="center" vertical-align="middle">
 
               <th>Payment ID</th>
               <th>Payment Description</th>
@@ -103,17 +105,18 @@ const PaymentList = () => {
               <th>Payment Time</th>
               <th>Member ID</th>
               <th>Workout ID</th>
+              <th>Update/Delete</th>
             </tr>
           </thead>
 
           {payment.map((payment, index) => (
             <tr>
               <td>{payment.Payment_ID}</td>
-              <td>{payment.Payment_Description}</td>
-              <td>{payment.Payment_Amount}</td>
+              <td>{payment.Payment_Desc}</td>
+              <td>{payment.Payment_Amt}</td>
               <td>{payment.Payment_Date}</td>
               <td>{payment.Payment_Time}</td>
-              <td>{payment.Mem_ID}</td>
+              <td>{payment.Member_ID}</td>
               <td>{payment.Workout_ID}</td>
 
               <td>

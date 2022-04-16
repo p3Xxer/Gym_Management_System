@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TrainerService from "../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import Table from "react-bootstrap/Table";
-
+import image from "../Images/pexels-victor-freitas-841130.jpg"
 const TrainerList = () => {
   const { id } = useParams();
   const [trainer, setTrainer] = useState([]);
@@ -64,8 +64,9 @@ const TrainerList = () => {
   //   };
   console.log(trainer)
   return (
-    <div className="list row">
-      <div className="col-md-8">
+    <div className="list row" align="center">
+      <img src={image} id="imgt2" />
+      <div className="">
         <div className="input-group mb-3">
           <input
             type="text"
@@ -87,12 +88,12 @@ const TrainerList = () => {
           }
         </div>
       </div>
-      <div className="col-md-6">
-        <h4>Trainers List</h4>
-
+      <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
+        <h4 className="lab">Trainers List</h4>
+        <br />
         {/* khushil working */}
 
-        <Table striped bordered hover variant="dark">
+        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ textAlign: "center", borderRadius: '20px', marginInlineStart: '1rem' }}>
           <thead>
             <tr>
 
