@@ -36,8 +36,8 @@ label {
 
 #video{
   object-fit: cover;
-  width: 100vw;
-  height: 100vw;
+  width: auto;
+  height: 60vw;
   position: fixed;
   top: 0;
   left: 0;
@@ -58,3 +58,4 @@ label {
   display: inline-block;
 
 }
+

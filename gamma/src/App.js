@@ -28,21 +28,29 @@ import AddBranches from "./components/AddBranch";
 import ShowBranches from "./components/ShowBranches";
 import EditWorkout from "./components/EditWorkout";
 import EditBranch from "./components/EditBranch";
+import { Dropdown } from "react-bootstrap";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
 const App = () => {
+  const [showDropdownMem, setShowDropdownMem] = useState(false);
+  const [showDropdownPay, setShowDropdownPay] = useState(false);
+  const [showDropdownTrain, setShowDropdownTrain] = useState(false);
+  const [showDropdownEquip, setShowDropdownEquip] = useState(false);
+  const [showDropdownBranch, setShowDropdownBranch] = useState(false);
+  const [showDropdownWor, setShowDropdownWor] = useState(false);
   const particlesInit = async (main) => {
     console.log(main);
-
+  
     // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
     // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(main);
   };
-
+  
   const particlesLoaded = (container) => {
     console.log(container);
   };
   // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  const [showAdminBoard, setShowAdminBoard] = useState(false);
+   const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentManager, setCurrentManager] = useState(undefined);
 
   useEffect(() => {
@@ -53,15 +61,15 @@ const App = () => {
 
     if (user) {
       console.log(user.role);
-      if (user.role === "admin") {
+      if (user.role==="admin") {
         setShowAdminBoard(true);
-
+        
       }
-      else {
-        setCurrentManager(user);
+      else{
+      setCurrentManager(user);
       }
       // setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
-
+       
     }
 
     EventBus.on("logout", () => {
@@ -76,18 +84,15 @@ const App = () => {
   const logOut = () => {
     AuthService.logout();
     // setShowModeratorBoard(false);
-    setShowAdminBoard(false);
+     setShowAdminBoard(false);
     setCurrentManager(undefined);
   };
   console.log(currentManager);
-
-
+  
+  
 
   return (
-
-
     <div>
-
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         {
           //   <Link to={"/"} className="navbar-brand">
@@ -120,121 +125,178 @@ const App = () => {
             //   </li>
             // )
           }
+          {currentManager && (<Dropdown
+              onMouseLeave={() => setShowDropdownMem(false)}
+              onMouseOver={() => setShowDropdownMem(true)}
+              style={{ width: "166px" }}
+            >
+              <Dropdown.Toggle className="main-style" id="dropdown-basic">
+                Member
+              </Dropdown.Toggle>
+              <Dropdown.Menu show={showDropdownMem}>
+                <Dropdown.Item>
+                  <Link
+                    to={"/addmember/" + currentManager.id}
+                    className="nav-link"
+                  >
+                    Add Member
+                  </Link>
+                </Dropdown.Item>
+                <DropdownItem>
+                  {" "}
+                  <Link
+                    to={"/showmembers/" + currentManager.id}
+                    className="nav-link"
+                  >
+                    Show Members
+                  </Link>
+                </DropdownItem>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
           {
             currentManager && (
-              <li className="nav-item">
-                <Link to={"/addmember/" + currentManager.id} className="nav-link">
-                  Add Member
-                </Link>
-              </li>
-            )
-          }
-          {
-            currentManager && (
-
-              <li className="nav-item">
-                <Link to={"/showmembers/" + currentManager.id} className="nav-link">
-                  Show Members
-                </Link>
-              </li>
-
-
-            )
-          }
-          {
-            currentManager && (
-
-              <li className="nav-item">
+            <Dropdown
+              onMouseLeave={() => setShowDropdownPay(false)}
+              onMouseOver={() => setShowDropdownPay(true)}
+              style={{ width: "166px" }}
+            >
+              <Dropdown.Toggle className="main-style" id="dropdown-basic">
+                Payment
+              </Dropdown.Toggle>
+              <Dropdown.Menu show={showDropdownPay}>
+                <Dropdown.Item>
                 <Link to={"/payment/" + currentManager.id} className="nav-link">
-                  Add Payment
-                </Link>
-              </li>
-            )
-          }
-          {
-            currentManager && (
-              <li className="nav-item">
-                <Link to={"/showpayment/" + currentManager.id} className="nav-link">
-                  Show Payments
-                </Link>
-              </li>
-            )
-          }
+                Add Payment
+              </Link>
+                </Dropdown.Item>
+                <DropdownItem>
+                  
+                <Link
+                to={"/showpayment/" + currentManager.id}
+                className="nav-link"
+              >
+                Show Payments
+              </Link>
+                </DropdownItem>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
 
           {
             currentManager && (
-              <li className="nav-item">
-                <Link to={"/addtrainer/" + currentManager.id} className="nav-link">
-                  Add Trainer
-                </Link>
-              </li>
-            )
-          }
-          {
-            currentManager && (
-              <li className="nav-item">
-                <Link to={"/showtrainer/" + currentManager.id} className="nav-link">
-                  Show Trainer
-                </Link>
-              </li>
-            )
-          }
+            <Dropdown
+              onMouseLeave={() => setShowDropdownTrain(false)}
+              onMouseOver={() => setShowDropdownTrain(true)}
+              style={{ width: "166px" }}
+            >
+              <Dropdown.Toggle className="main-style" id="dropdown-basic">
+                Trainer
+              </Dropdown.Toggle>
+              <Dropdown.Menu show={showDropdownTrain}>
+                <Dropdown.Item>
+                <Link
+                to={"/addtrainer/" + currentManager.id}
+                className="nav-link"
+              >
+                Add Trainer
+              </Link>
+                </Dropdown.Item>
+                <DropdownItem>
+                  
+                <Link
+                to={"/showtrainer/" + currentManager.id}
+                className="nav-link"
+              >
+                Show Trainer
+              </Link>
+                </DropdownItem>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
           {
             showAdminBoard && (
-              <li className="nav-item">
+            <Dropdown
+              onMouseLeave={() => setShowDropdownWor(false)}
+              onMouseOver={() => setShowDropdownWor(true)}
+              style={{ width: "166px" }}
+            >
+              <Dropdown.Toggle className="main-style" id="dropdown-basic">
+                Workout
+              </Dropdown.Toggle>
+              <Dropdown.Menu show={showDropdownWor}>
+                <Dropdown.Item>
                 <Link to={"/addworkout"} className="nav-link">
-                  Add Workout
-                </Link>
-              </li>
-            )
-          }
-          {
-            showAdminBoard && (
-              <li className="nav-item">
+                Add Workout
+              </Link>
+                </Dropdown.Item>
+                <DropdownItem>
+                  
                 <Link to={"/showworkout"} className="nav-link">
-                  Show Workout
-                </Link>
-              </li>
-            )
-          }
+                Show Workout
+              </Link>
+                </DropdownItem>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
           {
             currentManager && (
-              <li className="nav-item">
-                <Link to={"/addequipment/" + currentManager.id} className="nav-link">
-                  Add Equipment
-                </Link>
-              </li>
-            )
-          }
-          {
-            currentManager && (
-              <li className="nav-item">
-                <Link to={"/showequipment/" + currentManager.id} className="nav-link">
-                  Show Equipment
-                </Link>
-              </li>
-            )
-          }
+            <Dropdown
+              onMouseLeave={() => setShowDropdownEquip(false)}
+              onMouseOver={() => setShowDropdownEquip(true)}
+              style={{ width: "166px" }}
+            >
+              <Dropdown.Toggle className="main-style" id="dropdown-basic">
+                Equipment
+              </Dropdown.Toggle>
+              <Dropdown.Menu show={showDropdownEquip}>
+                <Dropdown.Item>
+                <Link
+                to={"/addequipment/" + currentManager.id}
+                className="nav-link"
+              >
+                Add Equipment
+              </Link>
+                </Dropdown.Item>
+                <DropdownItem>
+                  
+                <Link
+                to={"/showequipment/" + currentManager.id}
+                className="nav-link"
+              >
+                Show Equipment
+              </Link>
+                </DropdownItem>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
           {
             showAdminBoard && (
-              <li className="nav-item">
+            <Dropdown
+              onMouseLeave={() => setShowDropdownBranch(false)}
+              onMouseOver={() => setShowDropdownBranch(true)}
+              style={{ width: "166px" }}
+            >
+              <Dropdown.Toggle className="main-style" id="dropdown-basic">
+                Branch
+              </Dropdown.Toggle>
+              <Dropdown.Menu show={showDropdownBranch}>
+                <Dropdown.Item>
                 <Link to={"/addbranch"} className="nav-link">
-                  Add Branch
-                </Link>
-              </li>
-            )
-          }
-          {
-            showAdminBoard && (
-              <li className="nav-item">
+                Add Branch
+              </Link>
+                </Dropdown.Item>
+                <DropdownItem>
+                  
                 <Link to={"/showbranch"} className="nav-link">
-                  Show Branches
-                </Link>
-              </li>
-            )
-          }
-
-
+                Show Branches
+              </Link>
+                </DropdownItem>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
+          
+         
         </div>
 
         {currentManager || showAdminBoard ? (
@@ -271,8 +333,8 @@ const App = () => {
         )}
       </nav>
 
-      <div className="container mt-3" align="center">
-        <Routes style={{ align: "center" }}>
+      <div className="container mt-3">
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -296,13 +358,9 @@ const App = () => {
           <Route path="editworkout/:id" element={<EditWorkout />} />
           <Route path="editbranch/:id" element={<EditBranch />} />
           <Route path="/showmembers/:id" element={<ShowMembers />} />
-
-
         </Routes>
       </div>
-
     </div>
-
   );
 };
 

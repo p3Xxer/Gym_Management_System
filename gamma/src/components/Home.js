@@ -5,7 +5,7 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import Typewriter from "typewriter-effect";
 import TypeWriterEffect from 'react-typewriter-effect';
-import sample from "../Videos/pexels-tima-miroshnichenko-6388436.mp4"
+import sample from "../Videos/pexels-yan-krukov-8480550.mp4"
 const Home = () => {
 //   const particlesInit = async (main) => {
 //   console.log(main);
@@ -26,19 +26,19 @@ return (
 </video>
   <TypeWriterEffect
         textStyle={{
-          fontFamily: 'Arial-BoldMT',
-          color: 'Red',
-          fontWeight: 500,
-          fontSize: '5em',
+          fontFamily:  'Montserrat',
+          color: 'Black',
+          fontWeight: 'Bold',
+          fontSize: '3em',
+          
+          
+          
         }}
         startDelay={500}
         cursorColor="#3F3D56"
         multiText={[
-          'Hey there, This is a type writer animation package',
-          'it consist of two types...',
-          'Single text display and multi text display',
-          'Fonts can be customized.',
-          'The type speed can be customized as well',
+          ' If you don\'t know where you are going, you will wind up somewhere else. - Yogi Berra',
+          
         ]}
         multiTextDelay={1000}
         typeSpeed={80}
