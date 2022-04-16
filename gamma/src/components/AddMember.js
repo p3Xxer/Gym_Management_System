@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import MemberDataService from "../services/ManagerService";
 import { useParams } from "react-router-dom";
-
+import "./Member.css";
+import image from "../Images/wp4377350-man-fitness-wallpapers.jpg"
+import sample from "../Videos/pexels-tima-miroshnichenko-6388436.mp4"
 const AddMember = () => {
     const {id}=useParams();
   const initialMemberState = {
@@ -68,7 +70,9 @@ const AddMember = () => {
   };
 
   return (
-    <div className="submit-form">
+    
+    <div className="member-submit-form" id="member" >
+    <img src ={image} id="imgt" />
       {submitted ? (
         <div>
           <h4>You submitted successfully!</h4>

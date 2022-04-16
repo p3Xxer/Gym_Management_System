@@ -30,3 +30,31 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
+/* .member-submit-form{
+  background-color: red;
+} */
+
+#video{
+  object-fit: cover;
+  width: 100vw;
+  height: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: opacity(.8);
+  display: inline-block;
+
+}
+#imgt{
+  object-fit: cover;
+  width: 100vw;
+  height: 100vw;
+  position: relative;
+  
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: inline-block;
+
+}
