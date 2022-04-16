@@ -18,11 +18,24 @@ const getWorkout=(id)=>{
 const getBranch=(id)=>{
   return axios.get(API_URL +"branch_manager/"+id);
 };
+const getEquipment=(id)=>{
+  return axios.get(API_URL +"equipment/"+id);
+};
+const getTrainer=(id)=>{
+  console.log(id);
+  return axios.get(API_URL +"trainer/"+id);
+};
 const updateBranch=(id,data)=>{
   return axios.put(API_URL +"branch_manager/"+id,data);
 };
 const updateWorkout=(id,data)=>{
   return axios.put(API_URL +"workout/"+id,data);
+};
+const updateTrainer=(id,data)=>{
+  return axios.put(API_URL +"trainer/"+id,data);
+};
+const updateEquipment=(id,data)=>{
+  return axios.put(API_URL +"equipment/"+id,data);
 };
 const getAllBranches=()=>{
   return axios.get(API_URL +"branch_manager/");
@@ -106,7 +119,11 @@ const UserService = {
   getBranch,
   updateBranch,
   updateWorkout,
-  removeMember
+  removeMember,
+  getTrainer,
+  updateTrainer,
+  getEquipment,
+  updateEquipment
 };
 
 export default UserService;

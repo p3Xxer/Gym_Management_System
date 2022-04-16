@@ -4,10 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import AddMember from "./components/AddMember";
-import EditMember from "./components/Member";
+import AddMember from "./components/Member/AddMember";
+import EditMember from "./components/Member/Member";
 import AuthService from "./services/auth.service";
-import ShowMembers from "./components/ShowMembers";
+import ShowMembers from "./components/Member/ShowMembers";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
@@ -15,21 +15,23 @@ import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
 import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
-import Payment from "./components/Payment";
+import Payment from "./components/Payment/Payment";
 import EventBus from "./common/EventBus";
-import ShowPayment from "./components/ShowPayment";
-import AddEquipment from "./components/AddEquipment";
-import AddTrainer from "./components/AddTrainer";
-import ShowEquipment from "./components/ShowEquipment";
-import ShowTrainer from "./components/ShowTrainer";
-import AddWorkout from "./components/AddWorkout";
-import ShowWorkout from "./components/ShowWorkout";
-import AddBranches from "./components/AddBranch";
-import ShowBranches from "./components/ShowBranches";
-import EditWorkout from "./components/EditWorkout";
-import EditBranch from "./components/EditBranch";
+import ShowPayment from "./components/Payment/ShowPayment";
+import AddEquipment from "./components/Equipment/AddEquipment";
+import AddTrainer from "./components/Trainer/AddTrainer";
+import ShowEquipment from "./components/Equipment/ShowEquipment";
+import ShowTrainer from "./components/Trainer/ShowTrainer";
+import AddWorkout from "./components/Workout/AddWorkout";
+import ShowWorkout from "./components/Workout/ShowWorkout";
+import AddBranches from "./components/Branch/AddBranch";
+import ShowBranches from "./components/Branch/ShowBranches";
+import EditWorkout from "./components/Workout/EditWorkout";
+import EditBranch from "./components/Branch/EditBranch";
 import { Dropdown } from "react-bootstrap";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import EditTrainer from "./components/Trainer/EditTrainer";
+import EditEquipment from "./components/Equipment/EditEquipment";
 const App = () => {
   const [showDropdownMem, setShowDropdownMem] = useState(false);
   const [showDropdownPay, setShowDropdownPay] = useState(false);
@@ -358,6 +360,10 @@ const App = () => {
           <Route path="editworkout/:id" element={<EditWorkout />} />
           <Route path="editbranch/:id" element={<EditBranch />} />
           <Route path="/showmembers/:id" element={<ShowMembers />} />
+          <Route path="/branch_manager/:id" element={<EditBranch />} />
+          <Route path="edittrainer/:id" element={<EditTrainer />} />
+          <Route path="editequipment/:id" element={<EditEquipment />} />
+
         </Routes>
       </div>
     </div>
