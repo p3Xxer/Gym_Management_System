@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import MemberDataService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
 import "./Member.css";
-import image from "../../Images/wp4377350-man-fitness-wallpapers.jpg"
-import sample from "../../Videos/pexels-tima-miroshnichenko-6388436.mp4"
+import image from "../../Images/home.jpg"
 import { Card } from "react-bootstrap";
 const AddMember = () => {
   const { id } = useParams();
@@ -73,8 +72,8 @@ const AddMember = () => {
   return (
 
     <div className="member-submit-form" id="member" >
-      <img src={image} id="imgt" />
-      <Card style={{ height: '60rem', width: '44rem', marginBlockStart: '0rem', backgroundColor: 'black', textAlign: 'center', alignContent: 'center', alignItems: 'center', top: '0' }}>
+      <img src={image} id="imgt2" />
+      <Card style={{ height: '60rem', width: '75rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
         {submitted ? (
           <div>
             <h4>You submitted successfully!</h4>
@@ -87,7 +86,7 @@ const AddMember = () => {
             <div className="form-group">
               <br />
               <br />
-              <label className="lab" htmlFor="Mem_Name">Mem_Name</label>
+              <label className="lab" htmlFor="Mem_Name" align="center">Name</label>
               <input
                 type="text"
                 className="form-control int"
@@ -101,7 +100,7 @@ const AddMember = () => {
             </div>
 
             <div className="form-group">
-              <label className="lab" htmlFor="Mem_Weight">Mem_Weight</label>
+              <label className="lab" htmlFor="Mem_Weight" align="center">Weight</label>
               <input
                 type="number"
                 className="form-control int"
@@ -113,7 +112,7 @@ const AddMember = () => {
               />
             </div>
             <div className="form-group">
-              <label className="lab" htmlFor="Mem_Height">Mem_Height</label>
+              <label className="lab" htmlFor="Mem_Height" align="center">Height</label>
               <input
                 type="number"
                 className="form-control int"
@@ -125,7 +124,7 @@ const AddMember = () => {
               />
             </div>
             <div className="form-group">
-              <label className="lab" htmlFor="Age">Age</label>
+              <label className="lab" htmlFor="Age" align="center">Age</label>
               <input
                 type="number"
                 className="form-control int"
@@ -137,7 +136,7 @@ const AddMember = () => {
               />
             </div>
             <div className="form-group">
-              <label className="lab" htmlFor="Gender">Gender</label>
+              <label className="lab" htmlFor="Gender" align="center">Gender</label>
               <input
                 type="text"
                 className="form-control int"
@@ -149,7 +148,7 @@ const AddMember = () => {
               />
             </div>
             <div className="form-group">
-              <label className="lab" htmlFor="Blood_Type">Blood_Type</label>
+              <label className="lab" htmlFor="Blood_Type" align="center">Blood Group</label>
               <input
                 type="text"
                 className="form-control int"
@@ -161,7 +160,7 @@ const AddMember = () => {
               />
             </div>
             <div className="form-group">
-              <label className="lab" htmlFor="Mobile_Number">Mobile_Number</label>
+              <label className="lab" htmlFor="Mobile_Number" align="center">Mobile Number</label>
               <input
                 type="number"
                 className="form-control int"
@@ -173,7 +172,7 @@ const AddMember = () => {
               />
             </div>
             <div className="form-group">
-              <label className="lab" htmlFor="Address">Address</label>
+              <label className="lab" htmlFor="Address" align="center">Address</label>
               <input
                 type="text"
                 className="form-control int"
@@ -185,7 +184,7 @@ const AddMember = () => {
               />
             </div>
             <div className="form-group">
-              <label className="lab" htmlFor="Emer_Name">Emer_Name</label>
+              <label className="lab" htmlFor="Emer_Name" align="center">Emergency Name</label>
               <input
                 type="text"
                 className="form-control int"
@@ -197,7 +196,7 @@ const AddMember = () => {
               />
             </div>
             <div className="form-group">
-              <label className="lab" htmlFor="Emer_Mobile">Emer_Mobile</label>
+              <label className="lab" htmlFor="Emer_Mobile" align="center">Emergency Contact</label>
               <input
                 type="number"
                 className="form-control int"
@@ -209,7 +208,7 @@ const AddMember = () => {
               />
             </div>
             <br />
-            <button onClick={saveMember} className="btn btn-success">
+            <button onClick={saveMember} className="btn btn-success tempBtn">
               Submit
             </button>
           </div>

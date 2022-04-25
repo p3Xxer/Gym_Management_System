@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import EquipmentService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
-
+import image from "../../Images/home.jpg"
 const AddEquipment = () => {
     const {id}=useParams();
     console.log(id);
@@ -52,6 +52,7 @@ const AddEquipment = () => {
 
   return (
     <div className="submit-form">
+    <img src={image} id="imgt2" />
       {submitted ? (
         <div>
           <h4>You submitted successfully!</h4>

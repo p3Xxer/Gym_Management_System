@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TrainerDataService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
-
+import image from "../../Images/home.jpg"
 const AddTrainer = () => {
     const {id}=useParams();
   const initialTrainerState = {
@@ -72,6 +72,7 @@ const AddTrainer = () => {
 
   return (
     <div className="submit-form">
+    <img src={image} id="imgt2" />
       {submitted ? (
         <div>
           <h4>You submitted successfully!</h4>

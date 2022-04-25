@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import BranchServices from "../../services/ManagerService";
 import { Link } from "react-router-dom";
 import { Table } from 'react-bootstrap';
+import image from "../../Images/home.jpg"
 
 const Branch_ManagerList = () => {
   const [branch_manager, setBranch_Manager] = useState([]);
@@ -65,6 +66,7 @@ const Branch_ManagerList = () => {
   return (
     <div className="list row">
       <div className="col-md-8">
+      <img src={image} id="imgt2" />
         <div className="input-group mb-3">
           <input
             type="text"

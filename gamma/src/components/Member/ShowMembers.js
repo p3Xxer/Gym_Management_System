@@ -3,7 +3,7 @@ import ManagerService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import "./Member.css";
-import image from "../../Images/show_members.jpg"
+import image from "../../Images/home.jpg"
 const MemberList = () => {
   const { id } = useParams();
   const [member, setMember] = useState([]);
@@ -100,7 +100,6 @@ const MemberList = () => {
         </div>
       </div>
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center" textAlign='center'>
-        <br />
         <h4 className="lab">Members List</h4>
         <br />
         <Table striped hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.7", textAlign: "center", borderRadius: '20px', verticalAlign: 'center' }}>

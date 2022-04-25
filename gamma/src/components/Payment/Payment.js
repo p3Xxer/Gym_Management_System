@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PaymentService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
-
+import image from "../../Images/home.jpg"
 const AddPayment = () => {
     const {id}=useParams();
     console.log(id);
@@ -56,6 +56,7 @@ const AddPayment = () => {
 
   return (
     <div className="submit-form">
+    <img src={image} id="imgt2" />
       {submitted ? (
         <div>
           <h4>You submitted successfully!</h4>

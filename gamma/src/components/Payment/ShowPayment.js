@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PaymentService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
-import image from "../../Images/show_payment.jpg"
+import image from "../../Images/home.jpg"
 
 const PaymentList = () => {
   const { id } = useParams();

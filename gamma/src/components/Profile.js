@@ -9,6 +9,7 @@ const Profile = () => {
 
   return (
     <div className="container">
+      
       <header className="jumbotron">
         
           <h3>Branch_Name: <strong>{currentManager.branch.Branch_Name}</strong></h3>

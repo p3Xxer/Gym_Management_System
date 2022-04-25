@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import WorkoutService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
+import image from "../../Images/home.jpg"
+
 
 const WorkoutList = () => {
 
@@ -66,6 +68,7 @@ const WorkoutList = () => {
   return (
     <div className="list row">
       <div className="col-md-8">
+      <img src={image} id="imgt2" />
         <div className="input-group mb-3">
           <input
             type="text"
