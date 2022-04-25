@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PaymentService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
-import image from "../../Images/pexels-victor-freitas-841130.jpg"
+import image from "../../Images/show_payment.jpg"
 
 const PaymentList = () => {
   const { id } = useParams();
@@ -67,44 +67,44 @@ const PaymentList = () => {
   return (
     <div className="list row" align="center">
       {
-        <img src={image} id="imgt2" />
-      // <div className="">
-      //   <div className="input-group mb-3">
-      //     <input
-      //       type="text"
-      //       className="form-control"
-      //       placeholder="Search by Mem_Name"
-      //     //value={searchMem_Name}
-      //     //onChange={onChangeSearchMem_Name}
-      //     />
-      //     {
-      //       //       <div className="input-group-append">
-      //       //     <button
-      //       //       className="btn btn-outline-secondary"
-      //       //       type="button"
-      //       //       onClick={findByMem_Name}
-      //       //     >
-      //       //       Search
-      //       //     </button>
-      //       //   </div>
-      //     }
-      //   </div>
-      // </div>
-    }
+        <img src={image} id="imgt_show_payment" />
+        // <div className="">
+        //   <div className="input-group mb-3">
+        //     <input
+        //       type="text"
+        //       className="form-control"
+        //       placeholder="Search by Mem_Name"
+        //     //value={searchMem_Name}
+        //     //onChange={onChangeSearchMem_Name}
+        //     />
+        //     {
+        //       //       <div className="input-group-append">
+        //       //     <button
+        //       //       className="btn btn-outline-secondary"
+        //       //       type="button"
+        //       //       onClick={findByMem_Name}
+        //       //     >
+        //       //       Search
+        //       //     </button>
+        //       //   </div>
+        //     }
+        //   </div>
+        // </div>
+      }
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
         <h4 className="lab">Payments List</h4>
         <br />
         {/* khushil working */}
 
-        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ textAlign: "center", borderRadius: '20px', marginInlineStart: '1rem' }}>
+        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ backgroundColor: "black", opacity: "0.7", textAlign: "center", borderRadius: '20px', marginInlineStart: '1rem' }}>
           <thead>
             <tr textAlign="center" vertical-align="middle">
 
-              <th>Payment ID</th>
-              <th>Payment Description</th>
-              <th>Payment Amount</th>
-              <th>Payment Date</th>
-              <th>Payment Time</th>
+              <th>ID</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Time</th>
               <th>Member ID</th>
               <th>Workout ID</th>
             </tr>
@@ -120,7 +120,7 @@ const PaymentList = () => {
               <td>{payment.Member_ID}</td>
               <td>{payment.Workout_ID}</td>
 
-              
+
               <td>{/*<button className="m-3 btn-sm btn-danger" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button>*/}</td>
             </tr>
           ))}

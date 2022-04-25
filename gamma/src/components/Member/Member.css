@@ -50,7 +50,15 @@
     left: 0;
     top: 0;
     display: inline-block;
-    opacity: 0.8;
+}
+
+#imgt_show_payment {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: inline-block;
 }
 
 #member {
@@ -80,22 +88,28 @@
     margin-left: 50px;
 }
 
+
+
 .custom {
-    margin-left: 24rem;
+    opacity: .8;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
     border-radius: 25px;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: rgb(197, 193, 193);
+    background: rgb(34, 34, 34);
     width: 100%;
     border: 0;
-    padding: 15px;
-    color: white;
+    /* padding: 15px; */
+    /* color: white; */
     font-size: 14px;
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
-    background: linear-gradient(130deg, black, whitesmoke);
+    /* background: linear-gradient(130deg, black, rgb(129, 68, 68)); */
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -118,7 +132,7 @@
 
 .abc {
     font-size: 18px;
-    color: whitesmoke;
+    color: rgb(255, 255, 255);
 
     font-family: 'Roboto', sans-serif;
 }

@@ -93,14 +93,14 @@ const TrainerList = () => {
         <br />
         {/* khushil working */}
 
-        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ textAlign: "center", borderRadius: '20px', marginInlineStart: '1rem' }}>
+        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.8", textAlign: "center", borderRadius: '20px', marginInlineStart: '1rem' }}>
           <thead>
             <tr>
 
-              <th>Trainer ID</th>
-              <th>Trainer Name</th>
+              <th>ID</th>
+              <th>Name</th>
               <th>Gender</th>
-              <th>Blood Type</th>
+              <th>Blood Group</th>
               <th>Mobile Number</th>
               <th>Address</th>
               <th>Emergency Mobile Number</th>

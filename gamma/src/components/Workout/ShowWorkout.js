@@ -92,7 +92,7 @@ const WorkoutList = () => {
 
         {/* khushil working */}
 
-        <Table striped bordered hover variant="dark">
+        <Table striped bordered hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.8", textAlign: "center", borderRadius: '20px', marginInlineStart: '1rem' }}>
           <thead>
             <tr>
 
@@ -149,33 +149,33 @@ const WorkoutList = () => {
           // </button>
         }
       </div>
-    {
-    //   <div className="col-md-6">
-    //   {currentWorkout ? (
-    //     <div>
-    //       <h4>Workouts</h4>
-    //       <div>
-    //         <label>
-    //           <strong>Mem_Name:</strong>
-    //         </label>{" "}
+      {
+        //   <div className="col-md-6">
+        //   {currentWorkout ? (
+        //     <div>
+        //       <h4>Workouts</h4>
+        //       <div>
+        //         <label>
+        //           <strong>Mem_Name:</strong>
+        //         </label>{" "}
 
-    //         {currentWorkout.Workout_ID}
-    //       </div>
-    //       <Link
-    //         to={"/editworkout/" + currentWorkout.Workout_ID}
-    //         className="badge badge-warning"
-    //       >
-    //         Edit
-    //       </Link>
-    //     </div>
-    //   ) : (
-    //     <div>
-    //       <br />
-    //       <p>Please click on a Workout...</p>
-    //     </div>
-    //   )}
-    // </div>
-  }
+        //         {currentWorkout.Workout_ID}
+        //       </div>
+        //       <Link
+        //         to={"/editworkout/" + currentWorkout.Workout_ID}
+        //         className="badge badge-warning"
+        //       >
+        //         Edit
+        //       </Link>
+        //     </div>
+        //   ) : (
+        //     <div>
+        //       <br />
+        //       <p>Please click on a Workout...</p>
+        //     </div>
+        //   )}
+        // </div>
+      }
     </div>
   );
 };

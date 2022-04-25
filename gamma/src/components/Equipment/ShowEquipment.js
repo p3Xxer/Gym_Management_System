@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import EquipmentService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
-import image from "../../Images/pexels-victor-freitas-841130.jpg"
+import image from "../../Images/show_equipment.jpg"
 const EquipmentList = () => {
   const { id } = useParams();
   const [equipment, setEquipment] = useState([]);
@@ -66,7 +66,7 @@ const EquipmentList = () => {
   return (
     <div className="list row" align="center">
       <img src={image} id="imgt2" />
-      
+
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
         <br />
         <br />
@@ -75,7 +75,7 @@ const EquipmentList = () => {
         <br />
         {/* khushil working */}
 
-        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ textAlign: "center", borderRadius: '20px', marginInlineStart: '1.5rem' }}>
+        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.8", textAlign: "center", borderRadius: '20px', marginInlineStart: '1.5rem' }}>
           <thead>
             <tr>
 

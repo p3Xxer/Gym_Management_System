@@ -3,7 +3,7 @@ import ManagerService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import "./Member.css";
-import image from "../../Images/pexels-victor-freitas-841130.jpg"
+import image from "../../Images/show_members.jpg"
 const MemberList = () => {
   const { id } = useParams();
   const [member, setMember] = useState([]);
@@ -103,18 +103,18 @@ const MemberList = () => {
         <br />
         <h4 className="lab">Members List</h4>
         <br />
-        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ textAlign: "center", borderRadius: '20px', verticalAlign: 'center' }}>
+        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.7", textAlign: "center", borderRadius: '20px', verticalAlign: 'center' }}>
           <thead>
             <tr>
 
-              <th>Member id</th>
-              <th>Member Name</th>
-              <th>Member Phone</th>
-              <th>Member Weight</th>
-              <th>Member Height</th>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Weight</th>
+              <th>Height</th>
               <th>Age</th>
               <th>Gender</th>
-              <th>Blood_Type</th>
+              <th>Blood Group</th>
               <th>Address</th>
               <th>Emergency Name</th>
               <th>Emergency Mobile</th>

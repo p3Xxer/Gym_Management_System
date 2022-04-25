@@ -4,7 +4,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../services/auth.service";
-import image from "../Images/pexels-andrea-piacquadio-3838389.jpg"
+import image from "../Images/login.jpg"
 const required = (value) => {
   if (!value) {
     return (
@@ -73,19 +73,19 @@ const Login = () => {
   return (
     <div className="">
       <img src={image} id="imgt2" />
+      {/* <br />
       <br />
-      <br />
-      <br />
+      <br /> */}
       <div className="card card-container custom">
-        <img
+        {/* <img
           src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
           alt="profile-img"
           className="profile-img-card"
-        />
+        /> */}
 
         <Form onSubmit={handleLogin} ref={form}>
           <br />
-          <label className="abc" htmlFor="manager_Email">Manager_Email</label>
+          <label className="abc" htmlFor="manager_Email">Email</label>
           <Input
             type="text"
             className="form-control fkk"
