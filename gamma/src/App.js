@@ -107,7 +107,7 @@ const App = () => {
         }
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to={"/home"} className="nav-link">
+            <Link to={"/home"} className="nav-link" >
               Home
             </Link>
           </li>
@@ -134,6 +134,7 @@ const App = () => {
           {currentManager && (<NavDropdown
             id="nav-dropdown-dark-example"
             title="Member"
+            style={{marginLeft: '950px'}}
             menuVariant="dark"
               onMouseLeave={() => setShowDropdownMem(false)}
               onMouseOver={() => setShowDropdownMem(true)}
@@ -199,6 +200,7 @@ const App = () => {
             <NavDropdown
             id="nav-dropdown-dark-example"
             title="Workout"
+            style={{marginLeft: '1150px'}}
             menuVariant="dark"
             >
               
@@ -257,7 +259,7 @@ const App = () => {
               // </li>
             }
             <li className="nav-item">
-              <a href="/login" className="nav-link" onClick={logOut}>
+              <a href="/login" className="nav-link" onClick={logOut} >
                 LogOut
               </a>
             </li>
@@ -265,7 +267,7 @@ const App = () => {
         ) : (
           <div >
             <li className="nav-item">
-              <Link to={"/login"} className="nav-link">
+              <Link to={"/login"} className="nav-link" style={{paddingLeft: '1350px'}}>
                 Login
               </Link>
             </li>
@@ -284,7 +286,7 @@ const App = () => {
         </Container>
       </Navbar>
 
-      <div className="container mt-3" align = "center">
+      <div className="container mt-3">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />

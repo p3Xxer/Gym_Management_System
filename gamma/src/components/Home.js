@@ -6,6 +6,8 @@ import { loadFull } from "tsparticles";
 import Typewriter from "typewriter-effect";
 import TypeWriterEffect from 'react-typewriter-effect';
 import sample from "../Videos/ropes.mp4"
+import image from "../Images/house.jpeg"
+import "../components/Member/Member.css"
 const Home = () => {
   //   const particlesInit = async (main) => {
   //   console.log(main);
@@ -20,14 +22,12 @@ const Home = () => {
   //   console.log(container);
   //};
   return (
-    <div >
-      <video id="video" className='videoTag' autoPlay loop muted fluid>
-        <source src={sample} type='video/mp4' />
-      </video>
-      <TypeWriterEffect
+    <div align="center">
+      <img src={image} id="imgt" />
+      {/* <TypeWriterEffect
         textStyle={{
           fontFamily: 'Montserrat',
-          color: '#4a210a',
+          color: 'white',
           fontWeight: 'Bold',
           fontSize: '3em',
         }}
@@ -39,7 +39,8 @@ const Home = () => {
         ]}
         multiTextDelay={1000}
         typeSpeed={80}
-      />
+      /> */}
+      <h1 className="homename">GYM</h1>
     </div>
 
   )

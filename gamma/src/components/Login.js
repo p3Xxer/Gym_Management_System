@@ -5,6 +5,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../services/auth.service";
 import image from "../Images/home.jpg"
+import "./Login.css"
 const required = (value) => {
   if (!value) {
     return (
@@ -71,52 +72,50 @@ const Login = () => {
   };
 
   return (
-    <div className="">
+    <div className="containerx">
       <img src={image} id="imgt2" />
       {/* <br />
       <br />
       <br /> */}
-      <div className="card card-container custom">
+      <div className="screen ">
         {/* <img
           src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
           alt="profile-img"
           className="profile-img-card"
         /> */}
-
-        <Form onSubmit={handleLogin} ref={form}>
-          <br />
-          <label className="abc" htmlFor="manager_Email">Email</label>
+        <div class="screen__content">
+        <Form onSubmit={handleLogin} ref={form} style={{width: "320px", padding: "30px", paddingTop: "100px"}}>
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
           <Input
             type="text"
-            className="form-control fkk"
+            className="login__input"
             name="manager_Email"
             placeholder="Email"
             value={manager_Email}
             onChange={onChangeManager_Email}
             validations={[required]}
           />
-
-          <br />
-          <label className="abc" htmlFor="password">Password</label>
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
           <Input
             type="password"
-            className=" fkk form-control"
+            className="login__input"
             name="password"
             placeholder="Password"
             value={password}
             onChange={onChangePassword}
             validations={[required]}
           />
-          <br />
-          <br />
-          <div className="form-group">
-            <button className="butt" disabled={loading}>
+				</div>
+				<button class="button login__submit" disabled={loading}>
               {loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
               <span>Login</span>
-            </button>
-          </div>
+					<i class="button__icon fas fa-chevron-right"></i>
+				</button>				
 
           {message && (
             <div className="form-group">
@@ -127,6 +126,13 @@ const Login = () => {
           )}
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
         </Form>
+		  </div>
+      <div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
       </div>
     </div>
   );

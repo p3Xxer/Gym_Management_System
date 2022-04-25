@@ -87,7 +87,7 @@ const AddPayment = () => {
           </div>
 
           <div className="form-group">
-            <label className="lab" align = "center" htmlFor="Payment_Time">Payment Time</label>
+            <label className="lab" align = "center" htmlFor="Payment_Time">Time</label>
             <input
               type="time"
               className="form-control int"
@@ -99,7 +99,7 @@ const AddPayment = () => {
             />
           </div>
           <div className="form-group">
-            <label className="lab" align = "center" htmlFor="Payment_Date">Payment Date</label>
+            <label className="lab" align = "center" htmlFor="Payment_Date">Date</label>
             <input
               type="date"
               className="form-control int"
@@ -111,7 +111,7 @@ const AddPayment = () => {
             />
           </div>
           <div className="form-group">
-            <label className="lab" align = "center" htmlFor="Payment_Amt">Payment Amount</label>
+            <label className="lab" align = "center" htmlFor="Payment_Amt">Amount</label>
             <input
               type="number"
               className="form-control int"
@@ -148,9 +148,7 @@ const AddPayment = () => {
           </div>
           <br />
           <br />      
-          <button onClick={savePayment} className="btn btn-success tempBtn">
-            Submit
-          </button>
+          <button  onClick={savePayment} class="btn btn-outline-info tempBtn">Submit</button>
         </div>
       )}
       </Card>

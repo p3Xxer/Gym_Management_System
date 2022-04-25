@@ -1,7 +1,7 @@
 import React from "react";
 import AuthService from "../services/auth.service";
 import { useParams } from "react-router-dom";
-
+import image from "../Images/home.jpg"
 const Profile = () => {
   const currentManager = AuthService.getCurrentManager();
   console.log(currentManager);
@@ -9,7 +9,12 @@ const Profile = () => {
 
   return (
     <div className="container">
-      
+      <img src={image} id="imgt2" />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <header className="jumbotron">
         
           <h3>Branch_Name: <strong>{currentManager.branch.Branch_Name}</strong></h3>

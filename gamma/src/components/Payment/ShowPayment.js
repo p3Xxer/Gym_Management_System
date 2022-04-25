@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PaymentService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
+import "../Member/Member.css";
 import image from "../../Images/home.jpg"
 
 const PaymentList = () => {
@@ -66,39 +67,13 @@ const PaymentList = () => {
   console.log(payment)
   return (
     <div className="list row" align="center">
-      {
-        <img src={image} id="imgt_show_payment" />
-        // <div className="">
-        //   <div className="input-group mb-3">
-        //     <input
-        //       type="text"
-        //       className="form-control"
-        //       placeholder="Search by Mem_Name"
-        //     //value={searchMem_Name}
-        //     //onChange={onChangeSearchMem_Name}
-        //     />
-        //     {
-        //       //       <div className="input-group-append">
-        //       //     <button
-        //       //       className="btn btn-outline-secondary"
-        //       //       type="button"
-        //       //       onClick={findByMem_Name}
-        //       //     >
-        //       //       Search
-        //       //     </button>
-        //       //   </div>
-        //     }
-        //   </div>
-        // </div>
-      }
-      <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
-        <h4 className="lab">Payments List</h4>
+      <img src={image} id="imgt2" />
+      <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center" textAlign='center'>
+        <h4 className="lab">PAYMENTS LIST</h4>
         <br />
-        {/* khushil working */}
-
-        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ backgroundColor: "black", opacity: "0.7", textAlign: "center", borderRadius: '20px', marginInlineStart: '1rem' }}>
+        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.7", textAlign: "center", borderRadius: '20px', verticalAlign: 'center' }}>
           <thead>
-            <tr textAlign="center" vertical-align="middle">
+            <tr>
 
               <th>ID</th>
               <th>Description</th>
@@ -119,9 +94,6 @@ const PaymentList = () => {
               <td>{payment.Payment_Time}</td>
               <td>{payment.Member_ID}</td>
               <td>{payment.Workout_ID}</td>
-
-
-              <td>{/*<button className="m-3 btn-sm btn-danger" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button>*/}</td>
             </tr>
           ))}
         </Table>

@@ -73,7 +73,8 @@ const AddMember = () => {
 
     <div className="member-submit-form" id="member" >
       <img src={image} id="imgt2" />
-      <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
+      <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '30px', background: 'transparent', borderColor: 'transparent' }}>
+
         {submitted ? (
           <div>
             <h4>You submitted successfully!</h4>
@@ -86,7 +87,7 @@ const AddMember = () => {
             <div className="form-group">
               <br />
               <br />
-              <label className="lab" htmlFor="Mem_Name" align="center">Name</label>
+              <label className="lab f" htmlFor="Mem_Name" align="center">Name</label>
               <input
                 type="text"
                 className="form-control int"
@@ -162,7 +163,7 @@ const AddMember = () => {
             <div className="form-group">
               <label className="lab" htmlFor="Mobile_Number" align="center">Mobile Number</label>
               <input
-                type="number"
+                type="tel"
                 className="form-control int"
                 id="Mobile_Number"
                 required
@@ -198,7 +199,7 @@ const AddMember = () => {
             <div className="form-group">
               <label className="lab" htmlFor="Emer_Mobile" align="center">Emergency Contact</label>
               <input
-                type="number"
+                type="tel"
                 className="form-control int"
                 id="Emer_Mobile"
                 required
@@ -208,10 +209,7 @@ const AddMember = () => {
               />
             </div>
             <br />
-            <br />
-            <button onClick={saveMember} className="btn btn-success tempBtn">
-              Submit
-            </button>
+            <button  onClick={saveMember} class="btn btn-outline-info tempBtn">Submit</button>
           </div>
         )}
       </Card>

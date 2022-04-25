@@ -75,32 +75,8 @@ const MemberList = () => {
   return (
     <div className="list row" align="center">
       <img src={image} id="imgt2" />
-      <div className="col-md-8">
-        <div className="input-group mb-3">
-          {
-            //  <input
-            //   type="text"
-            //   className="form-control"
-            //   placeholder="Search by Mem_Name"
-            //   value={searchMem_Name}
-            //   onChange={onChangeSearchMem_Name}
-            // />
-          }
-          {
-            //       <div className="input-group-append">
-            //     <button
-            //       className="btn btn-outline-secondary"
-            //       type="button"
-            //       onClick={findByMem_Name}
-            //     >
-            //       Search
-            //     </button>
-            //   </div>
-          }
-        </div>
-      </div>
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center" textAlign='center'>
-        <h4 className="lab">Members List</h4>
+        <h4 className="lab">MEMBERS LIST</h4>
         <br />
         <Table striped hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.7", textAlign: "center", borderRadius: '20px', verticalAlign: 'center' }}>
           <thead>
@@ -134,7 +110,8 @@ const MemberList = () => {
                 <td>{member.Address}</td>
                 <td>{member.Emer_Name}</td>
                 <td>{member.Emer_Mobile}</td>
-                <td align="right"><button className="btn-danger pqy" align="left" onClick={() => { deleteMember(member.Mem_ID) }}>Delete</button><Link style={{ textAlign: "left" }}
+                <td align="right"><button className="btn-danger pqy" align="left" onClick={() => { deleteMember(member.Mem_ID) }}>Delete</button>
+                <Link style={{ textAlign: "left" }}
                   to={"/editmember/" + member.Mem_ID}
                   className="badge badge-warning pqy">
                   Edit
