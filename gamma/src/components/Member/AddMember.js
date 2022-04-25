@@ -73,7 +73,7 @@ const AddMember = () => {
 
     <div className="member-submit-form" id="member" >
       <img src={image} id="imgt2" />
-      <Card style={{ height: '60rem', width: '75rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
+      <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
         {submitted ? (
           <div>
             <h4>You submitted successfully!</h4>
@@ -207,6 +207,7 @@ const AddMember = () => {
                 name="Emer_Mobile"
               />
             </div>
+            <br />
             <br />
             <button onClick={saveMember} className="btn btn-success tempBtn">
               Submit

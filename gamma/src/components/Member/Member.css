@@ -63,7 +63,13 @@
 
 #member {
     margin-top: -75px;
-    margin-left: 350px;
+    margin-left: 600px;
+    width: 430px;
+}
+
+#member2 {
+    margin-top: -75px;
+    margin-left: 750px;
     width: 430px;
 }
 
@@ -77,6 +83,7 @@
     margin-top: 13px;
     margin-bottom: 1rem;
     text-align: center;
+    border-radius: 20px;
 }
 
 .form-group {
@@ -147,7 +154,21 @@
 }
 
 .tempBtn{
-    margin-left: 425px;
+    margin-left: 280px;
+    color: black;
+    background-color: #83EEFF;
+    border: none;
+}
+
+.tempBtn2{
+    margin-left: 280px;
+    color: black;
+    background-color: #83EEFF;
+    border: none;
+}
+
+.tempBtn3{
+    margin-left: 135px;
     color: black;
     background-color: #83EEFF;
     border: none;

@@ -64,10 +64,10 @@ const Branch_ManagerList = () => {
   };
 
   return (
-    <div className="list row">
-      <div className="col-md-8">
-      <img src={image} id="imgt2" />
-        <div className="input-group mb-3">
+    <div className="list row" align="center" >
+    <img src={image} id="imgt2" />
+      <div className="">
+        <div className="input-group mb-3" >
           <input
             type="text"
             className="form-control"
@@ -86,12 +86,13 @@ const Branch_ManagerList = () => {
           </div>
         </div>
       </div>
-      <div className="col-md-6">
-        <h4>Branch_Managers List</h4>
+      <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
+        <h4 className="lab">Branch Managers List</h4>
+        <br />
 
         {/* //khushil working */}
 
-        <Table striped bordered hover variant="dark">
+        <Table striped bordered hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.8", textAlign: "center", borderRadius: '30px', marginInlineStart: '1rem' }}>
           <thead>
             <tr>
 

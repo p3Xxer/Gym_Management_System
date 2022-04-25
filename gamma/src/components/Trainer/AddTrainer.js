@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import TrainerDataService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
 import image from "../../Images/home.jpg"
+import "../Member/Member.css";
+import { Card } from "react-bootstrap";
 const AddTrainer = () => {
     const {id}=useParams();
   const initialTrainerState = {
@@ -71,8 +73,12 @@ const AddTrainer = () => {
   };
 
   return (
-    <div className="submit-form">
+    <div className="member-submit-form" id="member" >
     <img src={image} id="imgt2" />
+    <br />
+    <br />
+    <br />
+    <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
       {submitted ? (
         <div>
           <h4>You submitted successfully!</h4>
@@ -83,10 +89,10 @@ const AddTrainer = () => {
       ) : (
         <div>
           <div className="form-group">
-            <label htmlFor="Trainer_Name">Trainer_Name</label>
+            <label className="lab" align = "center" htmlFor="Trainer_Name">Name</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="title"
               required
               value={trainer.Trainer_Name}
@@ -96,10 +102,10 @@ const AddTrainer = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="Gender">Gender</label>
+            <label className="lab" align = "center" htmlFor="Gender">Gender</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Gender"
               required
               value={trainer.Gender}
@@ -108,10 +114,10 @@ const AddTrainer = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Blood_Type">Blood_Type</label>
+            <label className="lab" align = "center" htmlFor="Blood_Type">Blood Group</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Blood_Type"
               required
               value={trainer.Blood_Type}
@@ -120,10 +126,10 @@ const AddTrainer = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Phone">Phone</label>
+            <label className="lab" align = "center" htmlFor="Phone">Phone No.</label>
             <input
               type="number"
-              className="form-control"
+              className="form-control int"
               id="Phone"
               required
               value={trainer.Phone}
@@ -132,10 +138,10 @@ const AddTrainer = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Address">Address</label>
+            <label className="lab" align = "center" htmlFor="Address">Address</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Address"
               required
               value={trainer.Address}
@@ -144,10 +150,10 @@ const AddTrainer = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Emer_Name">Emer_Name</label>
+            <label className="lab" align = "center" htmlFor="Emer_Name">Emergency Name</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Emer_Name"
               required
               value={trainer.Emer_Name}
@@ -156,10 +162,10 @@ const AddTrainer = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Emer_Mobile">Emer_Mobile</label>
+            <label className="lab" align = "center" htmlFor="Emer_Mobile">Emergency Contact</label>
             <input
               type="number"
-              className="form-control"
+              className="form-control int"
               id="Emer_Mobile"
               required
               value={trainer.Emer_Mobile}
@@ -168,10 +174,10 @@ const AddTrainer = () => {
             />
           </div>
           <div className="form-group">
-          <label htmlFor="Workout_Name">Workout_Name</label>
+          <label className="lab" align = "center" htmlFor="Workout_Name">Workout Name</label>
           <input
             type="text"
-            className="form-control"
+            className="form-control int"
             id="Workout_Name"
             required
             value={trainer.Workout_Name}
@@ -179,11 +185,15 @@ const AddTrainer = () => {
             name="Workout_Name"
           />
         </div>
-          <button onClick={saveTrainer} className="btn btn-success">
+        <br />
+        <br />
+          <button onClick={saveTrainer} className="btn btn-success tempBtn2">
             Submit
           </button>
         </div>
       )}
+      </Card>
+      
     </div>
   );
 };

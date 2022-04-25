@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import WorkoutService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
-
+import image from "../../Images/home.jpg"
+import "../Member/Member.css";
+import { Card } from "react-bootstrap";
 const AddWorkout = () => {
     
   const initialWorkoutState = {
@@ -47,6 +49,13 @@ const AddWorkout = () => {
   };
 
   return (
+    <div className="member-submit-form" id="member2" >
+    <img src={image} id="imgt2" />
+    <br />
+    <br />
+    <br />
+    <br />
+    <Card style={{ height: '60rem', width: '30rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
     <div className="submit-form">
       {submitted ? (
         <div>
@@ -58,10 +67,10 @@ const AddWorkout = () => {
       ) : (
         <div>
           <div className="form-group">
-            <label htmlFor="Workout_Name">Workout_Name</label>
+            <label className="lab" align = "center" htmlFor="Workout_Name">Workout_Name</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="title"
               required
               value={workout.Workout_Name}
@@ -71,10 +80,10 @@ const AddWorkout = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="Workout_DietChart">Workout_DietChart</label>
+            <label className="lab" align = "center" htmlFor="Workout_DietChart">Workout_DietChart</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Workout_DietChart"
               required
               value={workout.Workout_DietChart}
@@ -83,10 +92,10 @@ const AddWorkout = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Working_Duration">Working_Duration</label>
+            <label className="lab" align = "center" htmlFor="Working_Duration">Working_Duration</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int" 
               id="Working_Duration"
               required
               value={workout.Working_Duration}
@@ -133,12 +142,16 @@ const AddWorkout = () => {
         //       name="Workout_Name"
         //     />
         //   </div>
-        }      
-          <button onClick={saveWorkout} className="btn btn-success">
+        }
+          <br />
+           <br />      
+          <button onClick={saveWorkout} className="btn btn-success tempBtn3">
             Submit
           </button>
         </div>
       )}
+    </div>
+    </Card>
     </div>
   );
 };

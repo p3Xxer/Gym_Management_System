@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import PaymentService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
 import image from "../../Images/home.jpg"
+import "../Member/Member.css";
+import { Card } from "react-bootstrap";
 const AddPayment = () => {
     const {id}=useParams();
     console.log(id);
@@ -55,8 +57,13 @@ const AddPayment = () => {
   };
 
   return (
-    <div className="submit-form">
+    <div className="member-submit-form" id="member">
     <img src={image} id="imgt2" />
+    <br />
+    <br />
+    <br />
+    <br />
+    <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
       {submitted ? (
         <div>
           <h4>You submitted successfully!</h4>
@@ -67,10 +74,10 @@ const AddPayment = () => {
       ) : (
         <div>
           <div className="form-group">
-            <label htmlFor="Payment_Desc">Payment_Desc</label>
+            <label className="lab" align = "center" htmlFor="Payment_Desc">Payment Description</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="title"
               required
               value={payment.Payment_Desc}
@@ -80,10 +87,10 @@ const AddPayment = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="Payment_Time">Payment_Time</label>
+            <label className="lab" align = "center" htmlFor="Payment_Time">Payment Time</label>
             <input
               type="time"
-              className="form-control"
+              className="form-control int"
               id="Payment_Time"
               required
               value={payment.Payment_Time}
@@ -92,10 +99,10 @@ const AddPayment = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Payment_Date">Payment_Date</label>
+            <label className="lab" align = "center" htmlFor="Payment_Date">Payment Date</label>
             <input
               type="date"
-              className="form-control"
+              className="form-control int"
               id="Payment_Date"
               required
               value={payment.Payment_Date}
@@ -104,10 +111,10 @@ const AddPayment = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Payment_Amt">Payment_Amt</label>
+            <label className="lab" align = "center" htmlFor="Payment_Amt">Payment Amount</label>
             <input
               type="number"
-              className="form-control"
+              className="form-control int"
               id="Payment_Amt"
               required
               value={payment.Payment_Amt}
@@ -116,10 +123,10 @@ const AddPayment = () => {
             />
           </div>  
           <div className="form-group">
-            <label htmlFor="Member_ID">Member_ID</label>
+            <label className="lab" align = "center" htmlFor="Member_ID">Member ID</label>
             <input
               type="number"
-              className="form-control"
+              className="form-control int"
               id="Member_ID"
               required
               value={payment.Member_ID}
@@ -128,22 +135,25 @@ const AddPayment = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Workout_Name">Workout_Name</label>
+            <label className="lab" align = "center" htmlFor="Workout_Name">Workout Name</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Workout_Name"
               required
               value={payment.Workout_Name}
               onChange={handleInputChange}
               name="Workout_Name"
             />
-          </div>      
-          <button onClick={savePayment} className="btn btn-success">
+          </div>
+          <br />
+          <br />      
+          <button onClick={savePayment} className="btn btn-success tempBtn">
             Submit
           </button>
         </div>
       )}
+      </Card>
     </div>
   );
 };

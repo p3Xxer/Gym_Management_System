@@ -198,7 +198,7 @@ const App = () => {
             showAdminBoard && (
             <NavDropdown
             id="nav-dropdown-dark-example"
-            title="Trainer"
+            title="Workout"
             menuVariant="dark"
             >
               
@@ -231,7 +231,7 @@ const App = () => {
             showAdminBoard && (
             <NavDropdown
             id="nav-dropdown-dark-example"
-            title="Equipment"
+            title="Branch"
             menuVariant="dark"
             >
                 <NavDropdown.Item href = {"/addbranch"}>
@@ -284,7 +284,7 @@ const App = () => {
         </Container>
       </Navbar>
 
-      <div className="container mt-3">
+      <div className="container mt-3" align = "center">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />

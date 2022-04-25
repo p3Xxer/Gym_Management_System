@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import EquipmentService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
 import image from "../../Images/home.jpg"
+import "../Member/Member.css";
+import { Card } from "react-bootstrap";
 const AddEquipment = () => {
     const {id}=useParams();
     console.log(id);
@@ -51,8 +53,12 @@ const AddEquipment = () => {
   };
 
   return (
-    <div className="submit-form">
+    <div className="member-submit-form" id="member2">
     <img src={image} id="imgt2" />
+    <br />
+    <br />
+    <br />
+    <Card style={{ height: '60rem', width: '30rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
       {submitted ? (
         <div>
           <h4>You submitted successfully!</h4>
@@ -63,10 +69,10 @@ const AddEquipment = () => {
       ) : (
         <div>
           <div className="form-group">
-            <label htmlFor="Equipment_Name">Equipment_Name</label>
+            <label className="lab" align = "center" htmlFor="Equipment_Name">Equipment Name</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="title"
               required
               value={equipment.Equipment_Name}
@@ -76,10 +82,10 @@ const AddEquipment = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="Equipment_Kind">Equipment_Kind</label>
+            <label className="lab" align = "center" htmlFor="Equipment_Kind">Equipment Kind</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Equipment_Kind"
               required
               value={equipment.Equipment_Kind}
@@ -88,10 +94,10 @@ const AddEquipment = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Working_Status">Working_Status</label>
+            <label className="lab" align = "center" htmlFor="Working_Status">Working Status</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Working_Status"
               required
               value={equipment.Working_Status}
@@ -100,10 +106,10 @@ const AddEquipment = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Exercise">Exercise</label>
+            <label className="lab" align = "center" htmlFor="Exercise">Exercise</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Exercise"
               required
               value={equipment.Exercise}
@@ -149,11 +155,14 @@ const AddEquipment = () => {
         //     />
         //   </div>   
            }
-          <button onClick={saveEquipment} className="btn btn-success">
+           <br />
+           <br />
+          <button onClick={saveEquipment} className="btn btn-success tempBtn3">
             Submit
           </button>
         </div>
       )}
+      </Card>
     </div>
   );
 };

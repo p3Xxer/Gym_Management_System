@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import BranchMangerServices from "../../services/ManagerService";
+import image from "../../Images/home.jpg"
+import "../Member/Member.css";
+import { Card } from "react-bootstrap";
 
 const Addbranch_manager = () => {
   const initialbranch_managerState = {
@@ -70,6 +73,11 @@ const Addbranch_manager = () => {
   };
 
   return (
+    <div className="member-submit-form" id="member" >
+    <img src={image} id="imgt2" />
+    <br />
+    <br />
+    <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
     <div className="submit-form">
       {submitted ? (
         <div>
@@ -81,10 +89,10 @@ const Addbranch_manager = () => {
       ) : (
         <div>
           <div className="form-group">
-            <label htmlFor="Branch_Name">Branch_Name</label>
+            <label className="lab" align = "center" htmlFor="Branch_Name">Branch Name</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="title"
               required
               value={branch_manager.Branch_Name}
@@ -94,10 +102,10 @@ const Addbranch_manager = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="Branch_Location">Branch_Location</label>
+            <label className="lab" align = "center" htmlFor="Branch_Location">Branch Location</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Branch_Location"
               required
               value={branch_manager.Branch_Location}
@@ -106,10 +114,10 @@ const Addbranch_manager = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Branch_Email">Branch_Email</label>
+            <label className="lab" align = "center" htmlFor="Branch_Email">Branch Email</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Branch_Email"
               required
               value={branch_manager.Branch_Email}
@@ -118,10 +126,10 @@ const Addbranch_manager = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Branch_Phone_Number">Branch_Phone_Number</label>
+            <label className="lab" align = "center" htmlFor="Branch_Phone_Number">Branch Phone Number</label>
             <input
               type="number"
-              className="form-control"
+              className="form-control int"
               id="Branch_Phone_Number"
               required
               value={branch_manager.Branch_Phone_Number}
@@ -130,10 +138,10 @@ const Addbranch_manager = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Manager_Name">Manager_Name</label>
+            <label className="lab" align = "center" htmlFor="Manager_Name">Manager Name</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Manager_Name"
               required
               value={branch_manager.Manager_Name}
@@ -142,10 +150,10 @@ const Addbranch_manager = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Gender">Gender</label>
+            <label className="lab" align = "center" htmlFor="Gender">Gender</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Gender"
               required
               value={branch_manager.Gender}
@@ -154,10 +162,10 @@ const Addbranch_manager = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Mobile_Number">Mobile_Number</label>
+            <label className="lab" align = "center" htmlFor="Mobile_Number">Mobile Number</label>
             <input
               type="number"
-              className="form-control"
+              className="form-control int"
               id="Mobile_Number"
               required
               value={branch_manager.Mobile_Number}
@@ -166,10 +174,10 @@ const Addbranch_manager = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Address">Address</label>
+            <label className="lab" align = "center" htmlFor="Address">Address</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Address"
               required
               value={branch_manager.Address}
@@ -178,10 +186,10 @@ const Addbranch_manager = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Manager_Email">Manager_Email</label>
+            <label className="lab" align = "center" htmlFor="Manager_Email">Manager Email</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Manager_Email"
               required
               value={branch_manager.Manager_Email}
@@ -190,10 +198,10 @@ const Addbranch_manager = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Password">Password</label>
+            <label className="lab" align = "center" htmlFor="Password">Password</label>
             <input
               type="number"
-              className="form-control"
+              className="form-control int"
               id="Password"
               required
               value={branch_manager.Password}
@@ -201,13 +209,16 @@ const Addbranch_manager = () => {
               name="Password"
             />
           </div>
-
-          <button onClick={savebranch_manager} className="btn btn-success">
+          <br />
+          <br />
+          <button onClick={savebranch_manager} className="btn btn-success tempBtn">
             Submit
           </button>
         </div>
       )}
     </div>
+    </Card>
+  </div>
   );
 };
 

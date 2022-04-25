@@ -66,9 +66,9 @@ const WorkoutList = () => {
   //   };
 
   return (
-    <div className="list row">
-      <div className="col-md-8">
-      <img src={image} id="imgt2" />
+    <div className="list row" align="center">
+    <img src={image} id="imgt2" />  
+    <div className="">
         <div className="input-group mb-3">
           <input
             type="text"
@@ -90,8 +90,15 @@ const WorkoutList = () => {
           }
         </div>
       </div>
-      <div className="col-md-6">
-        <h4>Workouts List</h4>
+      <br/>
+      <br/>
+      
+      <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
+      <br/>
+      <br/>
+      <br/>
+        <h4 className="lab">Workouts List</h4>
+        <br/>
 
         {/* khushil working */}
 
