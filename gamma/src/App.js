@@ -32,7 +32,9 @@ import { Dropdown, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import EditTrainer from "./components/Trainer/EditTrainer";
 import EditEquipment from "./components/Equipment/EditEquipment";
+import { useNavigate } from "react-router-dom";
 const App = () => {
+  let navigate = useNavigate();
   const [showDropdownMem, setShowDropdownMem] = useState(false);
   const [showDropdownPay, setShowDropdownPay] = useState(false);
   const [showDropdownTrain, setShowDropdownTrain] = useState(false);
@@ -108,7 +110,7 @@ const App = () => {
               <div className="navbar-nav mr-auto">
                 <li className="nav-item">
                   <Link to={"/home"} className="nav-link" >
-                    HOME
+                    Home
                   </Link>
                 </li>
 
@@ -133,7 +135,7 @@ const App = () => {
                 }
                 {currentManager && (<NavDropdown
                   id="nav-dropdown-dark-example"
-                  title="MEMBER"
+                  title="Member"
                   style={{ marginLeft: '950px' }}
                   menuVariant="dark"
                   onMouseLeave={() => setShowDropdownMem(false)}
@@ -161,7 +163,7 @@ const App = () => {
                   currentManager && (
                     <NavDropdown
                       id="nav-dropdown-dark-example"
-                      title="PAYMENT"
+                      title="Payment"
                       menuVariant="dark"
                       onMouseLeave={() => setShowDropdownPay(false)}
                       onMouseOver={() => setShowDropdownPay(true)}
@@ -185,7 +187,7 @@ const App = () => {
                   currentManager && (
                     <NavDropdown
                       id="nav-dropdown-dark-example"
-                      title="TRAINER"
+                      title="Trainer"
                       menuVariant="dark">
                       <NavDropdown.Item href={"/addtrainer/" + currentManager.id}>
                         Add Trainer
@@ -199,7 +201,7 @@ const App = () => {
                   showAdminBoard && (
                     <NavDropdown
                       id="nav-dropdown-dark-example"
-                      title="WORKOUT"
+                      title="Workout"
                       style={{ marginLeft: '1150px' }}
                       menuVariant="dark"
                     >
@@ -217,7 +219,7 @@ const App = () => {
                   currentManager && (
                     <NavDropdown
                       id="nav-dropdown-dark-example"
-                      title="EQUIPMENT"
+                      title="Equipment"
                       menuVariant="dark"
                     >
 
@@ -233,7 +235,7 @@ const App = () => {
                   showAdminBoard && (
                     <NavDropdown
                       id="nav-dropdown-dark-example"
-                      title="BRANCH"
+                      title="Branch"
                       menuVariant="dark"
                     >
                       <NavDropdown.Item href={"/addbranch"}>
@@ -260,7 +262,7 @@ const App = () => {
                   }
                   <li className="nav-item">
                     <a href="/login" className="nav-link" onClick={logOut} >
-                      LOGOUT
+                      LogOut
                     </a>
                   </li>
                 </div>
@@ -268,7 +270,7 @@ const App = () => {
                 <div >
                   <li className="nav-item">
                     <Link to={"/login"} className="nav-link" style={{ paddingLeft: '1350px' }}>
-                      LOGIN
+                      Login
                     </Link>
                   </li>
 
@@ -296,7 +298,12 @@ const App = () => {
           <Route path="/user" element={<BoardUser />} />
           <Route path="/mod" element={<BoardModerator />} />
           <Route path="/admin" element={<BoardAdmin />} />
+
+        </Routes>
+        {currentManager || showAdminBoard ? (<Routes>
           <Route path="/addmember/:id" element={<AddMember />} />
+          <Route path="edittrainer/:id" element={<EditTrainer />} />
+          <Route path="editequipment/:id" element={<EditEquipment />} />
           <Route path="/editmember/:Mem_ID" element={<EditMember />} />
           <Route path="/payment/:id" element={<Payment />} />
           <Route path="showpayment/:id" element={<ShowPayment />} />
@@ -312,10 +319,32 @@ const App = () => {
           <Route path="editbranch/:id" element={<EditBranch />} />
           <Route path="/showmembers/:id" element={<ShowMembers />} />
           <Route path="/branch_manager/:id" element={<EditBranch />} />
-          <Route path="edittrainer/:id" element={<EditTrainer />} />
-          <Route path="editequipment/:id" element={<EditEquipment />} />
+          <Route path="/profile/:id" element={<Profile />} />
 
-        </Routes>
+        </Routes>) :
+          <Routes>
+            <Route path="/addmember/:id" element={<Home />} />
+            <Route path="edittrainer/:id" element={<Home />} />
+            <Route path="editequipment/:id" element={<Home />} />
+            <Route path="/editmember/:Mem_ID" element={<Home />} />
+            <Route path="/payment/:id" element={<Home />} />
+            <Route path="showpayment/:id" element={<Home />} />
+            <Route path="addequipment/:id" element={<Home />} />
+            <Route path="showequipment/:id" element={<Home />} />
+            <Route path="addtrainer/:id" element={<Home />} />
+            <Route path="showtrainer/:id" element={<Home />} />
+            <Route path="showworkout" element={<Home />} />
+            <Route path="addworkout" element={<Home />} />
+            <Route path="/showbranch" element={<Home />} />
+            <Route path="addbranch" element={<Home />} />
+            <Route path="editworkout/:id" element={<Home />} />
+            <Route path="editbranch/:id" element={<Home />} />
+            <Route path="/showmembers/:id" element={<Home />} />
+            <Route path="/branch_manager/:id" element={<Home />} />
+            <Route path="/profile/:id" element={<Home />} />
+          </Routes>
+
+        }
       </div>
     </div>
   );
