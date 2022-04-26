@@ -28,7 +28,7 @@ import AddBranches from "./components/Branch/AddBranch";
 import ShowBranches from "./components/Branch/ShowBranches";
 import EditWorkout from "./components/Workout/EditWorkout";
 import EditBranch from "./components/Branch/EditBranch";
-import { Dropdown, Navbar,Container,Nav,NavDropdown } from "react-bootstrap";
+import { Dropdown, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import EditTrainer from "./components/Trainer/EditTrainer";
 import EditEquipment from "./components/Equipment/EditEquipment";
@@ -41,18 +41,18 @@ const App = () => {
   const [showDropdownWor, setShowDropdownWor] = useState(false);
   const particlesInit = async (main) => {
     console.log(main);
-  
+
     // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
     // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(main);
   };
-  
+
   const particlesLoaded = (container) => {
     console.log(container);
   };
   // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-   const [showAdminBoard, setShowAdminBoard] = useState(false);
+  const [showAdminBoard, setShowAdminBoard] = useState(false);
   const [currentManager, setCurrentManager] = useState(undefined);
 
   useEffect(() => {
@@ -63,15 +63,15 @@ const App = () => {
 
     if (user) {
       console.log(user.role);
-      if (user.role==="admin") {
+      if (user.role === "admin") {
         setShowAdminBoard(true);
-        
+
       }
-      else{
-      setCurrentManager(user);
+      else {
+        setCurrentManager(user);
       }
       // setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
-       
+
     }
 
     EventBus.on("logout", () => {
@@ -86,203 +86,203 @@ const App = () => {
   const logOut = () => {
     AuthService.logout();
     // setShowModeratorBoard(false);
-     setShowAdminBoard(false);
+    setShowAdminBoard(false);
     setCurrentManager(undefined);
   };
   console.log(currentManager);
-  
-  
+
+
 
   return (
     <div>
-      <Navbar  variant="dark" expand="lg" className="Navbar">
-      <Container fluid>
-      <Navbar.Toggle aria-controls="navbar-dark-example" />
-    <Navbar.Collapse id="navbar-dark-example">
-    <Nav>
-        {
-          //   <Link to={"/"} className="navbar-brand">
-          //   Profile
-          // </Link>
-        }
-        <div className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to={"/home"} className="nav-link" >
-              Home
-            </Link>
-          </li>
+      <Navbar variant="dark" expand="lg" className="Navbar">
+        <Container fluid>
+          <Navbar.Toggle aria-controls="navbar-dark-example" />
+          <Navbar.Collapse id="navbar-dark-example">
+            <Nav>
+              {
+                //   <Link to={"/"} className="navbar-brand">
+                //   Profile
+                // </Link>
+              }
+              <div className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link to={"/home"} className="nav-link" >
+                    HOME
+                  </Link>
+                </li>
 
-          {
-            //   showModeratorBoard && (
-            //   <li className="nav-item">
-            //     <Link to={"/mod"} className="nav-link">
-            //       Moderator Board
-            //     </Link>
-            //   </li>
-            // )
-          }
+                {
+                  //   showModeratorBoard && (
+                  //   <li className="nav-item">
+                  //     <Link to={"/mod"} className="nav-link">
+                  //       Moderator Board
+                  //     </Link>
+                  //   </li>
+                  // )
+                }
 
-          {
-            //   showAdminBoard && (
-            //   <li className="nav-item">
-            //     <Link to={"/admin"} className="nav-link">
-            //       Admin Board
-            //     </Link>
-            //   </li>
-            // )
-          }
-          {currentManager && (<NavDropdown
-            id="nav-dropdown-dark-example"
-            title="Member"
-            style={{marginLeft: '950px'}}
-            menuVariant="dark"
-              onMouseLeave={() => setShowDropdownMem(false)}
-              onMouseOver={() => setShowDropdownMem(true)}
-              
-            >
-           
-                <NavDropdown.Item href = {"/addmember/" + currentManager.id}>
-                  
+                {
+                  //   showAdminBoard && (
+                  //   <li className="nav-item">
+                  //     <Link to={"/admin"} className="nav-link">
+                  //       Admin Board
+                  //     </Link>
+                  //   </li>
+                  // )
+                }
+                {currentManager && (<NavDropdown
+                  id="nav-dropdown-dark-example"
+                  title="MEMBER"
+                  style={{ marginLeft: '950px' }}
+                  menuVariant="dark"
+                  onMouseLeave={() => setShowDropdownMem(false)}
+                  onMouseOver={() => setShowDropdownMem(true)}
+
+                >
+
+                  <NavDropdown.Item href={"/addmember/" + currentManager.id}>
+
                     Add Member
-                 
-                </NavDropdown.Item>
-                <NavDropdown.Item href = {"/showmembers/" + currentManager.id}>
-                
-                  
+
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href={"/showmembers/" + currentManager.id}>
+
+
                     Show Members
-                  
-                </NavDropdown.Item>
+
+                  </NavDropdown.Item>
                 </NavDropdown>
-              
-              
-          
-          )}
-          {
-            currentManager && (
-            <NavDropdown
-            id="nav-dropdown-dark-example"
-            title="Payment"
-            menuVariant="dark"
-              onMouseLeave={() => setShowDropdownPay(false)}
-              onMouseOver={() => setShowDropdownPay(true)}
-              
-            >
-              
-             
-                <NavDropdown.Item href={/payment/ + currentManager.id}>
-                Add Payment
-                </NavDropdown.Item>
-                <NavDropdown.Item href = {"/showpayment/" + currentManager.id}>
-                  
-                
-                Show Payments
-              
-                </NavDropdown.Item>
-            </NavDropdown>
-          )}
 
-          {
-            currentManager && (
-            <NavDropdown
-            id="nav-dropdown-dark-example"
-            title="Trainer"
-            menuVariant="dark">
-                <NavDropdown.Item href = {"/addtrainer/" + currentManager.id}>
-                Add Trainer
-                </NavDropdown.Item>
-                <NavDropdown.Item href = {"/showtrainer/" + currentManager.id}>
-                Show Trainer
-                </NavDropdown.Item>
-            </NavDropdown>
-          )}
-          {
-            showAdminBoard && (
-            <NavDropdown
-            id="nav-dropdown-dark-example"
-            title="Workout"
-            style={{marginLeft: '1150px'}}
-            menuVariant="dark"
-            >
-              
-                <NavDropdown.Item href ={"/addworkout"} >
-                Add Workout
-                </NavDropdown.Item>
-                <NavDropdown.Item href = {"/showworkout"}>
-                  
-                Show Workout
-                </NavDropdown.Item>
-            </NavDropdown>
-          )}
-          {
-            currentManager && (
-            <NavDropdown
-            id="nav-dropdown-dark-example"
-            title="Equipment"
-            menuVariant="dark"
-            >
-              
-                <NavDropdown.Item href ={"/addequipment/" + currentManager.id} >
-                Add Equipment
-                </NavDropdown.Item>
-                <NavDropdown.Item href ={"/showequipment/" + currentManager.id} >
-                Show Equipment
-                </NavDropdown.Item>
-            </NavDropdown>
-          )}
-          {
-            showAdminBoard && (
-            <NavDropdown
-            id="nav-dropdown-dark-example"
-            title="Branch"
-            menuVariant="dark"
-            >
-                <NavDropdown.Item href = {"/addbranch"}>
-                Add Branch
-                </NavDropdown.Item>
-                <NavDropdown.Item href ={"/showbranch"} >
-                  
-                Show Branches
-                </NavDropdown.Item>
-            </NavDropdown>
-          )}
-          
-         
-        </div>
 
-        {currentManager || showAdminBoard ? (
-          <div >
-            {
-              //   <li className="nav-item">
-              //   <Link to={"/profile/"+currentManager.id} className="nav-link">
-              //     {currentManager.id}
-              //   </Link>
-              // </li>
-            }
-            <li className="nav-item">
-              <a href="/login" className="nav-link" onClick={logOut} >
-                LogOut
-              </a>
-            </li>
-          </div>
-        ) : (
-          <div >
-            <li className="nav-item">
-              <Link to={"/login"} className="nav-link" style={{paddingLeft: '1350px'}}>
-                Login
-              </Link>
-            </li>
 
-            {
-              //   <li className="nav-item">
-              //   <Link to={"/register"} className="nav-link">
-              //     Sign Up
-              //   </Link>
-              // </li>
-            }
-          </div>
-        )}
-        </Nav>
-        </Navbar.Collapse>
+                )}
+                {
+                  currentManager && (
+                    <NavDropdown
+                      id="nav-dropdown-dark-example"
+                      title="PAYMENT"
+                      menuVariant="dark"
+                      onMouseLeave={() => setShowDropdownPay(false)}
+                      onMouseOver={() => setShowDropdownPay(true)}
+
+                    >
+
+
+                      <NavDropdown.Item href={/payment/ + currentManager.id}>
+                        Add Payment
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href={"/showpayment/" + currentManager.id}>
+
+
+                        Show Payments
+
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  )}
+
+                {
+                  currentManager && (
+                    <NavDropdown
+                      id="nav-dropdown-dark-example"
+                      title="TRAINER"
+                      menuVariant="dark">
+                      <NavDropdown.Item href={"/addtrainer/" + currentManager.id}>
+                        Add Trainer
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href={"/showtrainer/" + currentManager.id}>
+                        Show Trainer
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  )}
+                {
+                  showAdminBoard && (
+                    <NavDropdown
+                      id="nav-dropdown-dark-example"
+                      title="WORKOUT"
+                      style={{ marginLeft: '1150px' }}
+                      menuVariant="dark"
+                    >
+
+                      <NavDropdown.Item href={"/addworkout"} >
+                        Add Workout
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href={"/showworkout"}>
+
+                        Show Workout
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  )}
+                {
+                  currentManager && (
+                    <NavDropdown
+                      id="nav-dropdown-dark-example"
+                      title="EQUIPMENT"
+                      menuVariant="dark"
+                    >
+
+                      <NavDropdown.Item href={"/addequipment/" + currentManager.id} >
+                        Add Equipment
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href={"/showequipment/" + currentManager.id} >
+                        Show Equipment
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  )}
+                {
+                  showAdminBoard && (
+                    <NavDropdown
+                      id="nav-dropdown-dark-example"
+                      title="BRANCH"
+                      menuVariant="dark"
+                    >
+                      <NavDropdown.Item href={"/addbranch"}>
+                        Add Branch
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href={"/showbranch"} >
+
+                        Show Branches
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  )}
+
+
+              </div>
+
+              {currentManager || showAdminBoard ? (
+                <div >
+                  {
+                    //   <li className="nav-item">
+                    //   <Link to={"/profile/"+currentManager.id} className="nav-link">
+                    //     {currentManager.id}
+                    //   </Link>
+                    // </li>
+                  }
+                  <li className="nav-item">
+                    <a href="/login" className="nav-link" onClick={logOut} >
+                      LOGOUT
+                    </a>
+                  </li>
+                </div>
+              ) : (
+                <div >
+                  <li className="nav-item">
+                    <Link to={"/login"} className="nav-link" style={{ paddingLeft: '1350px' }}>
+                      LOGIN
+                    </Link>
+                  </li>
+
+                  {
+                    //   <li className="nav-item">
+                    //   <Link to={"/register"} className="nav-link">
+                    //     Sign Up
+                    //   </Link>
+                    // </li>
+                  }
+                </div>
+              )}
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
 

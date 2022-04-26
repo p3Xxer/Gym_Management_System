@@ -65,3 +65,8 @@ label {
 .homenav {
   color: black;
 }
+
+.Navbar {
+  background: rgb(106, 26, 26);
+  background: linear-gradient(90deg, rgba(106, 26, 26, 1) 0%, rgba(62, 26, 40, 1) 35%, rgba(31, 59, 83, 1) 100%);
+}

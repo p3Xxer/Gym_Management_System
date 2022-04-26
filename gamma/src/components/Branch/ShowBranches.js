@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import BranchServices from "../../services/ManagerService";
 import { Link } from "react-router-dom";
 import { Table } from 'react-bootstrap';
-import image from "../../Images/home.jpg"
+import image from "../../Images/home.jpeg"
 
 const Branch_ManagerList = () => {
   const [branch_manager, setBranch_Manager] = useState([]);

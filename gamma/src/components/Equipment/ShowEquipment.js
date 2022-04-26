@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import EquipmentService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
-import image from "../../Images/home.jpg"
+import image from "../../Images/home.jpeg"
 const EquipmentList = () => {
   const { id } = useParams();
   const [equipment, setEquipment] = useState([]);

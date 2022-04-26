@@ -3,7 +3,7 @@ import ManagerService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import "./Member.css";
-import image from "../../Images/home.jpg"
+import image from "../../Images/home.jpeg"
 const MemberList = () => {
   const { id } = useParams();
   const [member, setMember] = useState([]);
@@ -111,11 +111,11 @@ const MemberList = () => {
                 <td>{member.Emer_Name}</td>
                 <td>{member.Emer_Mobile}</td>
                 <td align="right"><button className="btn-danger pqy" align="left" onClick={() => { deleteMember(member.Mem_ID) }}>Delete</button>
-                <Link style={{ textAlign: "left" }}
-                  to={"/editmember/" + member.Mem_ID}
-                  className="badge badge-warning pqy">
-                  Edit
-                </Link></td>
+                  <Link style={{ textAlign: "left" }}
+                    to={"/editmember/" + member.Mem_ID}
+                    className="badge badge-warning pqy">
+                    Edit
+                  </Link></td>
               </tr>
             ))}
         </Table>

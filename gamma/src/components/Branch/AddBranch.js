@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import BranchMangerServices from "../../services/ManagerService";
-import image from "../../Images/home.jpg"
+import image from "../../Images/home.jpeg"
 import "../Member/Member.css";
 import { Card } from "react-bootstrap";
 

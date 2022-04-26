@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TrainerService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import Table from "react-bootstrap/Table";
-import image from "../../Images/home.jpg"
+import image from "../../Images/home.jpeg"
 const TrainerList = () => {
   const { id } = useParams();
   const [trainer, setTrainer] = useState([]);
