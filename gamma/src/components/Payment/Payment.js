@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PaymentService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
 import image from "../../Images/home.jpeg"
+import image1 from "../../Images/payment.png"
 import "../Member/Member.css";
 import { Card } from "react-bootstrap";
 const AddPayment = () => {
@@ -57,8 +58,9 @@ const AddPayment = () => {
   };
 
   return (
-    <div className="member-submit-form" id="member">
+    <div>
     <img src={image} id="imgt2" />
+    <div className="member-submit-form" id="member">
     <br />
     <br />
     <br />
@@ -152,6 +154,8 @@ const AddPayment = () => {
         </div>
       )}
       </Card>
+    </div>
+    <img src={image1} id="imgt4" />
     </div>
   );
 };

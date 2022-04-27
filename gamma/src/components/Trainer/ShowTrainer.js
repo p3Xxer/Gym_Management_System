@@ -66,28 +66,6 @@ const TrainerList = () => {
   return (
     <div className="list row" align="center">
       <img src={image} id="imgt2" />
-      <div className="">
-        <div className="input-group mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search by Mem_Name"
-          //value={searchMem_Name}
-          //onChange={onChangeSearchMem_Name}
-          />
-          {
-            //       <div className="input-group-append">
-            //     <button
-            //       className="btn btn-outline-secondary"
-            //       type="button"
-            //       onClick={findByMem_Name}
-            //     >
-            //       Search
-            //     </button>
-            //   </div>
-          }
-        </div>
-      </div>
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
         <h4 className="lab">Trainers List</h4>
         <br />

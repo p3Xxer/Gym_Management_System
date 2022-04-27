@@ -3,6 +3,7 @@ import MemberDataService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
 import "./Member.css";
 import image from "../../Images/home.jpeg"
+import image1 from "../../Images/addimage.png"
 import { Card } from "react-bootstrap";
 const AddMember = () => {
   const { id } = useParams();
@@ -71,8 +72,9 @@ const AddMember = () => {
 
   return (
 
-    <div className="member-submit-form" id="member" >
+    <div>
       <img src={image} id="imgt2" />
+      <div className="member-submit-form" id="member" >
       <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '30px', background: 'transparent', borderColor: 'transparent' }}>
 
         {submitted ? (
@@ -213,6 +215,8 @@ const AddMember = () => {
           </div>
         )}
       </Card>
+      </div>
+      <img src={image1} id="imgt3" />
     </div>
   );
 };

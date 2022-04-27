@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import EquipmentService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
 import image from "../../Images/home.jpeg"
+import image2 from "../../Images/addimage2.png"
 import "../Member/Member.css";
 import { Card } from "react-bootstrap";
 const AddEquipment = () => {
@@ -53,8 +54,9 @@ const AddEquipment = () => {
   };
 
   return (
-    <div className="member-submit-form" id="member2">
+    <div>
     <img src={image} id="imgt2" />
+      <div className="member-submit-form" id="member2">
     <br />
     <br />
     <br />
@@ -163,6 +165,8 @@ const AddEquipment = () => {
         </div>
       )}
       </Card>
+      </div>
+      <img src={image2} id="imgt3" />
     </div>
   );
 };

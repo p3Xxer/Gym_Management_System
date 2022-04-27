@@ -69,8 +69,6 @@ const EquipmentList = () => {
 
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
         <br />
-        <br />
-        <br />
         <h4 className="lab">Equipments List</h4>
         <br />
         {/* khushil working */}

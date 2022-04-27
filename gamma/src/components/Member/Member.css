@@ -33,6 +33,10 @@
   {
     font-weight: bold;
   } */
+.jumbotron{
+    opacity: 0.5;
+}
+
 #imgt {
     object-fit: cover;
     height: 100%;
@@ -40,6 +44,24 @@
     width: 100%;
     top: 0;
     left: 0;
+}
+
+#imgt3{
+    position: relative;
+    margin-left: 0px;
+    opacity: 0.7;
+    margin-top: -1350px;
+    width: 30%;
+    height: 30%;
+}
+
+#imgt4{
+    position: relative;
+    margin-left: 10px;
+    opacity: 0.7;
+    margin-top: -1550px;
+    width: 30%;
+    height: 30%;
 }
 
 .homename {
