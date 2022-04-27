@@ -42,30 +42,34 @@ const Addbranch_manager = () => {
         Manager_Email: branch_manager.Manager_Email,
         Password: branch_manager.Password,
     };
-    // console.log(data);
 
-    BranchMangerServices.createBranch(data)
-      .then(response => {
-        setbranch_manager({
-          Branch_ID:response.data.Branch_ID,
-          Branch_Name: response.data.Branch_Name,
-          Branch_Location: response.data.Branch_Location,
-          Branch_Email: response.data.Branch_Email,
-          Branch_Phone_Number: response.data.Branch_Phone_Number,
-          Manager_Name: response.data.Manager_Name,
-          Gender: response.data.Gender,
-          Mobile_Number: response.data.Mobile_Number,
-          Address: response.data.Address,
-          Manager_Email: response.data.Manager_Email,
-          Password: response.data.Password,
+
+    if(window.confirm("Want to submit?")){
+      BranchMangerServices.createBranch(data)
+        .then(response => {
+          setbranch_manager({
+            Branch_ID:response.data.Branch_ID,
+            Branch_Name: response.data.Branch_Name,
+            Branch_Location: response.data.Branch_Location,
+            Branch_Email: response.data.Branch_Email,
+            Branch_Phone_Number: response.data.Branch_Phone_Number,
+            Manager_Name: response.data.Manager_Name,
+            Gender: response.data.Gender,
+            Mobile_Number: response.data.Mobile_Number,
+            Address: response.data.Address,
+            Manager_Email: response.data.Manager_Email,
+            Password: response.data.Password,
+          });
+          console.log(response);
+          setSubmitted(true);
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
         });
-        console.log(response);
-        setSubmitted(true);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+        setbranch_manager(initialbranch_managerState);
+        window.location.reload();
+      }
   };
   const newbranch_manager = () => {
     setbranch_manager(initialbranch_managerState);
@@ -79,14 +83,6 @@ const Addbranch_manager = () => {
     <br />
     <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
     <div className="submit-form">
-      {submitted ? (
-        <div>
-          <h4>You submitted successfully!</h4>
-          <button className="btn btn-success" onClick={newbranch_manager}>
-            Add branch_manager
-          </button>
-        </div>
-      ) : (
         <div>
           <div className="form-group">
             <label className="lab" align = "center" htmlFor="Branch_Name">Branch Name</label>
@@ -214,7 +210,6 @@ const Addbranch_manager = () => {
             Submit
           </button>
         </div>
-      )}
     </div>
     </Card>
   </div>

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import BranchServices from "../../services/ManagerService";
-
+import image from "../../Images/home.jpeg"
+import image2 from "../../Images/branch.png"
+import "../Member/Member.css";
+import { Card } from "react-bootstrap";
 const Branch = props => {
     
     console.log(useParams());
@@ -71,6 +74,8 @@ const Branch = props => {
   };
 
   const updateBranch = () => {
+
+    if(window.confirm("Confirm Update?")){
     BranchServices.updateBranch(currentBranch.Branch_ID, currentBranch)
       .then(response => {
         console.log(response.data);
@@ -79,33 +84,22 @@ const Branch = props => {
       .catch(e => {
         console.log(e);
       });
+    }
   };
 
-//   const deleteBranch = () => {
-//     BranchServices.remove(currentBranch.Branch_ID)
-//       .then(response => {
-//         console.log(response.data);
-//         navigate("/branch");
-//       })
-//       .catch(e => {
-//         console.log(e);
-//       });
-//   };
-console.log(currentBranch);
   return (
     <div>
-      {currentBranch ? (
-        <div className="edit-form">
-          <h4>Branch</h4>
-          <form>
-
-
-          
+    <img src={image} id="imgt2" />
+    <div className="member-submit-form" id="member" >
+    <br />
+    <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
+    <div className="submit-form">
+        <div>
           <div className="form-group">
-            <label htmlFor="Branch_Name">Branch_Name</label>
+            <label className="lab" align = "center" htmlFor="Branch_Name">Branch Name</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="title"
               required
               value={currentBranch.Branch_Name}
@@ -115,10 +109,10 @@ console.log(currentBranch);
           </div>
 
           <div className="form-group">
-            <label htmlFor="Branch_Location">Branch_Location</label>
+            <label className="lab" align = "center" htmlFor="Branch_Location">Branch Location</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Branch_Location"
               required
               value={currentBranch.Branch_Location}
@@ -127,10 +121,10 @@ console.log(currentBranch);
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Branch_Email">Branch_Email</label>
+            <label className="lab" align = "center" htmlFor="Branch_Email">Branch Email</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Branch_Email"
               required
               value={currentBranch.Branch_Email}
@@ -139,10 +133,10 @@ console.log(currentBranch);
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Branch_Phone_Number">Branch_Phone_Number</label>
+            <label className="lab" align = "center" htmlFor="Branch_Phone_Number">Branch Phone Number</label>
             <input
               type="number"
-              className="form-control"
+              className="form-control int"
               id="Branch_Phone_Number"
               required
               value={currentBranch.Branch_Phone_Number}
@@ -151,10 +145,10 @@ console.log(currentBranch);
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Manager_Name">Manager_Name</label>
+            <label className="lab" align = "center" htmlFor="Manager_Name">Manager Name</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Manager_Name"
               required
               value={currentBranch.Manager_Name}
@@ -163,10 +157,10 @@ console.log(currentBranch);
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Gender">Gender</label>
+            <label className="lab" align = "center" htmlFor="Gender">Gender</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Gender"
               required
               value={currentBranch.Gender}
@@ -175,10 +169,10 @@ console.log(currentBranch);
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Mobile_Number">Mobile_Number</label>
+            <label className="lab" align = "center" htmlFor="Mobile_Number">Mobile Number</label>
             <input
               type="number"
-              className="form-control"
+              className="form-control int"
               id="Mobile_Number"
               required
               value={currentBranch.Mobile_Number}
@@ -187,10 +181,10 @@ console.log(currentBranch);
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Address">Address</label>
+            <label className="lab" align = "center" htmlFor="Address">Address</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Address"
               required
               value={currentBranch.Address}
@@ -199,10 +193,10 @@ console.log(currentBranch);
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Manager_Email">Manager_Email</label>
+            <label className="lab" align = "center" htmlFor="Manager_Email">Manager Email</label>
             <input
               type="text"
-              className="form-control"
+              className="form-control int"
               id="Manager_Email"
               required
               value={currentBranch.Manager_Email}
@@ -211,10 +205,10 @@ console.log(currentBranch);
             />
           </div>
           <div className="form-group">
-            <label htmlFor="Password">Password</label>
+            <label className="lab" align = "center" htmlFor="Password">Password</label>
             <input
               type="number"
-              className="form-control"
+              className="form-control int"
               id="Password"
               required
               value={currentBranch.Password}
@@ -222,35 +216,16 @@ console.log(currentBranch);
               name="Password"
             />
           </div>
-           
-
-
-          </form>
-
-
-
-         { 
-        //      <button className="badge badge-danger mr-2" onClick={deleteBranch}>
-        //     Delete
-        //   </button>
-        }
-
-          <button
-            type="submit"
-            className="badge badge-success"
-            onClick={updateBranch}
-          >
-            Update
-          </button>
-          <p>{message}</p>
-        </div>
-      ) : (
-        <div>
           <br />
-          <p>Please click on a Branch...</p>
+          <button onClick={updateBranch} className="btn btn-outline-info tempBtn">
+            Submit
+          </button>
         </div>
-      )}
     </div>
+    </Card>
+  </div>
+  <img src={image2} id="imgt3" />
+  </div>
   );
 };
 

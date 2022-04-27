@@ -66,11 +66,13 @@ const MemberList = () => {
   //   };
   const deleteMember = (Mem_ID) => {
     console.log(Mem_ID);
+    if(window.confirm("Do you want to delete this entry?")){
     ManagerService.removeMember(Mem_ID)
       .then(response => {
         console.log(response.data);
         refreshList();
       })
+    }
   }
 
   return (
@@ -124,43 +126,7 @@ const MemberList = () => {
             ))}
           </tbody>
         </Table>
-
-        {
-          //     <button
-          //   className="m-3 btn btn-sm btn-danger"
-          //   onClick={removeAllMembers}
-          // >
-          //   Remove All
-          // </button>
-        }
       </div>
-      {
-        //   <div className="col-md-6">
-        //   {currentMember ? (
-        //     <div>
-        //       <h4>Members</h4>
-        //       <div>
-        //         <label>
-        //           <strong>Mem_Name:</strong>
-        //         </label>{" "}
-
-        //         {currentMember.Mem_ID}
-        //       </div>
-        //       <Link
-        //         to={"/editmember/" + currentMember.Mem_ID}
-        //         className="badge badge-warning"
-        //       >
-        //         Edit
-        //       </Link>
-        //     </div>
-        //   ) : (
-        //     <div>
-        //       <br />
-        //       <p>Please click on a Member...</p>
-        //     </div>
-        //   )}
-        // </div>
-      }
       <img src={image} id="imgt2" />
     </div>
   );

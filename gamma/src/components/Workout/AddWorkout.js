@@ -28,20 +28,23 @@ const AddWorkout = () => {
       Working_Duration:workout.Working_Duration
     };
 
-    WorkoutService.AddWorkout(data)
-      .then(response => {
-        setWorkout({
-            Workout_ID:response.data.Workout_ID,
-            Workout_Name:response.data.Workout_Name,
-            Workout_DietChart:response.data.Workout_DietChart,
-            Working_Duration:response.data.Working_Duration
+    if(window.confirm("Want to submit?")){
+      WorkoutService.AddWorkout(data)
+        .then(response => {
+          setWorkout({
+              Workout_ID:response.data.Workout_ID,
+              Workout_Name:response.data.Workout_Name,
+              Workout_DietChart:response.data.Workout_DietChart,
+              Working_Duration:response.data.Working_Duration
+          });
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
         });
-        setSubmitted(true);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+        setWorkout(initialWorkoutState);
+        window.location.reload();
+      }
   };
 
   const newWorkout = () => {
@@ -59,14 +62,6 @@ const AddWorkout = () => {
     <br />
     <Card style={{ height: '60rem', width: '30rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
     <div className="submit-form">
-      {submitted ? (
-        <div>
-          <h4>You submitted successfully!</h4>
-          <button className="btn btn-success" onClick={newWorkout}>
-            Add
-          </button>
-        </div>
-      ) : (
         <div>
           <div className="form-group">
             <label className="lab" align = "center" htmlFor="Workout_Name">Workout_Name</label>
@@ -104,54 +99,13 @@ const AddWorkout = () => {
               onChange={handleInputChange}
               name="Working_Duration"
             />
-          </div>
-          {
-        //       <div className="form-group">
-        //     <label htmlFor="Workout_Amt">Workout_Amt</label>
-        //     <input
-        //       type="number"
-        //       className="form-control"
-        //       id="Workout_Amt"
-        //       required
-        //       value={workout.Workout_Amt}
-        //       onChange={handleInputChange}
-        //       name="Workout_Amt"
-        //     />
-        //   </div> 
-         }
-          {
-        //       <div className="form-group">
-        //     <label htmlFor="Member_ID">Member_ID</label>
-        //     <input
-        //       type="number"
-        //       className="form-control"
-        //       id="Member_ID"
-        //       required
-        //       value={workout.Member_ID}
-        //       onChange={handleInputChange}
-        //       name="Member_ID"
-        //     />
-        //   </div>
-        //   <div className="form-group">
-        //     <label htmlFor="Workout_Name">Workout_Name</label>
-        //     <input
-        //       type="text"
-        //       className="form-control"
-        //       id="Workout_Name"
-        //       required
-        //       value={workout.Workout_Name}
-        //       onChange={handleInputChange}
-        //       name="Workout_Name"
-        //     />
-        //   </div>
-        }
+          </div>        
           <br />
            <br />      
           <button onClick={saveWorkout} className="btn btn-outline-info tempBtn3">
             Submit
           </button>
         </div>
-      )}
     </div>
     </Card>
     </div>

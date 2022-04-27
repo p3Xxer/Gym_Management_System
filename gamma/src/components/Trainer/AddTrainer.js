@@ -10,9 +10,6 @@ const AddTrainer = () => {
   const initialTrainerState = {
     Trainer_ID: null,
     Trainer_Name: "",
-    // Trainer_Weight: 0,
-    // Trainer_Height: 0,
-    // Age: 0,
     Gender: "",
     Blood_Type: "",
     Phone: 0,
@@ -32,9 +29,6 @@ const AddTrainer = () => {
   const saveTrainer = () => {
     var data = {
       Trainer_Name: trainer.Trainer_Name,
-    //   Trainer_Weight: trainer.Trainer_Weight,
-    //   Trainer_Height: trainer.Trainer_Height,
-    //   Age: trainer.Age,
       Gender: trainer.Gender,
       Blood_Type: trainer.Blood_Type,
       Phone: trainer.Phone,
@@ -44,7 +38,8 @@ const AddTrainer = () => {
       Workout_Name:trainer.Workout_Name
     };
 
-    TrainerDataService.createTrainer(id,data)
+    if(window.confirm("Want to submit?")){
+      TrainerDataService.createTrainer(id,data)
       .then(response => {
         setTrainer({
           Trainer_ID: response.data.Trainer_ID,
@@ -66,11 +61,9 @@ const AddTrainer = () => {
       .catch(e => {
         console.log(e);
       });
-  };
-
-  const newTrainer = () => {
-    setTrainer(initialTrainerState);
-    setSubmitted(false);
+      setTrainer(initialTrainerState);
+      window.location.reload();
+    }
   };
 
   return (
@@ -81,14 +74,6 @@ const AddTrainer = () => {
     <br />
     <br />
     <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
-      {submitted ? (
-        <div>
-          <h4>You submitted successfully!</h4>
-          <button className="btn btn-success" onClick={newTrainer}>
-            Add
-          </button>
-        </div>
-      ) : (
         <div>
           <div className="form-group">
             <label className="lab" align = "center" htmlFor="Trainer_Name">Name</label>
@@ -193,7 +178,6 @@ const AddTrainer = () => {
             Submit
           </button>
         </div>
-      )}
       </Card>
       </div>
       <img src={image1} id="imgt4" />

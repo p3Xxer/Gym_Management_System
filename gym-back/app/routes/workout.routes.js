@@ -8,7 +8,7 @@ module.exports = app => {
     // Retrieve all published Workout
     //router.get("/published", workout.findAllPublished);
     // Retrieve a single Workout with id
-    router.get("/:id", workout.findOne);
+    router.get("/detail/:id", workout.findOne);
     // Update a Workout with id
     router.put("/:id", workout.update);
     // Delete a Workout with id

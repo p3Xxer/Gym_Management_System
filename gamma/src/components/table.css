@@ -11769,7 +11769,8 @@ h5,
 }
 
 .table thead.thead-primary {
-    background: #99235c;
+    opacity: 0.8;
+    background: #841818;
 }
 
 .table thead th {

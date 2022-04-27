@@ -42,6 +42,7 @@ const AddMember = () => {
       Emer_Mobile: member.Emer_Mobile
     };
 
+    if(window.confirm("Want to submit?")){
     MemberDataService.create(id, data)
       .then(response => {
         setMember({
@@ -57,33 +58,17 @@ const AddMember = () => {
           Emer_Name: response.data.Emer_Name,
           Emer_Mobile: response.data.Emer_Mobile
         });
-        setSubmitted(true);
         console.log(response.data);
       })
       .catch(e => {
         console.log(e);
       });
-      
-      addFunction();
-  };
-
-  const newMember = () => {
-    setMember(initialMemberState);
-    setSubmitted(false);
-  };
-
-  function addFunction(){
-    var txt;
-    if (confirm("Press a button!")) {
-      newMember();
-      txt = "You pressed OK!";
-    } else {
-      txt = "You pressed Cancel!";
+      setMember(initialMemberState);
+      window.location.reload();
     }
-  }
+  };
 
   return (
-
     <div>
       <img src={image} id="imgt2" />
       <div className="member-submit-form" id="member" >

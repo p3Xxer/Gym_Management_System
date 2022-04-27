@@ -13,17 +13,17 @@ const getAllWorkout=()=>{
   return axios.get(API_URL +"workout/");
 };
 const getWorkout=(id)=>{
-  return axios.get(API_URL +"workout/"+id);
+  return axios.get(API_URL +"workout/detail/"+id);
 };
 const getBranch=(id)=>{
   return axios.get(API_URL +"branch_manager/"+id);
 };
 const getEquipment=(id)=>{
-  return axios.get(API_URL +"equipment/"+id);
+  return axios.get(API_URL +"equipment/detail/"+id);
 };
 const getTrainer=(id)=>{
   console.log(id);
-  return axios.get(API_URL +"trainer/"+id);
+  return axios.get(API_URL +"trainer//detail/"+id);
 };
 const updateBranch=(id,data)=>{
   return axios.put(API_URL +"branch_manager/"+id,data);
@@ -84,6 +84,18 @@ const get = (Mem_ID) => {
 const removeMember=(Mem_ID)=>{
   return axios.delete(API_URL+"member/"+Mem_ID);
 }
+const removeTrainer=(Trainer_ID)=>{
+  return axios.delete(API_URL+"trainer/"+Trainer_ID);
+}
+const removeEquipment=(Equipment_ID)=>{
+  return axios.delete(API_URL+"equipment/"+Equipment_ID);
+}
+const removeWorkout=(Workout_ID)=>{
+  return axios.delete(API_URL+"workout/"+Workout_ID);
+}
+const removeBranch=(Branch_ID)=>{
+  return axios.delete(API_URL+"branch_manager/"+Branch_ID);
+}
 const getUserBoard = () => {
   return axios.get(API_URL + "user", { headers: authHeader() });
 };
@@ -123,7 +135,11 @@ const UserService = {
   getTrainer,
   updateTrainer,
   getEquipment,
-  updateEquipment
+  updateEquipment,
+  removeTrainer,
+  removeEquipment,
+  removeWorkout,
+  removeBranch
 };
 
 export default UserService;

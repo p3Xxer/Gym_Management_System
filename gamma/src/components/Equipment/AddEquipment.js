@@ -31,26 +31,24 @@ const AddEquipment = () => {
       Exercise:equipment.Exercise
     };
 
-    EquipmentService.createEquipment(id,data)
-      .then(response => {
-        setEquipment({
-            Equipment_ID:response.data.Equipment_ID,
-            Equipment_Name:response.data.Equipment_Name,
-            Equipment_Kind:response.data.Equipment_Kind,
-            Working_Status:response.data.Working_Status,
-            Exercise:response.data.Exercise
+    if(window.confirm("Want to submit?")){
+      EquipmentService.createEquipment(id,data)
+        .then(response => {
+          setEquipment({
+              Equipment_ID:response.data.Equipment_ID,
+              Equipment_Name:response.data.Equipment_Name,
+              Equipment_Kind:response.data.Equipment_Kind,
+              Working_Status:response.data.Working_Status,
+              Exercise:response.data.Exercise
+          });
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
         });
-        setSubmitted(true);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  const newEquipment = () => {
-    setEquipment(initialEquipmentState);
-    setSubmitted(false);
+        setEquipment(initialEquipmentState);
+        window.location.reload();
+      }
   };
 
   return (
@@ -61,14 +59,6 @@ const AddEquipment = () => {
     <br />
     <br />
     <Card style={{ height: '60rem', width: '30rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
-      {submitted ? (
-        <div>
-          <h4>You submitted successfully!</h4>
-          <button className="btn btn-success" onClick={newEquipment}>
-            Add
-          </button>
-        </div>
-      ) : (
         <div>
           <div className="form-group">
             <label className="lab" align = "center" htmlFor="Equipment_Name">Equipment Name</label>
@@ -119,51 +109,12 @@ const AddEquipment = () => {
               name="Exercise"
             />
           </div>
-          {
-        //       <div className="form-group">
-        //     <label htmlFor="Equipment_Amt">Equipment_Amt</label>
-        //     <input
-        //       type="number"
-        //       className="form-control"
-        //       id="Equipment_Amt"
-        //       required
-        //       value={equipment.Equipment_Amt}
-        //       onChange={handleInputChange}
-        //       name="Equipment_Amt"
-        //     />
-        //   </div>  
-        //   <div className="form-group">
-        //     <label htmlFor="Member_ID">Member_ID</label>
-        //     <input
-        //       type="number"
-        //       className="form-control"
-        //       id="Member_ID"
-        //       required
-        //       value={equipment.Member_ID}
-        //       onChange={handleInputChange}
-        //       name="Member_ID"
-        //     />
-        //   </div>
-        //   <div className="form-group">
-        //     <label htmlFor="Workout_Name">Workout_Name</label>
-        //     <input
-        //       type="text"
-        //       className="form-control"
-        //       id="Workout_Name"
-        //       required
-        //       value={equipment.Workout_Name}
-        //       onChange={handleInputChange}
-        //       name="Workout_Name"
-        //     />
-        //   </div>   
-           }
            <br />
            <br />
           <button onClick={saveEquipment} className="btn btn-outline-info tempBtn3">
             Submit
           </button>
         </div>
-      )}
       </Card>
       </div>
       <img src={image2} id="imgt3" />

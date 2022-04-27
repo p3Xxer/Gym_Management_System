@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import WorkoutService from "../../services/ManagerService";
-
+import image from "../../Images/home.jpeg"
+import image2 from "../../Images/workout.png"
+import "../Member/Member.css";
+import { Card } from "react-bootstrap";
 const Workout = props => {
     
     console.log(useParams());
@@ -63,100 +66,76 @@ const Workout = props => {
   };
 
   const updateWorkout = () => {
+
+    if(window.confirm("Confirm Update?")){
     WorkoutService.updateWorkout(currentWorkout.Workout_ID, currentWorkout)
       .then(response => {
         console.log(response.data);
-        setMessage("The Workout was updated successfully!");
       })
       .catch(e => {
         console.log(e);
       });
+    }
   };
 
-//   const deleteWorkout = () => {
-//     WorkoutService.remove(currentWorkout.Workout_ID)
-//       .then(response => {
-//         console.log(response.data);
-//         navigate("/workout");
-//       })
-//       .catch(e => {
-//         console.log(e);
-//       });
-//   };
-console.log(currentWorkout);
   return (
     <div>
-      {currentWorkout ? (
-        <div className="edit-form">
-          <h4>Workout</h4>
-          <form>
-
+    <img src={image} id="imgt2" />
+    <div className="member-submit-form" id="member2" >
+    <br />
+    <br />
+    <br />
+    <br />
+    <Card style={{ height: '60rem', width: '30rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
+    <div className="submit-form">
+        <div>
+          <div className="form-group">
+            <label className="lab" align = "center" htmlFor="Workout_Name">Workout_Name</label>
+            <input
+              type="text"
+              className="form-control int"
+              id="title"
+              required
+              value={currentWorkout.Workout_Name}
+              onChange={handleInputChange}
+              name="Workout_Name"
+            />
+          </div>
 
           <div className="form-group">
-          <label htmlFor="Workout_Name">Workout_Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="title"
-            required
-            value={currentWorkout.Workout_Name}
-            onChange={handleInputChange}
-            name="Workout_Name"
-          />
-        </div>
-
-        <div className="form-group">
-        <label htmlFor="Workout_DietChart">Workout_DietChart</label>
-        <input
-          type="text"
-          className="form-control"
-          id="Workout_DietChart"
-          required
-          value={currentWorkout.Workout_DietChart}
-          onChange={handleInputChange}
-          name="Workout_DietChart"
-        />
-      </div>
-      <div className="form-group">
-      <label htmlFor="Working_Duration">Working_Duration</label>
-      <input
-        type="text"
-        className="form-control"
-        id="Working_Duration"
-        required
-        value={currentWorkout.Working_Duration}
-        onChange={handleInputChange}
-        name="Working_Duration"
-      />
-    </div>
-           
-
-
-          </form>
-
-
-
-         { 
-        //      <button className="badge badge-danger mr-2" onClick={deleteWorkout}>
-        //     Delete
-        //   </button>
-        }
-
-          <button
-            type="submit"
-            className="badge badge-success"
-            onClick={updateWorkout}
-          >
-            Update
-          </button>
-          <p>{message}</p>
-        </div>
-      ) : (
-        <div>
+            <label className="lab" align = "center" htmlFor="Workout_DietChart">Workout_DietChart</label>
+            <input
+              type="text"
+              className="form-control int"
+              id="Workout_DietChart"
+              required
+              value={currentWorkout.Workout_DietChart}
+              onChange={handleInputChange}
+              name="Workout_DietChart"
+            />
+          </div>
+          <div className="form-group">
+            <label className="lab" align = "center" htmlFor="Working_Duration">Working_Duration</label>
+            <input
+              type="text"
+              className="form-control int" 
+              id="Working_Duration"
+              required
+              value={currentWorkout.Working_Duration}
+              onChange={handleInputChange}
+              name="Working_Duration"
+            />
+          </div>        
           <br />
-          <p>Please click on a Workout...</p>
+           <br />      
+          <button onClick={updateWorkout} className="btn btn-outline-info tempBtn3">
+            Submit
+          </button>
         </div>
-      )}
+    </div>
+    </Card>
+    </div>
+    <img src={image2} id="imgt4" />
     </div>
   );
 };

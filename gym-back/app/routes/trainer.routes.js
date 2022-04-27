@@ -6,7 +6,7 @@ module.exports = app => {
     
     router.get("/:Branch_ID", trainer.findAll);
     
-    router.get("/:Trainer_ID", trainer.findOne);
+    router.get("/detail/:Trainer_ID", trainer.findOne);
     
     router.put("/:Trainer_ID", trainer.update);
     

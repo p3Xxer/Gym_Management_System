@@ -3,7 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import ManagerDataService from "../../services/ManagerService";
 import "./Member.css";
 import image from "../../Images/home.jpeg"
+import image1 from "../../Images/addimage.png"
 import { Card } from "react-bootstrap";
+
 
 const Member = props => {
     
@@ -33,7 +35,6 @@ const Member = props => {
   };
   const [currentMember, setCurrentMember] = useState(initialMemberState);
   const [message, setMessage] = useState("");
-
   const getMember = Mem_ID => {
     ManagerDataService.get(Mem_ID)
       .then(response => {
@@ -82,35 +83,24 @@ const Member = props => {
   };
 
   const updateMember = () => {
-    ManagerDataService.update(currentMember.Mem_ID, currentMember)
-      .then(response => {
-        console.log(response.data);
-        setMessage("The Member was updated successfully!");
-      })
-      .catch(e => {
-        console.log(e);
-      });
+    if(window.confirm("Confirm Update?")){
+      ManagerDataService.update(currentMember.Mem_ID, currentMember)
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    }
   };
 
-//   const deleteMember = () => {
-//     ManagerDataService.remove(currentMember.Mem_ID)
-//       .then(response => {
-//         console.log(response.data);
-//         navigate("/member");
-//       })
-//       .catch(e => {
-//         console.log(e);
-//       });
-//   };
-
   return (
+    <div>
     <div className="member-submit-form" id="member">
       <img src={image} id="imgt2" />
-      <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
+      <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '30px', background: 'transparent', borderColor: 'transparent' }}>
       {currentMember ? (
-        <div className="edit-form">
-          <h4>Member</h4>
-          <form>
+        <div>
             <div className="form-group">
               <label className="lab" align="center" htmlFor="Mem_Name">Name</label>
               <input
@@ -232,17 +222,6 @@ const Member = props => {
                 name="Emer_Mobile"
               />
             </div>
-
-
-          </form>
-
-
-
-         { 
-        //      <button className="badge badge-danger mr-2" onClick={deleteMember}>
-        //     Delete
-        //   </button>
-        }
           <button  onClick={updateMember} class="btn btn-outline-info tempBtn">Update</button>
           <p>{message}</p>
         </div>
@@ -253,6 +232,8 @@ const Member = props => {
         </div>
       )}
       </Card>
+      </div>
+      <img src={image1} id="imgt3" />
     </div>
   );
 };

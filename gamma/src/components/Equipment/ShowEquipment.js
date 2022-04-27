@@ -63,6 +63,17 @@ const EquipmentList = () => {
   //         console.log(e);
   //       });
   //   };
+
+  const deleteEquipment=(Equipment_ID) => {
+    console.log(Equipment_ID);
+    if(window.confirm("Do you want to delete this entry?")){
+    EquipmentService.removeEquipment(Equipment_ID)
+      .then(response => {
+        console.log(response.data);
+        refreshList();
+      })
+    }
+  }
   console.log(equipment)
   return (
     <div className="list row" align="center">
@@ -99,7 +110,7 @@ const EquipmentList = () => {
                     Edit
                 </Link>
               </td>
-              {/* <td><button class="btn-danger btn btn-primary pqy" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button></td> */}
+               <td><button class="btn-danger btn btn-primary pqy" onClick={() => { deleteEquipment(equipment.Equipment_ID)}}>Delete</button></td>
             </tr>
           ))}
           </tbody>

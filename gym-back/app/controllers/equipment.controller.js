@@ -12,9 +12,8 @@ exports.create = (req, res) => {
         });
         return;
     }
-    // Create a Equipment
+
     const equipment = {
-        //Branch_ID: req.body.Branch_ID,
         Equipment_Name: req.body.Equipment_Name,
         Equipment_Kind: req.body.Equipment_Kind,
         Working_Status: req.body.Working_Status,

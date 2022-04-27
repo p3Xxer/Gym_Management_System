@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import TrainerService from "../../services/ManagerService";
-
+import image from "../../Images/home.jpeg"
+import image1 from "../../Images/trainer.png"
+import "../Member/Member.css";
+import { Card } from "react-bootstrap";
 const Trainer = props => {
     
     console.log(useParams());
@@ -70,7 +73,7 @@ const Trainer = props => {
 
 
     };
-
+    
     TrainerService.updateTrainer(currentTrainer.Trainer_ID, data)
       .then(response => {
         setCurrentTrainer({ ...currentTrainer, published: status });
@@ -82,6 +85,8 @@ const Trainer = props => {
   };
 
   const updateTrainer = () => {
+
+    if(window.confirm("Confirm Update?")){
     TrainerService.updateTrainer(currentTrainer.Trainer_ID, currentTrainer)
       .then(response => {
         console.log(response.data);
@@ -90,154 +95,112 @@ const Trainer = props => {
       .catch(e => {
         console.log(e);
       });
+    }
   };
-
-//   const deleteTrainer = () => {
-//     ManagerDataService.remove(currentTrainer.Trainer_ID)
-//       .then(response => {
-//         console.log(response.data);
-//         navigate("/trainer");
-//       })
-//       .catch(e => {
-//         console.log(e);
-//       });
-//   };
 
   return (
     <div>
-      {currentTrainer ? (
-        <div className="edit-form">
-          <h4>Trainer</h4>
-          <form>
-
+    <img src={image} id="imgt2" />
+    <div className="member-submit-form" id="member" >
+    <br />
+    <br />
+    <br />
+    <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
+        <div>
+          <div className="form-group">
+            <label className="lab" align = "center" htmlFor="Trainer_Name">Name</label>
+            <input
+              type="text"
+              className="form-control int"
+              id="title"
+              required
+              value={currentTrainer.Trainer_Name}
+              onChange={handleInputChange}
+              name="Trainer_Name"
+            />
+          </div>
 
           <div className="form-group">
-          <label htmlFor="Trainer_Name">Trainer_Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="title"
-            required
-            value={currentTrainer.Trainer_Name}
-            onChange={handleInputChange}
-            name="Trainer_Name"
-          />
-        </div>
-
-            <div className="form-group">
-              <label htmlFor="Gender">Gender</label>
-              <input
-                type="text"
-                className="form-control"
-                id="Gender"
-                required
-                value={currentTrainer.Gender}
-                onChange={handleInputChange}
-                name="Gender"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="Blood_Type">Blood_Type</label>
-              <input
-                type="number"
-                className="form-control"
-                id="Blood_Type"
-                required
-                value={currentTrainer.Blood_Type}
-                onChange={handleInputChange}
-                name="Blood_Type"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="Phone">Phone</label>
-              <input
-                type="number"
-                className="form-control"
-                id="Phone"
-                required
-                value={currentTrainer.Phone}
-                onChange={handleInputChange}
-                name="Phone"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="Address">Address</label>
-              <input
-                type="text"
-                className="form-control"
-                id="Address"
-                required
-                value={currentTrainer.Address}
-                onChange={handleInputChange}
-                name="Address"
-              />
-            </div>
-            
-            
-            
-            <div className="form-group">
-              <label htmlFor="Emer_Name">Emer_Name</label>
-              <input
-                type="text"
-                className="form-control"
-                id="Emer_Name"
-                required
-                value={currentTrainer.Emer_Name}
-                onChange={handleInputChange}
-                name="Emer_Name"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="Emer_Mobile">Emer_Mobile</label>
-              <input
-                type="number"
-                className="form-control"
-                id="Emer_Mobile"
-                required
-                value={currentTrainer.Emer_Mobile}
-                onChange={handleInputChange}
-                name="Emer_Mobile"
-              />
-            </div>
-            <div className="form-group">
-          <label htmlFor="Workout_Name">Workout_Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="Workout_Name"
-            required
-            value={currentTrainer.Workout_Name}
-            onChange={handleInputChange}
-            name="Workout_Name"
-          />
-        </div>
-
-
-          </form>
-
-
-
-         { 
-        //      <button className="badge badge-danger mr-2" onClick={deleteTrainer}>
-        //     Delete
-        //   </button>
-        }
-
-          <button
-            type="submit"
-            className="badge badge-success"
-            onClick={updateTrainer}
-          >
-            Update
+            <label className="lab" align = "center" htmlFor="Gender">Gender</label>
+            <input
+              type="text"
+              className="form-control int"
+              id="Gender"
+              required
+              value={currentTrainer.Gender}
+              onChange={handleInputChange}
+              name="Gender"
+            />
+          </div>
+          <div className="form-group">
+            <label className="lab" align = "center" htmlFor="Blood_Type">Blood Group</label>
+            <input
+              type="text"
+              className="form-control int"
+              id="Blood_Type"
+              required
+              value={currentTrainer.Blood_Type}
+              onChange={handleInputChange}
+              name="Blood_Type"
+            />
+          </div>
+          <div className="form-group">
+            <label className="lab" align = "center" htmlFor="Phone">Phone No.</label>
+            <input
+              type="number"
+              className="form-control int"
+              id="Phone"
+              required
+              value={currentTrainer.Phone}
+              onChange={handleInputChange}
+              name="Phone"
+            />
+          </div>
+          <div className="form-group">
+            <label className="lab" align = "center" htmlFor="Address">Address</label>
+            <input
+              type="text"
+              className="form-control int"
+              id="Address"
+              required
+              value={currentTrainer.Address}
+              onChange={handleInputChange}
+              name="Address"
+            />
+          </div>
+          <div className="form-group">
+            <label className="lab" align = "center" htmlFor="Emer_Name">Emergency Name</label>
+            <input
+              type="text"
+              className="form-control int"
+              id="Emer_Name"
+              required
+              value={currentTrainer.Emer_Name}
+              onChange={handleInputChange}
+              name="Emer_Name"
+            />
+          </div>
+          <div className="form-group">
+            <label className="lab" align = "center" htmlFor="Emer_Mobile">Emergency Contact</label>
+            <input
+              type="number"
+              className="form-control int"
+              id="Emer_Mobile"
+              required
+              value={currentTrainer.Emer_Mobile}
+              onChange={handleInputChange}
+              name="Emer_Mobile"
+            />
+          </div>
+        <br />
+        <br />
+          <button onClick={updateTrainer} className="btn btn-outline-info tempBtn">
+            Submit
           </button>
-          <p>{message}</p>
         </div>
-      ) : (
-        <div>
-          <br />
-          <p>Please click on a Trainer...</p>
-        </div>
-      )}
+      </Card>
+      </div>
+      <img src={image1} id="imgt4" />
     </div>
   );
 };

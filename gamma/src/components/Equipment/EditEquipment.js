@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import EquipmentService from "../../services/ManagerService";
-
+import image from "../../Images/home.jpeg"
+import image2 from "../../Images/addimage2.png"
+import "../Member/Member.css";
+import { Card } from "react-bootstrap";
 const Equipment = props => {
     
     console.log(useParams());
@@ -20,7 +23,7 @@ const Equipment = props => {
     Equipment_Name:"",
     Equipment_Kind:"",
     Working_Status:"",
-    Exercise:"",
+    Exercise:""
   };
   const [currentEquipment, setCurrentEquipment] = useState(initialEquipmentState);
   const [message, setMessage] = useState("");
@@ -30,6 +33,7 @@ const Equipment = props => {
       .then(response => {
         console.log(response.data);
         setCurrentEquipment(response.data);
+        console.log(currentEquipment);
       })
       .catch(e => {
         console.log(e);
@@ -56,6 +60,7 @@ const Equipment = props => {
 
     };
 
+    if(window.confirm("Confirm Update?")){
     EquipmentService.updateEquipment(currentEquipment.Equipment_ID, data)
       .then(response => {
         setCurrentEquipment({ ...currentEquipment, published: status });
@@ -64,9 +69,11 @@ const Equipment = props => {
       .catch(e => {
         console.log(e);
       });
+    }
   };
 
   const updateEquipment = () => {
+    if(window.confirm("Confirm Update?")){
     EquipmentService.updateEquipment(currentEquipment.Equipment_ID, currentEquipment)
       .then(response => {
         console.log(response.data);
@@ -75,103 +82,76 @@ const Equipment = props => {
       .catch(e => {
         console.log(e);
       });
+    }
   };
-
-//   const deleteEquipment = () => {
-//     ManagerDataService.remove(currentEquipment.Equipment_ID)
-//       .then(response => {
-//         console.log(response.data);
-//         navigate("/equipment");
-//       })
-//       .catch(e => {
-//         console.log(e);
-//       });
-//   };
 
   return (
     <div>
-      {currentEquipment ? (
-        <div className="edit-form">
-          <h4>Equipment</h4>
-          <form>
-
+    <img src={image} id="imgt2" />
+      <div className="member-submit-form" id="member2">
+    <br />
+    <br />
+    <br />
+    <Card style={{ height: '60rem', width: '30rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
+        <div>
+          <div className="form-group">
+            <label className="lab" align = "center" htmlFor="Equipment_Name">Equipment Name</label>
+            <input
+              type="text"
+              className="form-control int"
+              id="title"
+              required
+              value={currentEquipment.Equipment_Name}
+              onChange={handleInputChange}
+              name="Equipment_Name"
+            />
+          </div>
 
           <div className="form-group">
-          <label htmlFor="Equipment_Name">Equipment_Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="title"
-            required
-            value={currentEquipment.Equipment_Name}
-            onChange={handleInputChange}
-            name="Equipment_Name"
-          />
-        </div>
-
-            <div className="form-group">
-              <label htmlFor="Equipment_Kind">Equipment_Kind</label>
-              <input
-                type="text"
-                className="form-control"
-                id="Equipment_Kind"
-                required
-                value={currentEquipment.Equipment_Kind}
-                onChange={handleInputChange}
-                name="Equipment_Kind"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="Working_Status">Working_Status</label>
-              <input
-                type="text"
-                className="form-control"
-                id="Working_Status"
-                required
-                value={currentEquipment.Working_Status}
-                onChange={handleInputChange}
-                name="Working_Status"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="Exercise">Exercise</label>
-              <input
-                type="text"
-                className="form-control"
-                id="Exercise"
-                required
-                value={currentEquipment.Exercise}
-                onChange={handleInputChange}
-                name="Exercise"
-              />
-            </div>
-            
-
-          </form>
-
-
-
-         { 
-        //      <button className="badge badge-danger mr-2" onClick={deleteEquipment}>
-        //     Delete
-        //   </button>
-        }
-
-          <button
-            type="submit"
-            className="badge badge-success"
-            onClick={updateEquipment}
-          >
-            Update
+            <label className="lab" align = "center" htmlFor="Equipment_Kind">Equipment Kind</label>
+            <input
+              type="text"
+              className="form-control int"
+              id="Equipment_Kind"
+              required
+              value={currentEquipment.Equipment_Kind}
+              onChange={handleInputChange}
+              name="Equipment_Kind"
+            />
+          </div>
+          <div className="form-group">
+            <label className="lab" align = "center" htmlFor="Working_Status">Working Status</label>
+            <input
+              type="text"
+              className="form-control int"
+              id="Working_Status"
+              required
+              value={currentEquipment.Working_Status}
+              onChange={handleInputChange}
+              name="Working_Status"
+            />
+          </div>
+          <div className="form-group">
+            <label className="lab" align = "center" htmlFor="Exercise">Exercise</label>
+            <input
+              type="text"
+              className="form-control int"
+              id="Exercise"
+              required
+              value={currentEquipment.Exercise}
+              onChange={handleInputChange}
+              name="Exercise"
+            />
+          </div>
+           <br />
+           <br />
+          <button onClick={updateEquipment} className="btn btn-outline-info tempBtn3">
+            Submit
           </button>
-          <p>{message}</p>
         </div>
-      ) : (
-        <div>
-          <br />
-          <p>Please click on a Equipment...</p>
-        </div>
-      )}
+      </Card>
+      </div>
+      <img src={image2} id="imgt3" />
     </div>
   );
 };

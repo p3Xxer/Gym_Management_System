@@ -34,27 +34,25 @@ const AddPayment = () => {
       Workout_Name:payment.Workout_Name
     };
 
-    PaymentService.createPayment(data)
-      .then(response => {
-        setPayment({
-            Payment_Desc:response.data.Payment_Desc,
-            Payment_Time:response.data.Payment_Time,
-            Payment_Date:response.data.Payment_Date,
-            Payment_Amt:response.data.Payment_Amt,
-            Member_ID:response.data.Member_ID,
-            Workout_Name:response.data.Workout_Name
+    if(window.confirm("Want to submit?")){
+      PaymentService.createPayment(data)
+        .then(response => {
+          setPayment({
+              Payment_Desc:response.data.Payment_Desc,
+              Payment_Time:response.data.Payment_Time,
+              Payment_Date:response.data.Payment_Date,
+              Payment_Amt:response.data.Payment_Amt,
+              Member_ID:response.data.Member_ID,
+              Workout_Name:response.data.Workout_Name
+          });
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
         });
-        setSubmitted(true);
-        console.log(response.data);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
-
-  const newPayment = () => {
-    setPayment(initialPaymentState);
-    setSubmitted(false);
+        setPayment(initialPaymentState);
+        window.location.reload();
+    }
   };
 
   return (
@@ -66,14 +64,6 @@ const AddPayment = () => {
     <br />
     <br />
     <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
-      {submitted ? (
-        <div>
-          <h4>You submitted successfully!</h4>
-          <button className="btn btn-success" onClick={newPayment}>
-            Add
-          </button>
-        </div>
-      ) : (
         <div>
           <div className="form-group">
             <label className="lab" align = "center" htmlFor="Payment_Desc">Payment Description</label>
@@ -152,7 +142,6 @@ const AddPayment = () => {
           <br />      
           <button  onClick={savePayment} class="btn btn-outline-info tempBtn">Submit</button>
         </div>
-      )}
       </Card>
     </div>
     <img src={image1} id="imgt4" />

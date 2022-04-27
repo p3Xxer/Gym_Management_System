@@ -66,8 +66,9 @@ exports.findOne = (req, res) => {
 // Update a Workout by the id in the request
 exports.update = (req, res) => {
     const id = req.params.id;
+    console.log("Received");
     Workout.update(req.body, {
-        where: { id: id }
+        where: { Workout_ID: id }
     })
         .then(num => {
             if (num == 1) {

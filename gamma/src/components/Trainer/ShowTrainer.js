@@ -37,6 +37,7 @@ const TrainerList = () => {
     setCurrentTrainer(null);
     setCurrentIndex(-1);
   };
+  
 
   const setActiveTrainer = (trainer, index) => {
     setCurrentTrainer(trainer);
@@ -67,11 +68,13 @@ const TrainerList = () => {
 
   const deleteTrainer =(Trainer_ID) => {
     console.log(Trainer_ID);
+    if(window.confirm("Do you want to delete this entry?")){
     TrainerService.removeTrainer(Trainer_ID)
       .then(response => {
         console.log(response.data);
         refreshList();
       })
+    }
   }
 
   console.log(trainer)

@@ -63,6 +63,16 @@ const WorkoutList = () => {
   //         console.log(e);
   //       });
   //   };
+  const deleteWorkout=(Workout_ID) => {
+    console.log(Workout_ID);
+    if(window.confirm("Do you want to delete this entry?")){
+    WorkoutService.removeWorkout(Workout_ID)
+      .then(response => {
+        console.log(response.data);
+        refreshList();
+      })
+    }
+  }
 
   return (
     <div className="list row" align="center">
@@ -93,10 +103,11 @@ const WorkoutList = () => {
 
               <td>
                 <Link
-                  to={"/workout/edit/" + workout.Workout_ID}
+                  to={"/editworkout/" + workout.Workout_ID}
                   class="btn btn-primary pqy">Edit</Link>
+
               </td>
-              {/* <td><button class="btn-danger btn btn-primary pqy" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button></td> */}
+               <td><button class="btn-danger btn btn-primary pqy" onClick={() => { deleteWorkout(workout.Workout_ID) }}>Delete</button></td> 
             </tr>
           ))}
           </tbody>

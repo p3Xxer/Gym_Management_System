@@ -62,6 +62,15 @@ const Branch_ManagerList = () => {
         console.log(e);
       });
   };
+  const deleteBranch=(Branch_ID) => {
+    if(window.confirm("Do you want to delete this entry?")){
+    BranchServices.removeBranch(Branch_ID)
+      .then(response => {
+        console.log(response.data);
+        refreshList();
+      })
+    }
+  }
 
   return (
     <div className="list row" align="center" >
@@ -106,7 +115,7 @@ const Branch_ManagerList = () => {
                   to={"/branch_manager/" + branch_manager.Branch_ID}
                   className="btn btn-primary pqy">Edit</Link>
               </td>
-              <td>{/*<button className="btn-danger btn btn-primary pqy" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button>*/}</td>
+              <td><button className="btn-danger btn btn-primary pqy" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button></td>
             </tr>
           ))}
           </tbody>

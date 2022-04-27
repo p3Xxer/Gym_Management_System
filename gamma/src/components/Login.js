@@ -48,8 +48,14 @@ const Login = () => {
     if (checkBtn.current.context._errors.length === 0) {
       AuthService.login(manager_Email, password).then(
         (response) => {
+          
+          console.log(response);
+          if(response.role==="user"){
+
           navigate("/profile/" + response.id);
           // console.log(response);
+          }
+          else navigate("/showbranch");
 
 
           window.location.reload();

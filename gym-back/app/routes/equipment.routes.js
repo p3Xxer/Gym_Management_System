@@ -8,7 +8,7 @@ module.exports = app => {
     // Retrieve all published Equipment
     //router.get("/published", equipment.findAllPublished);
     // Retrieve a single Equipment with id
-    router.get("/:id", equipment.findOne);
+    router.get("/detail/:id", equipment.findOne);
     // Update a Equipment with id
     router.put("/:id", equipment.update);
     // Delete a Equipment with id
