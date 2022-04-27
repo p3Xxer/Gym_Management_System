@@ -33,8 +33,18 @@
   {
     font-weight: bold;
   } */
-.jumbotron{
-    opacity: 0.5;
+
+.profile {
+    width: 40rem;
+    display: inline-block;
+}
+
+.prof {
+    font-family: Raleway, sans-serif;
+    color: white;
+    font-weight: bold;
+    width: 400px;
+    font-size: 30px;
 }
 
 #imgt {
@@ -46,7 +56,7 @@
     left: 0;
 }
 
-#imgt3{
+#imgt3 {
     position: relative;
     margin-left: 0px;
     opacity: 0.7;
@@ -55,7 +65,7 @@
     height: 30%;
 }
 
-#imgt4{
+#imgt4 {
     position: relative;
     margin-left: 10px;
     opacity: 0.7;
@@ -203,4 +213,8 @@
     color: black;
     background-color: #83EEFF;
     border: none;
+}
+
+.submitted {
+    color: white;
 }

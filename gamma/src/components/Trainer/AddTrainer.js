@@ -189,7 +189,7 @@ const AddTrainer = () => {
         </div>
         <br />
         <br />
-          <button onClick={saveTrainer} className="btn btn-success tempBtn2">
+          <button onClick={saveTrainer} className="btn btn-outline-info tempBtn">
             Submit
           </button>
         </div>

@@ -78,9 +78,9 @@ const AddMember = () => {
       <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '30px', background: 'transparent', borderColor: 'transparent' }}>
 
         {submitted ? (
-          <div>
+          <div className="submitted">
             <h4>You submitted successfully!</h4>
-            <button className="btn btn-success" onClick={newMember}>
+            <button className="btn btn-outline-info tempBtn" onClick={newMember}>
               Add
             </button>
           </div>

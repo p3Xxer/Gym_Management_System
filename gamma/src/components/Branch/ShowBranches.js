@@ -3,7 +3,7 @@ import BranchServices from "../../services/ManagerService";
 import { Link } from "react-router-dom";
 import { Table } from 'react-bootstrap';
 import image from "../../Images/home.jpeg"
-
+import "../table.css"
 const Branch_ManagerList = () => {
   const [branch_manager, setBranch_Manager] = useState([]);
   const [currentBranch_Manager, setCurrentBranch_Manager] = useState(null);
@@ -65,35 +65,12 @@ const Branch_ManagerList = () => {
 
   return (
     <div className="list row" align="center" >
-    <img src={image} id="imgt2" />
-      <div className="">
-        <div className="input-group mb-3" >
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search by Branch_Name"
-            value={searchBranch_Name}
-            onChange={onChangeSearchBranch_Name}
-          />
-          <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={findByBranch_Name}
-            >
-              Search
-            </button>
-          </div>
-        </div>
-      </div>
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
-        <h4 className="lab">Branch Managers List</h4>
+        <h4 className="lab">BRANCH MANAGERS LIST</h4>
         <br />
 
-        {/* //khushil working */}
-
-        <Table striped bordered hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.8", textAlign: "center", borderRadius: '30px', marginInlineStart: '1rem' }}>
-          <thead>
+        <Table striped class="table" bordered hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.8", textAlign: "center", borderRadius: '30px', marginInlineStart: '1rem' }}>
+          <thead class="thead-primary">
             <tr>
 
               <th>Branch ID</th>
@@ -106,10 +83,11 @@ const Branch_ManagerList = () => {
               <th>Manager Mobile Number</th>
               <th>Manager Email</th>
               <th>Manager Address</th>
-
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
-
+          <tbody>
           {branch_manager.map((branch_manager, index) => (
             <tr>
               <td>{branch_manager.Branch_ID}</td>
@@ -119,18 +97,19 @@ const Branch_ManagerList = () => {
               <td>{branch_manager.Branch_Phone_Number}</td>
               <td>{branch_manager.Manager_ID}</td>
               <td>{branch_manager.Manager_Name}</td>
-              <td>{branch_manager.Manager_Mobile_Number}</td>
+              <td>{branch_manager.Mobile_Number}</td>
               <td>{branch_manager.Manager_Email}</td>
-              <td>{branch_manager.Manager_Address}</td>
+              <td>{branch_manager.Address}</td>
 
               <td>
                 <Link
                   to={"/branch_manager/" + branch_manager.Branch_ID}
-                  className="badge badge_warning">Edit</Link>
+                  className="btn btn-primary pqy">Edit</Link>
               </td>
-              <td>{/*<button className="m-3 btn-sm btn-danger" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button>*/}</td>
+              <td>{/*<button className="btn-danger btn btn-primary pqy" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button>*/}</td>
             </tr>
           ))}
+          </tbody>
         </Table>
         {/* <ul className="list-group">
           {branch_manager &&
@@ -181,6 +160,7 @@ const Branch_ManagerList = () => {
           </div>
         )} */}
       </div>
+      <img src={image} id="imgt2" />
     </div>
   );
 };

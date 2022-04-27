@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import "./Member.css";
 import image from "../../Images/home.jpeg"
+import "../table.css"
 const MemberList = () => {
   const { id } = useParams();
   const [member, setMember] = useState([]);
@@ -74,12 +75,11 @@ const MemberList = () => {
 
   return (
     <div className="list row" align="center">
-      <img src={image} id="imgt2" />
-      <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center" textAlign='center'>
+      <div class="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center" textAlign='center'>
         <h4 className="lab">MEMBERS LIST</h4>
         <br />
-        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.7", textAlign: "center", borderRadius: '20px', verticalAlign: 'center' }}>
-          <thead>
+        <Table striped hover variant="dark" class="table" align="center" dataAlign="center" style={{alignContent: 'center'}}>
+          <thead class="thead-primary">
             <tr>
 
               <th>ID</th>
@@ -89,17 +89,19 @@ const MemberList = () => {
               <th>Height</th>
               <th>Age</th>
               <th>Gender</th>
-              <th>Blood Group</th>
+              <th>BloodGroup</th>
               <th>Address</th>
-              <th>Emergency Name</th>
-              <th>Emergency Mobile</th>
-              <th>Update/Delete</th>
+              <th>EmergencyName</th>
+              <th>EmergencyMobile</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </thead>
+          <tbody>
           {member &&
             member.map((member, index) => (
               <tr>
-                <td>{member.Mem_ID}</td>
+                <td class="scope">{member.Mem_ID}</td>
                 <td>{member.Mem_Name}</td>
                 <td>{member.Mobile_Number}</td>
                 <td>{member.Mem_Weight}</td>
@@ -110,14 +112,17 @@ const MemberList = () => {
                 <td>{member.Address}</td>
                 <td>{member.Emer_Name}</td>
                 <td>{member.Emer_Mobile}</td>
-                <td align="right"><button className="btn-danger pqy" align="left" onClick={() => { deleteMember(member.Mem_ID) }}>Delete</button>
+                <td>
                   <Link style={{ textAlign: "left" }}
                     to={"/editmember/" + member.Mem_ID}
-                    className="badge badge-warning pqy">
+                    class="btn btn-primary pqy">
                     Edit
-                  </Link></td>
+                  </Link>
+                </td>
+                <td><button class="btn-danger btn btn-primary pqy" onClick={() => { deleteMember(member.Mem_ID) }}>Delete</button></td>
               </tr>
             ))}
+          </tbody>
         </Table>
 
         {
@@ -156,6 +161,7 @@ const MemberList = () => {
         //   )}
         // </div>
       }
+      <img src={image} id="imgt2" />
     </div>
   );
 };

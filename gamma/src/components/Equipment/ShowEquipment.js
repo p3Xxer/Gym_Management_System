@@ -3,6 +3,7 @@ import EquipmentService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
 import image from "../../Images/home.jpeg"
+import "../table.css"
 const EquipmentList = () => {
   const { id } = useParams();
   const [equipment, setEquipment] = useState([]);
@@ -65,16 +66,12 @@ const EquipmentList = () => {
   console.log(equipment)
   return (
     <div className="list row" align="center">
-      <img src={image} id="imgt2" />
-
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
         <br />
         <h4 className="lab">Equipments List</h4>
         <br />
-        {/* khushil working */}
-
-        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.8", textAlign: "center", borderRadius: '20px', marginInlineStart: '1.5rem' }}>
-          <thead>
+        <Table striped hover class="table" variant="dark" align="center" dataAlign="center" style={{}}>
+          <thead class="thead-primary">
             <tr>
 
               <th>Equipment ID</th>
@@ -82,15 +79,14 @@ const EquipmentList = () => {
               <th>Equipment Kind</th>
               <th>Working Status</th>
               <th>Exercise</th>
-
               <th>Edit</th>
-
+              <th>Delete</th>
             </tr>
           </thead>
-
+          <tbody>
           {equipment.map((equipment, index) => (
             <tr>
-              <td>{equipment.Equipment_ID}</td>
+              <td class="scope">{equipment.Equipment_ID}</td>
               <td>{equipment.Equipment_Name}</td>
               <td>{equipment.Equipment_Kind}</td>
               <td>{equipment.Working_Status}</td>
@@ -99,11 +95,14 @@ const EquipmentList = () => {
               <td>
                 <Link
                   to={"/editequipment/" + equipment.Equipment_ID}
-                  className="badge badge_warning">Edit</Link>
+                  class="btn btn-primary pqy">
+                    Edit
+                </Link>
               </td>
-              <td>{/*<button className="m-3 btn-sm btn-danger" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button>*/}</td>
+              {/* <td><button class="btn-danger btn btn-primary pqy" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button></td> */}
             </tr>
           ))}
+          </tbody>
         </Table>
 
         {/* <ul className="list-group">
@@ -162,6 +161,7 @@ const EquipmentList = () => {
         //     )}
         //   </div>
       }
+      <img src={image} id="imgt2" />
     </div >
   );
 };

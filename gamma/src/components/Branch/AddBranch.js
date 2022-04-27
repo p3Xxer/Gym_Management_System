@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BranchMangerServices from "../../services/ManagerService";
 import image from "../../Images/home.jpeg"
+import image2 from "../../Images/branch.png"
 import "../Member/Member.css";
 import { Card } from "react-bootstrap";
 
@@ -73,9 +74,9 @@ const Addbranch_manager = () => {
   };
 
   return (
-    <div className="member-submit-form" id="member" >
+    <div>
     <img src={image} id="imgt2" />
-    <br />
+    <div className="member-submit-form" id="member" >
     <br />
     <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '0', background: 'transparent', borderColor: 'transparent' }}>
     <div className="submit-form">
@@ -210,14 +211,15 @@ const Addbranch_manager = () => {
             />
           </div>
           <br />
-          <br />
-          <button onClick={savebranch_manager} className="btn btn-success tempBtn">
+          <button onClick={savebranch_manager} className="btn btn-outline-info tempBtn">
             Submit
           </button>
         </div>
       )}
     </div>
     </Card>
+  </div>
+  <img src={image2} id="imgt3" />
   </div>
   );
 };

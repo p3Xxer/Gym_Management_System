@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
 import "../Member/Member.css";
 import image from "../../Images/home.jpeg"
+import "../table.css"
 
 const PaymentList = () => {
   const { id } = useParams();
@@ -67,12 +68,11 @@ const PaymentList = () => {
   console.log(payment)
   return (
     <div className="list row" align="center">
-      <img src={image} id="imgt2" />
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center" textAlign='center'>
         <h4 className="lab">PAYMENTS LIST</h4>
         <br />
-        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.7", textAlign: "center", borderRadius: '20px', verticalAlign: 'center' }}>
-          <thead>
+        <Table striped hover class="table" variant="dark" align="center" dataAlign="center" style={{  }}>
+          <thead class="thead-primary">
             <tr>
 
               <th>ID</th>
@@ -84,10 +84,10 @@ const PaymentList = () => {
               <th>Workout ID</th>
             </tr>
           </thead>
-
+          <tbody>
           {payment.map((payment, index) => (
             <tr>
-              <td>{payment.Payment_ID}</td>
+              <td class="scope">{payment.Payment_ID}</td>
               <td>{payment.Payment_Desc}</td>
               <td>{payment.Payment_Amt}</td>
               <td>{payment.Payment_Date}</td>
@@ -96,6 +96,7 @@ const PaymentList = () => {
               <td>{payment.Workout_ID}</td>
             </tr>
           ))}
+          </tbody>
         </Table>
 
         {/* <ul className="list-group">
@@ -152,6 +153,7 @@ const PaymentList = () => {
         //     )}
         //   </div>
       }
+      <img src={image} id="imgt2" />
     </div>
   );
 };

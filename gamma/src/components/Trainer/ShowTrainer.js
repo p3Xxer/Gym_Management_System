@@ -3,6 +3,8 @@ import TrainerService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import image from "../../Images/home.jpeg"
+import "../table.css"
+
 const TrainerList = () => {
   const { id } = useParams();
   const [trainer, setTrainer] = useState([]);
@@ -65,14 +67,13 @@ const TrainerList = () => {
   console.log(trainer)
   return (
     <div className="list row" align="center">
-      <img src={image} id="imgt2" />
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
         <h4 className="lab">Trainers List</h4>
         <br />
         {/* khushil working */}
 
-        <Table striped hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.8", textAlign: "center", borderRadius: '20px', marginInlineStart: '1rem' }}>
-          <thead>
+        <Table striped hover class="table" variant="dark" align="center" dataAlign="center" style={{}}>
+          <thead class="thead-primary">
             <tr>
 
               <th>ID</th>
@@ -89,10 +90,10 @@ const TrainerList = () => {
               <th>Delete</th>
             </tr>
           </thead>
-
+          <tbody>
           {trainer.map((trainer, index) => (
             <tr>
-              <td>{trainer.Trainer_ID}</td>
+              <td class="scope">{trainer.Trainer_ID}</td>
               <td>{trainer.Trainer_Name}</td>
               <td>{trainer.Gender}</td>
               <td>{trainer.Blood_Type}</td>
@@ -106,11 +107,12 @@ const TrainerList = () => {
               <td>
                 <Link
                   to={"/edittrainer/" + trainer.Trainer_ID}
-                  className="badge badge_warning">Edit</Link>
+                  class="btn btn-primary pqy">Edit</Link>
               </td>
-              <td>{/*<button className="m-3 btn-sm btn-danger" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button>*/}</td>
+              {/* <td><button class="btn-danger btn btn-primary pqy" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button></td> */}
             </tr>
           ))}
+          </tbody>
         </Table>
 
         {/* <ul className="list-group">
@@ -167,6 +169,7 @@ const TrainerList = () => {
         //     )}
         //   </div>
       }
+      <img src={image} id="imgt2" />
     </div>
   );
 };

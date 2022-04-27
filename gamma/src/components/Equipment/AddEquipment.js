@@ -159,7 +159,7 @@ const AddEquipment = () => {
            }
            <br />
            <br />
-          <button onClick={saveEquipment} className="btn btn-success tempBtn3">
+          <button onClick={saveEquipment} className="btn btn-outline-info tempBtn3">
             Submit
           </button>
         </div>

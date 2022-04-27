@@ -3,8 +3,7 @@ import WorkoutService from "../../services/ManagerService";
 import { Link, useParams } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
 import image from "../../Images/home.jpeg"
-
-
+import "../table.css"
 const WorkoutList = () => {
 
   const [workout, setWorkout] = useState([]);
@@ -68,67 +67,39 @@ const WorkoutList = () => {
   return (
     <div className="list row" align="center">
     <img src={image} id="imgt2" />  
-    <div className="">
-        <div className="input-group mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search by Mem_Name"
-            value={searchMem_Name}
-            onChange={onChangeSearchMem_Name}
-          />
-          {
-            //       <div className="input-group-append">
-            //     <button
-            //       className="btn btn-outline-secondary"
-            //       type="button"
-            //       onClick={findByMem_Name}
-            //     >
-            //       Search
-            //     </button>
-            //   </div>
-          }
-        </div>
-      </div>
-      <br/>
-      <br/>
-      
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
       <br/>
-      <br/>
-      <br/>
-        <h4 className="lab">Workouts List</h4>
+        <h4 className="lab">WORKOUTS LIST</h4>
         <br/>
-
-        {/* khushil working */}
-
-        <Table striped bordered hover variant="dark" align="center" dataAlign="center" style={{ background: "black", opacity: "0.8", textAlign: "center", borderRadius: '20px', marginInlineStart: '1rem' }}>
-          <thead>
+        <Table striped bordered class="table" hover variant="dark" align="center" dataAlign="center" style={{}}>
+          <thead class="thead-primary">
             <tr>
 
               <th>Workout ID</th>
               <th>Workout Name</th>
               <th>Diet Chart</th>
               <th>Duration</th>
-
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
-
+          <tbody>
           {workout.map((workout, index) => (
             <tr>
               <td>{workout.Workout_ID}</td>
               <td>{workout.Workout_Name}</td>
-              <td>{workout.Diet_Chart}</td>
-              <td>{workout.Duration}</td>
+              <td>{workout.Workout_DietChart}</td>
+              <td>{workout.Working_Duration}</td>
 
               <td>
                 <Link
                   to={"/workout/edit/" + workout.Workout_ID}
-                  className="badge badge_warning">Edit</Link>
+                  class="btn btn-primary pqy">Edit</Link>
               </td>
-              <td>{/*<button className="m-3 btn-sm btn-danger" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button>*/}</td>
+              {/* <td><button class="btn-danger btn btn-primary pqy" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button></td> */}
             </tr>
           ))}
+          </tbody>
         </Table>
 
         {/* <ul className="list-group">

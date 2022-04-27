@@ -9,43 +9,44 @@ const Profile = () => {
   // console.log(useParams);
 
   return (
-    <div className="container">
+    <div>
+      <br />
+      <br />
+      <br />
+      <br />
       <img src={image} id="imgt2" />
-      <br />
-      <br />
-      <br />
-      <header className="jumbotron">
-
-        <h3>Branch Name: <strong>{currentManager.branch.Branch_Name}</strong></h3>
-        <h3>Branch Location: <strong>{currentManager.branch.Branch_Location}</strong></h3>
-        <h3>Branch Email: <strong>{currentManager.branch.Branch_Email}</strong></h3>
-        <h3>Phone Number: <strong>{currentManager.branch.Branch_Phone_Number}</strong></h3>
-        <h3>Manager ID: <strong>{currentManager.branch.Manager_ID}</strong></h3>
-        <h3>Manager Name: <strong>{currentManager.branch.Manager_Name}</strong></h3>
-        <h3>Manager Email: <strong>{currentManager.branch.Manager_Email}</strong></h3>
-
-      </header>
-
-      {
-        //   <p>
-        //   <strong>Token:</strong> {currentManager.accessToken.substring(0, 20)} ...{" "}
-        //   {currentManager.accessToken.substr(currentManager.accessToken.length - 20)}
-        // </p>
-      }
-      {
-        //   <p>
-        //   <strong>Id:</strong> {currentManager.id}
-        // </p>
-        // <p>
-        //   <strong>Email:</strong> {currentManager.email}
-        // </p>
-      }
-      {
-        //  <ul>
-        //   {currentManager.roles &&
-        //     currentManager.roles.map((role, index) => <li key={index}>{role}</li>)}
-        // </ul>
-      }
+      <table class = "prof">
+        <tbody>
+          <tr>
+            <td class="prof2">Branch Name: </td>
+            <td>{currentManager.branch.Branch_Name}</td>
+          </tr>
+          <tr>
+            <td>Branch Location: </td>
+            <td>{currentManager.branch.Branch_Location}</td>
+          </tr>
+          <tr>
+            <td>Branch Email: </td>
+            <td>{currentManager.branch.Branch_Email}</td>
+          </tr>
+          <tr>
+            <td>Phone Number: </td>
+            <td>{currentManager.branch.Branch_Phone_Number}</td>
+          </tr>
+          <tr>
+            <td>Manager ID: </td> 
+            <td>{currentManager.branch.Manager_ID}</td>
+          </tr>
+          <tr>
+            <td>Manager Name: </td>
+            <td>{currentManager.branch.Manager_Name}</td>
+          </tr>
+          <tr>
+            <td>Manager Email: </td>
+            <td>{currentManager.branch.Manager_Email}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import WorkoutService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
 import image from "../../Images/home.jpeg"
+import image2 from "../../Images/workout.png"
 import "../Member/Member.css";
 import { Card } from "react-bootstrap";
 const AddWorkout = () => {
@@ -49,8 +50,9 @@ const AddWorkout = () => {
   };
 
   return (
-    <div className="member-submit-form" id="member2" >
+    <div>
     <img src={image} id="imgt2" />
+    <div className="member-submit-form" id="member2" >
     <br />
     <br />
     <br />
@@ -145,13 +147,15 @@ const AddWorkout = () => {
         }
           <br />
            <br />      
-          <button onClick={saveWorkout} className="btn btn-success tempBtn3">
+          <button onClick={saveWorkout} className="btn btn-outline-info tempBtn3">
             Submit
           </button>
         </div>
       )}
     </div>
     </Card>
+    </div>
+    <img src={image2} id="imgt4" />
     </div>
   );
 };
