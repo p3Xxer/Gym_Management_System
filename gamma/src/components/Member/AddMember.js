@@ -63,6 +63,8 @@ const AddMember = () => {
       .catch(e => {
         console.log(e);
       });
+      
+      addFunction();
   };
 
   const newMember = () => {
@@ -70,21 +72,22 @@ const AddMember = () => {
     setSubmitted(false);
   };
 
+  function addFunction(){
+    var txt;
+    if (confirm("Press a button!")) {
+      newMember();
+      txt = "You pressed OK!";
+    } else {
+      txt = "You pressed Cancel!";
+    }
+  }
+
   return (
 
     <div>
       <img src={image} id="imgt2" />
       <div className="member-submit-form" id="member" >
       <Card style={{ height: '60rem', width: '50rem', marginBlockStart: '0rem', textAlign: 'left',boxShadow: 'none' , alignContent: 'center', alignItems: 'center', top: '30px', background: 'transparent', borderColor: 'transparent' }}>
-
-        {submitted ? (
-          <div className="submitted">
-            <h4>You submitted successfully!</h4>
-            <button className="btn btn-outline-info tempBtn" onClick={newMember}>
-              Add
-            </button>
-          </div>
-        ) : (
           <div>
             <div className="form-group">
               <br />
@@ -213,7 +216,6 @@ const AddMember = () => {
             <br />
             <button  onClick={saveMember} class="btn btn-outline-info tempBtn">Submit</button>
           </div>
-        )}
       </Card>
       </div>
       <img src={image1} id="imgt3" />

@@ -67,7 +67,6 @@ const Addbranch_manager = () => {
         console.log(e);
       });
   };
-
   const newbranch_manager = () => {
     setbranch_manager(initialbranch_managerState);
     setSubmitted(false);

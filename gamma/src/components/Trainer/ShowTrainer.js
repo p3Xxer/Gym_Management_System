@@ -64,6 +64,16 @@ const TrainerList = () => {
   //         console.log(e);
   //       });
   //   };
+
+  const deleteTrainer =(Trainer_ID) => {
+    console.log(Trainer_ID);
+    TrainerService.removeTrainer(Trainer_ID)
+      .then(response => {
+        console.log(response.data);
+        refreshList();
+      })
+  }
+
   console.log(trainer)
   return (
     <div className="list row" align="center">
@@ -109,7 +119,7 @@ const TrainerList = () => {
                   to={"/edittrainer/" + trainer.Trainer_ID}
                   class="btn btn-primary pqy">Edit</Link>
               </td>
-              {/* <td><button class="btn-danger btn btn-primary pqy" onClick={() => { deleteBranch(branch_manager.Branch_ID) }}>Delete</button></td> */}
+               <td><button class="btn-danger btn btn-primary pqy" onClick={() => { deleteTrainer(trainer.Trainer_ID) }}>Delete</button></td> 
             </tr>
           ))}
           </tbody>
