@@ -19,13 +19,13 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         Phone: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         },
         Address: {
             type: Sequelize.STRING
         },
         Emer_Mobile: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         },
         Emer_Name: {
             type: Sequelize.STRING

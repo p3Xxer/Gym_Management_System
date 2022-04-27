@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MemberDataService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
 import "./Member.css";
-import image from "../../Images/home.jpeg"
+import image from "../../Images/home1.jpeg"
 import image1 from "../../Images/addimage.png"
 import { Card } from "react-bootstrap";
 const AddMember = () => {

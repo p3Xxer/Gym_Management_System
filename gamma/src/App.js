@@ -110,7 +110,7 @@ const App = () => {
               <div className="navbar-nav mr-auto">
                 <li className="nav-item">
                   <Link to={"/home"} className="nav-link" >
-                    Home
+                    HOME
                   </Link>
                 </li>
 
@@ -136,7 +136,7 @@ const App = () => {
                 {currentManager && (<NavDropdown
                   id="nav-dropdown-dark-example"
                   title="Member"
-                  style={{ marginLeft: '950px' }}
+                  style={{ marginLeft: '56rem' }}
                   menuVariant="dark"
                   onMouseLeave={() => setShowDropdownMem(false)}
                   onMouseOver={() => setShowDropdownMem(true)}
@@ -159,6 +159,7 @@ const App = () => {
 
 
                 )}
+                
                 {
                   currentManager && (
                     <NavDropdown
@@ -248,6 +249,16 @@ const App = () => {
                     </NavDropdown>
                   )}
 
+                  {currentManager&&(
+                    <div>
+                    <li className="nav-item">
+                    <a href={"/profile/" + currentManager.id} className="nav-link"  >
+                      Profile
+                    </a>
+                  </li>
+                </div>
+
+                  )}
 
               </div>
 
@@ -262,7 +273,7 @@ const App = () => {
                   }
                   <li className="nav-item">
                     <a href="/login" className="nav-link" onClick={logOut} >
-                      LogOut
+                      LOGOUT
                     </a>
                   </li>
                 </div>

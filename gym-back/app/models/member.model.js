@@ -30,7 +30,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         Mobile_Number: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         },
         Address: {
             type: Sequelize.STRING

@@ -4,6 +4,8 @@ import { Link, useParams } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
 import image from "../../Images/home.jpeg"
 import "../table.css"
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 const WorkoutList = () => {
 
   const [workout, setWorkout] = useState([]);
@@ -14,6 +16,16 @@ const WorkoutList = () => {
   useEffect(() => {
     retrieveWorkouts();
   }, []);
+
+  const particlesInit = async (main) => {
+    console.log(main);
+    await loadFull(main);
+  };
+
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
+
 
   const onChangeSearchMem_Name = e => {
     const searchMem_Name = e.target.value;
@@ -42,27 +54,6 @@ const WorkoutList = () => {
     setCurrentIndex(index);
   };
 
-  //   const removeAllWorkouts = () => {
-  //     WorkoutDataService.removeAll()
-  //       .then(response => {
-  //         console.log(response.data);
-  //         refreshList();
-  //       })
-  //       .catch(e => {
-  //         console.log(e);
-  //       });
-  //   };
-
-  //   const findByMem_Name = () => {
-  //     WorkoutDataService.findByMem_Name(searchMem_Name)
-  //       .then(response => {
-  //         setWorkout(response.data);
-  //         console.log(response.data);
-  //       })
-  //       .catch(e => {
-  //         console.log(e);
-  //       });
-  //   };
   const deleteWorkout=(Workout_ID) => {
     console.log(Workout_ID);
     if(window.confirm("Do you want to delete this entry?")){
@@ -77,6 +68,81 @@ const WorkoutList = () => {
   return (
     <div className="list row" align="center">
     <img src={image} id="imgt2" />  
+    <Particles
+      id="tsparticles"
+      init={particlesInit}
+      loaded={particlesLoaded}
+      options={{
+        zIndex: -5,
+        zLayers:0.1,
+        
+        fpsLimit: 1000,
+        interactivity: {
+          events: {
+            onClick: {
+              enable: true,
+              mode: "push",
+            },
+            onHover: {
+              enable: true,
+              mode:"grab"
+            },
+            resize: true,
+          },
+          modes: {
+            push: {
+              quantity: 8,
+            },
+            repulse: {
+              distance: 200,
+              duration: 10,
+            },
+          },
+        },
+        particles: {
+          color: {
+            value: "",
+          },
+          links: {
+            color: "#ff0000",
+            distance: 150,
+            enable: true,
+            opacity: 0.8,
+            width: 1,
+          },
+          collisions: {
+            enable: true,
+          },
+          move: {
+            direction: "none",
+            enable: true,
+            outModes: {
+              default: "bounce",
+            },
+            random: false,
+            speed: 3,
+            straight: false,
+          },
+          number: {
+            density: {
+              enable: true,
+              area: 800,
+            },
+            value: 100,
+          },
+          opacity: {
+            value: 0.8,
+          },
+          shape: {
+            type: "circle",
+          },
+          size: {
+            value: { min: 1, max: 5 },
+          },
+        },
+        detectRetina: true,
+      }}
+    />
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
       <br/>
         <h4 className="lab">WORKOUTS LIST</h4>

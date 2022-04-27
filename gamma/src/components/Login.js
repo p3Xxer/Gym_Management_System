@@ -4,6 +4,8 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../services/auth.service";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 import image from "../Images/home.jpeg"
 import "./Login.css"
 const required = (value) => {
@@ -30,6 +32,15 @@ const Login = () => {
   const onChangeManager_Email = (e) => {
     const manager_Email = e.target.value;
     setManager_Email(manager_Email);
+  };
+  
+  const particlesInit = async (main) => {
+    console.log(main);
+    await loadFull(main);
+  };
+
+  const particlesLoaded = (container) => {
+    console.log(container);
   };
 
   const onChangePassword = (e) => {
@@ -79,7 +90,83 @@ const Login = () => {
 
   return (
     <div className="containerx">
-      <img src={image} id="imgt2" />
+      <img src={image} id="imgt" />
+      <Particles
+      id="tsparticles"
+      init={particlesInit}
+      loaded={particlesLoaded}
+      options={{
+        zIndex: -5,
+        zLayers:0.1,
+        
+        fpsLimit: 1000,
+        interactivity: {
+          events: {
+            onClick: {
+              enable: true,
+              mode: "push",
+            },
+            onHover: {
+              enable: true,
+              mode:"grab"
+            },
+            resize: true,
+          },
+          modes: {
+            push: {
+              quantity: 8,
+            },
+            repulse: {
+              distance: 200,
+              duration: 10,
+            },
+          },
+        },
+        particles: {
+          color: {
+            value: "",
+          },
+          links: {
+            color: "#ff0000",
+            distance: 150,
+            enable: true,
+            opacity: 0.8,
+            width: 1,
+          },
+          collisions: {
+            enable: true,
+          },
+          move: {
+            direction: "none",
+            enable: true,
+            outModes: {
+              default: "bounce",
+            },
+            random: false,
+            speed: 3,
+            straight: false,
+          },
+          number: {
+            density: {
+              enable: true,
+              area: 800,
+            },
+            value: 100,
+          },
+          opacity: {
+            value: 0.8,
+          },
+          shape: {
+            type: "circle",
+          },
+          size: {
+            value: { min: 1, max: 5 },
+          },
+        },
+        detectRetina: true,
+      }}
+    />
+      
       {/* <br />
       <br />
       <br /> */}

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Table } from 'react-bootstrap';
 import image from "../../Images/home.jpeg"
 import "../table.css"
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 const Branch_ManagerList = () => {
   const [branch_manager, setBranch_Manager] = useState([]);
   const [currentBranch_Manager, setCurrentBranch_Manager] = useState(null);
@@ -29,6 +31,16 @@ const Branch_ManagerList = () => {
         console.log(e);
       });
   };
+
+  const particlesInit = async (main) => {
+    console.log(main);
+    await loadFull(main);
+  };
+
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
+
 
   const refreshList = () => {
     retrieveBranch_Managers();
@@ -74,6 +86,81 @@ const Branch_ManagerList = () => {
 
   return (
     <div className="list row" align="center" >
+      <Particles
+      id="tsparticles"
+      init={particlesInit}
+      loaded={particlesLoaded}
+      options={{
+        zIndex: -5,
+        zLayers:0.1,
+        
+        fpsLimit: 1000,
+        interactivity: {
+          events: {
+            onClick: {
+              enable: true,
+              mode: "push",
+            },
+            onHover: {
+              enable: true,
+              mode:"grab"
+            },
+            resize: true,
+          },
+          modes: {
+            push: {
+              quantity: 8,
+            },
+            repulse: {
+              distance: 200,
+              duration: 10,
+            },
+          },
+        },
+        particles: {
+          color: {
+            value: "",
+          },
+          links: {
+            color: "#ff0000",
+            distance: 150,
+            enable: true,
+            opacity: 0.8,
+            width: 1,
+          },
+          collisions: {
+            enable: true,
+          },
+          move: {
+            direction: "none",
+            enable: true,
+            outModes: {
+              default: "bounce",
+            },
+            random: false,
+            speed: 3,
+            straight: false,
+          },
+          number: {
+            density: {
+              enable: true,
+              area: 800,
+            },
+            value: 100,
+          },
+          opacity: {
+            value: 0.8,
+          },
+          shape: {
+            type: "circle",
+          },
+          size: {
+            value: { min: 1, max: 5 },
+          },
+        },
+        detectRetina: true,
+      }}
+    />
       <div className="" align="center" margin-left="auto" margin-right="auto" width="50%" vertical-align="center">
         <h4 className="lab">BRANCH MANAGERS LIST</h4>
         <br />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import WorkoutService from "../../services/ManagerService";
-import image from "../../Images/home.jpeg"
+import image from "../../Images/home1.jpeg"
 import image2 from "../../Images/workout.png"
 import "../Member/Member.css";
 import { Card } from "react-bootstrap";

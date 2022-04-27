@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import EquipmentService from "../../services/ManagerService";
 import { useParams } from "react-router-dom";
-import image from "../../Images/home.jpeg"
+import image from "../../Images/home1.jpeg"
 import image2 from "../../Images/addimage2.png"
 import "../Member/Member.css";
 import { Card } from "react-bootstrap";
