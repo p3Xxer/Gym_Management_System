@@ -16,7 +16,8 @@ exports.create = (req, res) => {
         //Branch_ID: req.body.Branch_ID,
         Workout_Name: req.body.Workout_Name,
         Workout_DietChart: req.body.Workout_DietChart,
-        Working_Duration: req.body.Working_Duration
+        Working_Duration: req.body.Working_Duration,
+        Workout_Price: req.body.Workout_Price
     }
     Workout.create(workout)
         .then(data => {

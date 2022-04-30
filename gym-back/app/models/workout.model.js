@@ -16,7 +16,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         Working_Duration: {
-            type: Sequelize.STRING
+            type: Sequelize.INTEGER
+        },
+        Workout_Price: {
+            type: Sequelize.INTEGER
         }
     },
         {

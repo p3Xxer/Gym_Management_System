@@ -7,7 +7,6 @@ const { Op } = require("sequelize");
 const { branch_manager } = require("../models");
 //Create and Save a new Member
 exports.create = (req, res) => {
-    console.log(req);
     branch_id = req.params.Branch_ID;
     //ValMem_IDate request
     if (!req.body.Mem_Name) {
@@ -29,12 +28,15 @@ exports.create = (req, res) => {
         Emer_Name: req.body.Emer_Name,
         Emer_Mobile: req.body.Emer_Mobile
     }
+    console.log("Enteres");
     Member.create(member)
         .then(data => {
+            console.log("Enteres");
             Has.create({
                 Branch_ID: branch_id,
                 Member_ID: data.Mem_ID
             });
+            console.log("Enteres");
             res.send(data);
         })
         .catch(err => {

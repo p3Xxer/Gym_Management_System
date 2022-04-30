@@ -9,14 +9,15 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false,
             unique: true
         },
-        Branch_Name:{
-            type:Sequelize.STRING
+        Branch_Name: {
+            type: Sequelize.STRING
         },
         Branch_Location: {
             type: Sequelize.STRING
         },
         Branch_Email: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            unique: true
         },
         Branch_Phone_Number: {
             type: Sequelize.STRING

@@ -1,5 +1,5 @@
 {
-  "name": "react-hooks-crud",
+  "name": "react-hooks-jwt-auth",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,12 +8,18 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.26.1",
     "bootstrap": "^4.6.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "particles-bg": "^2.5.5",
+    "react": "^18.0.0",
+    "react-bootstrap": "^2.2.3",
+    "react-dom": "^18.0.0",
     "react-router-dom": "^6.2.2",
     "react-scripts": "4.0.3",
+    "react-tsparticles": "^2.0.5",
+    "react-typewriter-effect": "^1.1.0",
     "react-validation": "^3.0.7",
-    "validator": "^13.7.0"
+    "tsparticles": "^2.0.5",
+    "typewriter-effect": "^2.18.2",
+    "validator": "^13.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

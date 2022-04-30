@@ -17,64 +17,84 @@ app.use(expresss.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to GOLDY Gym" });
 });
-//In development, you may need to drop existing tables and re-sync database.
-//Just use force: true as following code:
-db.sequelize.sync({force: true}).then(() => { 
+
+db.sequelize.sync({force: true}).then(() => {
     console.log("Drop and re-sync db.");
     initialize();
 });
 
 function initialize(){
-    // branch_manager.create({
-    //     Branch_Name: "1",
-    //     Branch_Location: "1",
-    //     Branch_Email: "1",
-    //     Branch_Phone_Number: "1",
-    //     Manager_ID: "1001",
-    //     Manager_Name: "1",
-    //     Gender: "1",
-    //     Mobile_Number: "1",
-    //     Address: "1",
-    //     Manager_Email: "1",
-    //     Password: "1"
-    // });
-    // branch_manager.create({
-    //     Branch_Name: "2",
-    //     Branch_Location: "2",
-    //     Branch_Email: "2",
-    //     Branch_Phone_Number: "2",
-    //     Manager_ID: "1002",
-    //     Manager_Name: "2",
-    //     Gender: "2",
-    //     Mobile_Number: "2",
-    //     Address: "2",
-    //     Manager_Email: "2",
-    //     Password: "2"
-    // });
-    // branch_manager.create({
-    //     Branch_Name: "3",
-    //     Branch_Location: "3",
-    //     Branch_Email: "3",
-    //     Branch_Phone_Number: "3",
-    //     Manager_ID: "1003",
-    //     Manager_Name: "3",
-    //     Gender: "3",
-    //     Mobile_Number: "3",
-    //     Address: "3",
-    //     Manager_Email: "3",
-    //     Password: "3"
-    // });
-    // workout.create({
-    //     Workout_Name: "Cardio",
-    //     Workout_DietChart: "Banana",
-    //     Working_Duration: "30"
-    // })
-    // workout.create({
-    //     Workout_Name: "Weight Lifting",
-    //     Workout_DietChart: "Egg",
-    //     Working_Duration: "15"
-    // })
-};
+    branch_manager.create({
+        Branch_Name: "Malaviya",
+        Branch_Location: "Jaipur",
+        Branch_Email: "malaviya@gmail.com",
+        Branch_Phone_Number: "9876579889",
+        Manager_ID: "1001",
+        Manager_Name: "Khushil",
+        Gender: "Male",
+        Mobile_Number: "8769876789",
+        Address: "Airport Colony",
+        Manager_Email: "khushil@gmail.com",
+        Password: "khushil",
+    })
+
+    branch_manager.create({
+        Branch_Name: "Gotri",
+        Branch_Location: "Vadodara",
+        Branch_Email: "gotri@gmail.com",
+        Branch_Phone_Number: "8798767898",
+        Manager_ID: "1002",
+        Manager_Name: "Dhairya",
+        Gender: "Male",
+        Mobile_Number: "9974253776",
+        Address: "Kishan Duplex",
+        Manager_Email: "dhairya@gmail.com",
+        Password: "dhairya",
+    })
+
+    branch_manager.create({
+        Branch_Name: "Dharavi",
+        Branch_Location: "Mumbai",
+        Branch_Email: "dharavi@gmail.com",
+        Branch_Phone_Number: "7895499876",
+        Manager_ID: "1003",
+        Manager_Name: "rahil",
+        Gender: "Male",
+        Mobile_Number: "7897876789",
+        Address: "Bandra Station",
+        Manager_Email: "rahil@gmail.com",
+        Password: "rahil",
+    })
+
+    workout.create({
+        Workout_Name: "Beginner",
+        Workout_DietChart: "Proteins and Carbohydrates",
+        Working_Duration: "3",
+        Workout_Price: "3000"
+    })
+
+    workout.create({
+        Workout_Name: "Intermediate",
+        Workout_DietChart: "Vitamins and Carbohydrates",
+        Working_Duration: "5",
+        Workout_Price: "5000"
+    })
+
+    workout.create({
+        Workout_Name: "Advanced",
+        Workout_DietChart: "Whey and Casein",
+        Working_Duration: "9",
+        Workout_Price: "9000"
+    })
+
+    workout.create({
+        Workout_Name: "Expert",
+        Workout_DietChart: "Whey and Casein",
+        Working_Duration: "12",
+        Workout_Price: "15000"
+    })
+}
+
 //db.sequelize.sync();
 
 require("./app/routes/member.routes.js")(app);

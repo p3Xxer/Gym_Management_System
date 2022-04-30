@@ -32,7 +32,9 @@ exports.login = (req, res) => {
             if(!manager){
                 return res.status(404).send({ message: "Manager Not Found!"});
             }
-
+            // var key = "CIPHERKEY";
+            // var decipher = CryptoJS.AES.decrypt(manager.dataValues.Password, key).toString(CryptoJS.enc.Utf8);
+            // console.log(decipher);
             var passwordIsValid = req.body.password==manager.dataValues.Password
 
             if(!passwordIsValid){

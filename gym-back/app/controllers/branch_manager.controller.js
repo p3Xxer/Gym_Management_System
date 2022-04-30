@@ -3,7 +3,9 @@ const { branch_manager } = require("../models");
 const db = require("../models");
 const Branch_Manager = db.branch_manager;
 const Op = db.Sequelize.Op;
+const CryptoJS = require("crypto-js");
 var x = 1004;
+
 //console.log(db);
 //Create and Save a new Manager
 exports.create = (req, res) => {
@@ -20,7 +22,10 @@ exports.create = (req, res) => {
         });
         return;
     }
-    // Create a Manager
+    // var key = "CIPHERKEY";
+    // var cipher = CryptoJS.AES.encrypt(req.body.Password, key).toString();
+    // console.log("Password: ");
+    // console.log(cipher);
     const branch_manager = {
         Branch_Name: req.body.Branch_Name,
         Branch_Location: req.body.Branch_Location,
@@ -34,7 +39,6 @@ exports.create = (req, res) => {
         Manager_Email: req.body.Manager_Email,
         Password: req.body.Password,
     }
-    console.log("test1");
     Branch_Manager.create(branch_manager)
         .then(data => {
             console.log("test2");

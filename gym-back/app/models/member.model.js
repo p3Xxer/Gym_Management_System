@@ -39,7 +39,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         Emer_Mobile: {
-            type: Sequelize.INTEGER
+            type: Sequelize.STRING
         },
         WorkoutPlan_ID: {
             type: Sequelize.INTEGER,
